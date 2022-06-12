@@ -6,16 +6,29 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseCore
+import GoogleSignIn
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: AuthenticationViewModel
+    
     var body: some View {
-        Text("Hello, Tutor!")
-            .padding()
+        if Auth.auth().currentUser != nil {
+          // User is signed in.
+            HomeView()
+        } else {
+          // No user is signed in.
+            LoginView()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }
+
