@@ -16,9 +16,13 @@ class AuthenticationViewModel: ObservableObject {
         case signedIn
         case signedOut
     }
+    enum NewUserState {
+        case newUser
+        case notNew
+    }
     
     @Published var state: SignInState = .signedOut
-    
+    @Published var userState: NewUserState = .notNew
     private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
       // 1
       if let error = error {
@@ -32,11 +36,15 @@ class AuthenticationViewModel: ObservableObject {
       let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
       
       // 3
-      Auth.auth().signIn(with: credential) { [unowned self] (_, error) in
+      Auth.auth().signIn(with: credential) { [unowned self] (result, error) in
         if let error = error {
           print(error.localizedDescription)
         } else {
-          self.state = .signedIn
+            guard let newUserStatus = result?.additionalUserInfo?.isNewUser else {return}
+            if(newUserStatus){
+                self.userState = .newUser
+            }
+            self.state = .signedIn
         }
       }
     }

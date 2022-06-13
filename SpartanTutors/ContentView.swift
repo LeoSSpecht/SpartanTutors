@@ -16,7 +16,13 @@ struct ContentView: View {
     var body: some View {
         if Auth.auth().currentUser != nil {
           // User is signed in.
-            HomeView()
+            if(viewModel.userState == .newUser){
+                FirstLogin_User()
+            }
+            else{
+                HomeView()
+            }
+            
         } else {
           // No user is signed in.
             LoginView()
