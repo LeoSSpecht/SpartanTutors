@@ -12,22 +12,25 @@ struct UserHomePage: View {
 //    var viewModel_userData:FirebaseVM
     var body: some View {
         VStack{
-            NavigationView{
-                Text("Book a session")
-                Text("View my sessions")
+            NavigationView {
+                VStack{
+                    NavigationLink(destination: bookSessionView()) {
+                        Text("Book a session")
+                    }
+                    Button(action: viewModel.signOut) {
+                      Text("Sign out")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.systemIndigo))
+                        .cornerRadius(12)
+                        .padding()
+                    }
+                }
             }
-            .navigationTitle("Landmarks")
+//            .navigationTitle("Actions")
             .padding()
             
-            Button(action: viewModel.signOut) {
-              Text("Sign out")
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemIndigo))
-                .cornerRadius(12)
-                .padding()
-            }
         }
     }
 }
