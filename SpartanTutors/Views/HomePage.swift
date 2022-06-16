@@ -15,27 +15,27 @@ struct HomeView: View {
     var currentRole:String
     var body: some View {
 //    Get user role, depending on the role load certain page
-    
-    if currentRole == "student"{
-        UserHomePage()
-    }
-    else if currentRole == "tutor"{
-        TutorHomePage()
-    }
-    else if currentRole == "admin"{
-        AdminHomePage()
-    }
-    else{
-        Text("There was an error, please try again")
-        Button(action: viewModel.signOut) {
-        Text("Sign out")
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Color(.systemIndigo))
-            .cornerRadius(12)
-            .padding()
+        if currentRole == "student"{
+            let svm = SessionsVM(id: viewModel.userID.uid)
+            UserHomePage(sessionViewModel: svm, user: viewModel.userID)
         }
-    }
+        else if currentRole == "tutor"{
+            TutorHomePage()
+        }
+        else if currentRole == "admin"{
+            AdminHomePage()
+        }
+        else{
+            Text("There was an error, please try again")
+            Button(action: viewModel.signOut) {
+            Text("Sign out")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemIndigo))
+                .cornerRadius(12)
+                .padding()
+            }
+        }
   }
 }

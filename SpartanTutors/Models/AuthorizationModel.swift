@@ -23,13 +23,6 @@ class AuthenticationViewModel: ObservableObject {
             return userObject()
         }
     }
-    
-    struct userObject {
-        var isSignedIn: Bool = false
-        var isNewUser: Bool = false
-        var uid: String = ""
-        var name: String = ""
-    }
 
     @Published var userID: userObject = checkSignIn()
     

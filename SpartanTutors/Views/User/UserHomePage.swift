@@ -9,12 +9,13 @@ import SwiftUI
 
 struct UserHomePage: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-//    var viewModel_userData:FirebaseVM
+    var sessionViewModel: SessionsVM
+    var user: userObject
     var body: some View {
         VStack{
             NavigationView {
                 VStack{
-                    NavigationLink(destination: bookSessionView()) {
+                    NavigationLink(destination: bookSessionView(sessionViewModel: sessionViewModel)) {
                         Text("Book a session")
                     }
                     Button(action: viewModel.signOut) {
