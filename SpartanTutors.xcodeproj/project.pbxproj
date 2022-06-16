@@ -1,0 +1,781 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B31997FE2855108F00F57B28 /* SpartanTutorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */; };
+		B31998002855108F00F57B28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31997FF2855108F00F57B28 /* ContentView.swift */; };
+		B31998022855109200F57B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31998012855109200F57B28 /* Assets.xcassets */; };
+		B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31998042855109200F57B28 /* Preview Assets.xcassets */; };
+		B31998102855109300F57B28 /* SpartanTutorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319980F2855109300F57B28 /* SpartanTutorsTests.swift */; };
+		B319981B2855109300F57B28 /* SpartanTutorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319981A2855109300F57B28 /* SpartanTutorsUITests.swift */; };
+		B31998292855284800F57B28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B31998282855284800F57B28 /* GoogleService-Info.plist */; };
+		B319983D28552D8E00F57B28 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B319983C28552D8E00F57B28 /* FirebaseStorage */; };
+		B319983F28552D8E00F57B28 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B319983E28552D8E00F57B28 /* FirebaseAnalytics */; };
+		B319984128552D8E00F57B28 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B319984028552D8E00F57B28 /* FirebaseDatabaseSwift */; };
+		B319984328552D8E00F57B28 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B319984228552D8E00F57B28 /* FirebaseFirestore */; };
+		B319984528552D8E00F57B28 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B319984428552D8E00F57B28 /* FirebaseDatabase */; };
+		B319984728552D8E00F57B28 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B319984628552D8E00F57B28 /* FirebaseAuth */; };
+		B319984928552D8E00F57B28 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B319984828552D8E00F57B28 /* FirebaseFirestoreCombine-Community */; };
+		B319984B28552D8E00F57B28 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B319984A28552D8E00F57B28 /* FirebaseFirestoreSwift */; };
+		B319984E28552F8A00F57B28 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B319984D28552F8A00F57B28 /* GoogleSignIn */; };
+		B319985028552F8A00F57B28 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B319984F28552F8A00F57B28 /* GoogleSignInSwift */; };
+		B3199852285535D100F57B28 /* AuthorizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3199851285535D100F57B28 /* AuthorizationModel.swift */; };
+		B319985428553AE200F57B28 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985328553AE200F57B28 /* LoginButton.swift */; };
+		B319985628553B0400F57B28 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985528553B0400F57B28 /* LoginPage.swift */; };
+		B319985828553B4500F57B28 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985728553B4500F57B28 /* HomePage.swift */; };
+		B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */; };
+		B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3C9285B595900B84336 /* FirebaseModel.swift */; };
+		B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */; };
+		B3E4F3D2285B6A5100B84336 /* AdminHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */; };
+		B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */; };
+		B3E4F3D6285B6D3800B84336 /* FirebaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */; };
+		B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D8285B793900B84336 /* CreateUserModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B319980C2855109300F57B28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B31997F22855108F00F57B28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B31997F92855108F00F57B28;
+			remoteInfo = SpartanTutors;
+		};
+		B31998172855109300F57B28 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B31997F22855108F00F57B28 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B31997F92855108F00F57B28;
+			remoteInfo = SpartanTutors;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B31997FA2855108F00F57B28 /* SpartanTutors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpartanTutors.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanTutorsApp.swift; sourceTree = "<group>"; };
+		B31997FF2855108F00F57B28 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B31998012855109200F57B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B31998042855109200F57B28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B319980B2855109300F57B28 /* SpartanTutorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanTutorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B319980F2855109300F57B28 /* SpartanTutorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanTutorsTests.swift; sourceTree = "<group>"; };
+		B31998112855109300F57B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B31998162855109300F57B28 /* SpartanTutorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanTutorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B319981A2855109300F57B28 /* SpartanTutorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanTutorsUITests.swift; sourceTree = "<group>"; };
+		B319981C2855109300F57B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B31998282855284800F57B28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3199851285535D100F57B28 /* AuthorizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModel.swift; sourceTree = "<group>"; };
+		B319985328553AE200F57B28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		B319985528553B0400F57B28 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		B319985728553B4500F57B28 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLogin_User.swift; sourceTree = "<group>"; };
+		B3E4F3C9285B595900B84336 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
+		B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorHomePage.swift; sourceTree = "<group>"; };
+		B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomePage.swift; sourceTree = "<group>"; };
+		B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomePage.swift; sourceTree = "<group>"; };
+		B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVM.swift; sourceTree = "<group>"; };
+		B3E4F3D8285B793900B84336 /* CreateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B31997F72855108F00F57B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B319984528552D8E00F57B28 /* FirebaseDatabase in Frameworks */,
+				B319984728552D8E00F57B28 /* FirebaseAuth in Frameworks */,
+				B319984128552D8E00F57B28 /* FirebaseDatabaseSwift in Frameworks */,
+				B319984328552D8E00F57B28 /* FirebaseFirestore in Frameworks */,
+				B319983F28552D8E00F57B28 /* FirebaseAnalytics in Frameworks */,
+				B319985028552F8A00F57B28 /* GoogleSignInSwift in Frameworks */,
+				B319983D28552D8E00F57B28 /* FirebaseStorage in Frameworks */,
+				B319984928552D8E00F57B28 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				B319984B28552D8E00F57B28 /* FirebaseFirestoreSwift in Frameworks */,
+				B319984E28552F8A00F57B28 /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B31998082855109300F57B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B31998132855109300F57B28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B31997F12855108F00F57B28 = {
+			isa = PBXGroup;
+			children = (
+				B31997FC2855108F00F57B28 /* SpartanTutors */,
+				B319980E2855109300F57B28 /* SpartanTutorsTests */,
+				B31998192855109300F57B28 /* SpartanTutorsUITests */,
+				B31997FB2855108F00F57B28 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B31997FB2855108F00F57B28 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B31997FA2855108F00F57B28 /* SpartanTutors.app */,
+				B319980B2855109300F57B28 /* SpartanTutorsTests.xctest */,
+				B31998162855109300F57B28 /* SpartanTutorsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B31997FC2855108F00F57B28 /* SpartanTutors */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3C8285B592200B84336 /* Models */,
+				B3E4F3CB285B63E900B84336 /* ViewModels */,
+				B3E4F3C7285B58CB00B84336 /* Views */,
+				B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */,
+				B31997FF2855108F00F57B28 /* ContentView.swift */,
+				B31998012855109200F57B28 /* Assets.xcassets */,
+				B31998282855284800F57B28 /* GoogleService-Info.plist */,
+				B31998032855109200F57B28 /* Preview Content */,
+			);
+			path = SpartanTutors;
+			sourceTree = "<group>";
+		};
+		B31998032855109200F57B28 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B31998042855109200F57B28 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B319980E2855109300F57B28 /* SpartanTutorsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B319980F2855109300F57B28 /* SpartanTutorsTests.swift */,
+				B31998112855109300F57B28 /* Info.plist */,
+			);
+			path = SpartanTutorsTests;
+			sourceTree = "<group>";
+		};
+		B31998192855109300F57B28 /* SpartanTutorsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B319981A2855109300F57B28 /* SpartanTutorsUITests.swift */,
+				B319981C2855109300F57B28 /* Info.plist */,
+			);
+			path = SpartanTutorsUITests;
+			sourceTree = "<group>";
+		};
+		B3E4F3C7285B58CB00B84336 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3CE285B6A2500B84336 /* Admin */,
+				B3E4F3CD285B6A1F00B84336 /* Tutor */,
+				B3E4F3CC285B6A1600B84336 /* User */,
+				B319985328553AE200F57B28 /* LoginButton.swift */,
+				B319985528553B0400F57B28 /* LoginPage.swift */,
+				B319985728553B4500F57B28 /* HomePage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3E4F3C8285B592200B84336 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B3199851285535D100F57B28 /* AuthorizationModel.swift */,
+				B3E4F3C9285B595900B84336 /* FirebaseModel.swift */,
+				B3E4F3D8285B793900B84336 /* CreateUserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B3E4F3CB285B63E900B84336 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B3E4F3CC285B6A1600B84336 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */,
+				B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B3E4F3CD285B6A1F00B84336 /* Tutor */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */,
+			);
+			path = Tutor;
+			sourceTree = "<group>";
+		};
+		B3E4F3CE285B6A2500B84336 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B31997F92855108F00F57B28 /* SpartanTutors */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B319981F2855109300F57B28 /* Build configuration list for PBXNativeTarget "SpartanTutors" */;
+			buildPhases = (
+				B31997F62855108F00F57B28 /* Sources */,
+				B31997F72855108F00F57B28 /* Frameworks */,
+				B31997F82855108F00F57B28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpartanTutors;
+			packageProductDependencies = (
+				B319983C28552D8E00F57B28 /* FirebaseStorage */,
+				B319983E28552D8E00F57B28 /* FirebaseAnalytics */,
+				B319984028552D8E00F57B28 /* FirebaseDatabaseSwift */,
+				B319984228552D8E00F57B28 /* FirebaseFirestore */,
+				B319984428552D8E00F57B28 /* FirebaseDatabase */,
+				B319984628552D8E00F57B28 /* FirebaseAuth */,
+				B319984828552D8E00F57B28 /* FirebaseFirestoreCombine-Community */,
+				B319984A28552D8E00F57B28 /* FirebaseFirestoreSwift */,
+				B319984D28552F8A00F57B28 /* GoogleSignIn */,
+				B319984F28552F8A00F57B28 /* GoogleSignInSwift */,
+			);
+			productName = SpartanTutors;
+			productReference = B31997FA2855108F00F57B28 /* SpartanTutors.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B319980A2855109300F57B28 /* SpartanTutorsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B31998222855109300F57B28 /* Build configuration list for PBXNativeTarget "SpartanTutorsTests" */;
+			buildPhases = (
+				B31998072855109300F57B28 /* Sources */,
+				B31998082855109300F57B28 /* Frameworks */,
+				B31998092855109300F57B28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B319980D2855109300F57B28 /* PBXTargetDependency */,
+			);
+			name = SpartanTutorsTests;
+			productName = SpartanTutorsTests;
+			productReference = B319980B2855109300F57B28 /* SpartanTutorsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B31998152855109300F57B28 /* SpartanTutorsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B31998252855109300F57B28 /* Build configuration list for PBXNativeTarget "SpartanTutorsUITests" */;
+			buildPhases = (
+				B31998122855109300F57B28 /* Sources */,
+				B31998132855109300F57B28 /* Frameworks */,
+				B31998142855109300F57B28 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B31998182855109300F57B28 /* PBXTargetDependency */,
+			);
+			name = SpartanTutorsUITests;
+			productName = SpartanTutorsUITests;
+			productReference = B31998162855109300F57B28 /* SpartanTutorsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B31997F22855108F00F57B28 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					B31997F92855108F00F57B28 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					B319980A2855109300F57B28 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = B31997F92855108F00F57B28;
+					};
+					B31998152855109300F57B28 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = B31997F92855108F00F57B28;
+					};
+				};
+			};
+			buildConfigurationList = B31997F52855108F00F57B28 /* Build configuration list for PBXProject "SpartanTutors" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B31997F12855108F00F57B28;
+			packageReferences = (
+				B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B319984C28552F8A00F57B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			productRefGroup = B31997FB2855108F00F57B28 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B31997F92855108F00F57B28 /* SpartanTutors */,
+				B319980A2855109300F57B28 /* SpartanTutorsTests */,
+				B31998152855109300F57B28 /* SpartanTutorsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B31997F82855108F00F57B28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */,
+				B31998022855109200F57B28 /* Assets.xcassets in Resources */,
+				B31998292855284800F57B28 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B31998092855109300F57B28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B31998142855109300F57B28 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B31997F62855108F00F57B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */,
+				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
+				B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */,
+				B319985828553B4500F57B28 /* HomePage.swift in Sources */,
+				B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */,
+				B3E4F3D2285B6A5100B84336 /* AdminHomePage.swift in Sources */,
+				B319985428553AE200F57B28 /* LoginButton.swift in Sources */,
+				B31997FE2855108F00F57B28 /* SpartanTutorsApp.swift in Sources */,
+				B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */,
+				B319985628553B0400F57B28 /* LoginPage.swift in Sources */,
+				B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */,
+				B3199852285535D100F57B28 /* AuthorizationModel.swift in Sources */,
+				B3E4F3D6285B6D3800B84336 /* FirebaseVM.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B31998072855109300F57B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B31998102855109300F57B28 /* SpartanTutorsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B31998122855109300F57B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B319981B2855109300F57B28 /* SpartanTutorsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B319980D2855109300F57B28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B31997F92855108F00F57B28 /* SpartanTutors */;
+			targetProxy = B319980C2855109300F57B28 /* PBXContainerItemProxy */;
+		};
+		B31998182855109300F57B28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B31997F92855108F00F57B28 /* SpartanTutors */;
+			targetProxy = B31998172855109300F57B28 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B319981D2855109300F57B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B319981E2855109300F57B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B31998202855109300F57B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SpartanTutors/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SpartanTutors/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutors;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B31998212855109300F57B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SpartanTutors/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = SpartanTutors/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutors;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B31998232855109300F57B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SpartanTutorsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutorsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpartanTutors.app/SpartanTutors";
+			};
+			name = Debug;
+		};
+		B31998242855109300F57B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SpartanTutorsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutorsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpartanTutors.app/SpartanTutors";
+			};
+			name = Release;
+		};
+		B31998262855109300F57B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SpartanTutorsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutorsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SpartanTutors;
+			};
+			name = Debug;
+		};
+		B31998272855109300F57B28 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SpartanTutorsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutorsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SpartanTutors;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B31997F52855108F00F57B28 /* Build configuration list for PBXProject "SpartanTutors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B319981D2855109300F57B28 /* Debug */,
+				B319981E2855109300F57B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B319981F2855109300F57B28 /* Build configuration list for PBXNativeTarget "SpartanTutors" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B31998202855109300F57B28 /* Debug */,
+				B31998212855109300F57B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B31998222855109300F57B28 /* Build configuration list for PBXNativeTarget "SpartanTutorsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B31998232855109300F57B28 /* Debug */,
+				B31998242855109300F57B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B31998252855109300F57B28 /* Build configuration list for PBXNativeTarget "SpartanTutorsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B31998262855109300F57B28 /* Debug */,
+				B31998272855109300F57B28 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+		B319984C28552F8A00F57B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B319983C28552D8E00F57B28 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		B319983E28552D8E00F57B28 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B319984028552D8E00F57B28 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		B319984228552D8E00F57B28 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		B319984428552D8E00F57B28 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B319984628552D8E00F57B28 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B319984828552D8E00F57B28 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		B319984A28552D8E00F57B28 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		B319984D28552F8A00F57B28 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319984C28552F8A00F57B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		B319984F28552F8A00F57B28 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B319984C28552F8A00F57B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B31997F22855108F00F57B28 /* Project object */;
+}
