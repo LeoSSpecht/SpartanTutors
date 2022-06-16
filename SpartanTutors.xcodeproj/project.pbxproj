@@ -11,8 +11,6 @@
 		B31998002855108F00F57B28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31997FF2855108F00F57B28 /* ContentView.swift */; };
 		B31998022855109200F57B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31998012855109200F57B28 /* Assets.xcassets */; };
 		B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31998042855109200F57B28 /* Preview Assets.xcassets */; };
-		B31998102855109300F57B28 /* SpartanTutorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319980F2855109300F57B28 /* SpartanTutorsTests.swift */; };
-		B319981B2855109300F57B28 /* SpartanTutorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319981A2855109300F57B28 /* SpartanTutorsUITests.swift */; };
 		B31998292855284800F57B28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B31998282855284800F57B28 /* GoogleService-Info.plist */; };
 		B319983D28552D8E00F57B28 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B319983C28552D8E00F57B28 /* FirebaseStorage */; };
 		B319983F28552D8E00F57B28 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B319983E28552D8E00F57B28 /* FirebaseAnalytics */; };
@@ -61,11 +59,7 @@
 		B31998012855109200F57B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B31998042855109200F57B28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B319980B2855109300F57B28 /* SpartanTutorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanTutorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B319980F2855109300F57B28 /* SpartanTutorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanTutorsTests.swift; sourceTree = "<group>"; };
-		B31998112855109300F57B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B31998162855109300F57B28 /* SpartanTutorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanTutorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B319981A2855109300F57B28 /* SpartanTutorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanTutorsUITests.swift; sourceTree = "<group>"; };
-		B319981C2855109300F57B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B31998282855284800F57B28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3199851285535D100F57B28 /* AuthorizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModel.swift; sourceTree = "<group>"; };
 		B319985328553AE200F57B28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
@@ -119,8 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				B31997FC2855108F00F57B28 /* SpartanTutors */,
-				B319980E2855109300F57B28 /* SpartanTutorsTests */,
-				B31998192855109300F57B28 /* SpartanTutorsUITests */,
 				B31997FB2855108F00F57B28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,24 +148,6 @@
 				B31998042855109200F57B28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		B319980E2855109300F57B28 /* SpartanTutorsTests */ = {
-			isa = PBXGroup;
-			children = (
-				B319980F2855109300F57B28 /* SpartanTutorsTests.swift */,
-				B31998112855109300F57B28 /* Info.plist */,
-			);
-			path = SpartanTutorsTests;
-			sourceTree = "<group>";
-		};
-		B31998192855109300F57B28 /* SpartanTutorsUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B319981A2855109300F57B28 /* SpartanTutorsUITests.swift */,
-				B319981C2855109300F57B28 /* Info.plist */,
-			);
-			path = SpartanTutorsUITests;
 			sourceTree = "<group>";
 		};
 		B3E4F3C7285B58CB00B84336 /* Views */ = {
@@ -398,7 +372,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B31998102855109300F57B28 /* SpartanTutorsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,7 +379,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B319981B2855109300F57B28 /* SpartanTutorsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
