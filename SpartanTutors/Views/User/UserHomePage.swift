@@ -12,6 +12,13 @@ struct UserHomePage: View {
 //    var viewModel_userData:FirebaseVM
     var body: some View {
         VStack{
+            NavigationView{
+                Text("Book a session")
+                Text("View my sessions")
+            }
+            .navigationTitle("Landmarks")
+            .padding()
+            
             Button(action: viewModel.signOut) {
               Text("Sign out")
                 .foregroundColor(.white)

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>382667765133-ib63co2au4t1pc3rlertpb01ong9s1on.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.382667765133-ib63co2au4t1pc3rlertpb01ong9s1on</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDRR3k_6Z2PYqWtI51jo9rqe87X3P-WjpA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>382667765133</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.spartantutors.SpartanTutors</string>
+	<key>PROJECT_ID</key>
+	<string>spartantutorsapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spartantutorsapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:382667765133:ios:40cd94ca103506b13379c4</string>
+</dict>
+</plist>
