@@ -27,16 +27,23 @@ struct FirstLogin_User: View {
         
         
         
-        
-        
         VStack{
+            
             Image("favicon")
                 .resizable().scaledToFit()
                 .frame(width: 100, height: 100)
             
-            Text("Submit Information Here")
-                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            Text("Spartan Tutors")
+                .font(.headline)
+                .padding(/*@START_MENU_TOKEN@*/[.top, .leading, .trailing]/*@END_MENU_TOKEN@*/)
             
+            Divider()
+                .padding(.bottom, 30.0)
+           
+            Text("Fill in some info here")
+                .font(.headline)
+                .padding(.bottom)
+                
           
         TextField("Name", text: $name).padding().frame(width: 250, height: 50)
             .background(RoundedRectangle(cornerRadius:20).stroke(lineWidth: 3).fill(Color.green))
@@ -57,13 +64,16 @@ struct FirstLogin_User: View {
                     uid: viewModel.userID.uid, userInfo: userData
                 )
                 viewModel.userID.isNewUser = false
-            }).padding(.top)
-    
-            
+            }).foregroundColor(.white).fixedSize(horizontal: false, vertical: true)
+            .multilineTextAlignment(.center)
+            .padding()
+            .frame(width: 250, height: 50)
+            .background(RoundedRectangle(cornerRadius:20).fill(Color.blue).shadow(radius: 3)).padding(.top)
             
             
         
         }
+        .padding(.bottom)
         
         
         
