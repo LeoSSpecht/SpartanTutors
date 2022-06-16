@@ -14,9 +14,9 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var body: some View {
-        if Auth.auth().currentUser != nil {
+        if viewModel.userID.isSignedIn {
           // User is signed in.
-            if(viewModel.userState == .newUser){
+            if(viewModel.userID.isNewUser){
                 FirstLogin_User()
             }
             else{

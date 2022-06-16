@@ -11,18 +11,28 @@ import GoogleSignIn
 
 class AuthenticationViewModel: ObservableObject {
 
-    // 1
-    enum SignInState {
-        case signedIn
-        case signedOut
-    }
-    enum NewUserState {
-        case newUser
-        case notNew
+    private static func checkSignIn() -> userObject {
+        let currentUser = Auth.auth().currentUser
+        if currentUser != nil{
+            return userObject(
+                isSignedIn: true,
+                uid: currentUser?.uid ?? "",
+                name: currentUser?.displayName ?? "")
+        }
+        else{
+            return userObject()
+        }
     }
     
-    @Published var state: SignInState = .signedOut
-    @Published var userState: NewUserState = .notNew
+    struct userObject {
+        var isSignedIn: Bool = false
+        var isNewUser: Bool = false
+        var uid: String = ""
+        var name: String = ""
+    }
+
+    @Published var userID: userObject = checkSignIn()
+    
     private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
       // 1
       if let error = error {
@@ -42,9 +52,13 @@ class AuthenticationViewModel: ObservableObject {
         } else {
             guard let newUserStatus = result?.additionalUserInfo?.isNewUser else {return}
             if(newUserStatus){
-                self.userState = .newUser
+//                self.userState = .newUser
+                self.userID.isNewUser = true
             }
-            self.state = .signedIn
+//            self.state = .signedIn
+            self.userID.isSignedIn = true
+            self.userID.uid = result?.user.uid ?? "Error"
+            self.userID.name = result?.user.displayName ?? "Error"
         }
       }
     }
@@ -79,7 +93,8 @@ class AuthenticationViewModel: ObservableObject {
         // 2
         try Auth.auth().signOut()
         
-        state = .signedOut
+//        state = .signedOut
+        userID.isSignedIn = false
       } catch {
         print(error.localizedDescription)
       }
