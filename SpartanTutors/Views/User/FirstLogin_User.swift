@@ -17,25 +17,76 @@ struct FirstLogin_User: View {
     var createUserModel = UserCreationModel()
     var body: some View {
         let userData: [String:String] = [
-            "major": name,
-            "name":  major,
+            "name": name,
+            "major":  major,
             "phone": phone,
             "yearStatus":yearStatus,
             "role": "student"
         ]
         
+        
+        
+        
+        
+        
         VStack{
-            TextField("Name", text: $name)
-            TextField("Major", text: $major)
-            TextField("Phone", text: $phone)
-            TextField("Year", text: $yearStatus)
+            Image("favicon")
+                .resizable().scaledToFit()
+                .frame(width: 100, height: 100)
+            
+            Text("Submit Information Here")
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            
+          
+        TextField("Name", text: $name).padding().frame(width: 250, height: 50)
+            .background(RoundedRectangle(cornerRadius:20).stroke(lineWidth: 3).fill(Color.green))
+          
+            
+            TextField("Major", text: $major).padding().frame(width: 250, height: 50)
+                .background(RoundedRectangle(cornerRadius:20).stroke(lineWidth: 3).fill(Color.green))
+            
+            TextField("Phone", text: $phone).padding().frame(width: 250, height: 50)
+                .background(RoundedRectangle(cornerRadius:20).stroke(lineWidth: 3).fill(Color.green))
+            
+            TextField("Grade Level (Ex: Freshman)", text: $yearStatus).padding().frame(width: 250, height: 50)
+                .background(RoundedRectangle(cornerRadius:20).stroke(lineWidth: 3).fill(Color.green))
+            
+            
             Button("Submit information", action:{
                 createUserModel.createUser(
                     uid: viewModel.userID.uid, userInfo: userData
                 )
                 viewModel.userID.isNewUser = false
-            })
+            }).padding(.top)
+    
+            
+            
+            
+        
         }
         
+        
+        
+        
+        
+        
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+struct FirstLogin_User_Preview: PreviewProvider {
+    static var previews: some View {
+        Group {
+            FirstLogin_User()
+        }
     }
 }

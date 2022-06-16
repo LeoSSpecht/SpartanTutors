@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B196667C285B9F7700E8DBF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B196667B285B9F7600E8DBF7 /* GoogleService-Info.plist */; };
 		B31997FE2855108F00F57B28 /* SpartanTutorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */; };
 		B31998002855108F00F57B28 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31997FF2855108F00F57B28 /* ContentView.swift */; };
 		B31998022855109200F57B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31998012855109200F57B28 /* Assets.xcassets */; };
 		B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B31998042855109200F57B28 /* Preview Assets.xcassets */; };
-		B31998292855284800F57B28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B31998282855284800F57B28 /* GoogleService-Info.plist */; };
 		B319983D28552D8E00F57B28 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B319983C28552D8E00F57B28 /* FirebaseStorage */; };
 		B319983F28552D8E00F57B28 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B319983E28552D8E00F57B28 /* FirebaseAnalytics */; };
 		B319984128552D8E00F57B28 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B319984028552D8E00F57B28 /* FirebaseDatabaseSwift */; };
@@ -54,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B196667B285B9F7600E8DBF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B31997FA2855108F00F57B28 /* SpartanTutors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpartanTutors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanTutorsApp.swift; sourceTree = "<group>"; };
 		B31997FF2855108F00F57B28 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		B31998042855109200F57B28 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B319980B2855109300F57B28 /* SpartanTutorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanTutorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B31998162855109300F57B28 /* SpartanTutorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanTutorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B31998282855284800F57B28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3199851285535D100F57B28 /* AuthorizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationModel.swift; sourceTree = "<group>"; };
 		B319985328553AE200F57B28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		B319985528553B0400F57B28 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
@@ -132,13 +132,13 @@
 		B31997FC2855108F00F57B28 /* SpartanTutors */ = {
 			isa = PBXGroup;
 			children = (
+				B196667B285B9F7600E8DBF7 /* GoogleService-Info.plist */,
 				B3E4F3C8285B592200B84336 /* Models */,
 				B3E4F3CB285B63E900B84336 /* ViewModels */,
 				B3E4F3C7285B58CB00B84336 /* Views */,
 				B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */,
 				B31997FF2855108F00F57B28 /* ContentView.swift */,
 				B31998012855109200F57B28 /* Assets.xcassets */,
-				B31998282855284800F57B28 /* GoogleService-Info.plist */,
 				B31998032855109200F57B28 /* Preview Content */,
 			);
 			path = SpartanTutors;
@@ -354,7 +354,7 @@
 			files = (
 				B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */,
 				B31998022855109200F57B28 /* Assets.xcassets in Resources */,
-				B31998292855284800F57B28 /* GoogleService-Info.plist in Resources */,
+				B196667C285B9F7700E8DBF7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
