@@ -33,6 +33,7 @@
 		B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */; };
 		B3E4F3D6285B6D3800B84336 /* FirebaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */; };
 		B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D8285B793900B84336 /* CreateUserModel.swift */; };
+		B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3DD285B910400B84336 /* getRoleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomePage.swift; sourceTree = "<group>"; };
 		B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVM.swift; sourceTree = "<group>"; };
 		B3E4F3D8285B793900B84336 /* CreateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserModel.swift; sourceTree = "<group>"; };
+		B3E4F3DD285B910400B84336 /* getRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getRoleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,9 +168,12 @@
 		B3E4F3C8285B592200B84336 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B3E4F3DC285B90D400B84336 /* Admin */,
+				B3E4F3DB285B90CA00B84336 /* Tutor */,
+				B3E4F3DA285B90C000B84336 /* User */,
 				B3199851285535D100F57B28 /* AuthorizationModel.swift */,
-				B3E4F3C9285B595900B84336 /* FirebaseModel.swift */,
 				B3E4F3D8285B793900B84336 /* CreateUserModel.swift */,
+				B3E4F3DD285B910400B84336 /* getRoleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -202,6 +207,28 @@
 			isa = PBXGroup;
 			children = (
 				B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
+		B3E4F3DA285B90C000B84336 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3C9285B595900B84336 /* FirebaseModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		B3E4F3DB285B90CA00B84336 /* Tutor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tutor;
+			sourceTree = "<group>";
+		};
+		B3E4F3DC285B90D400B84336 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Admin;
 			sourceTree = "<group>";
@@ -354,6 +381,7 @@
 			files = (
 				B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */,
 				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
+				B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */,
 				B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */,
 				B319985828553B4500F57B28 /* HomePage.swift in Sources */,
 				B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */,

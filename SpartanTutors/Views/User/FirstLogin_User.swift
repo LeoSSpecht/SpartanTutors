@@ -23,6 +23,7 @@ struct FirstLogin_User: View {
             "yearStatus":yearStatus,
             "role": "student"
         ]
+        
         VStack{
             TextField("Name", text: $name)
             TextField("Major", text: $major)

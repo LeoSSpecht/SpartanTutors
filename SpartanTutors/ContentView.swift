@@ -12,7 +12,7 @@ import GoogleSignIn
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    
+    @ObservedObject var roleModel: getRoleModel = getRoleModel()
     var body: some View {
         if viewModel.userID.isSignedIn {
           // User is signed in.
@@ -20,7 +20,11 @@ struct ContentView: View {
                 FirstLogin_User()
             }
             else{
-                HomeView()
+                var _: () = roleModel.getRole(uid: viewModel.userID.uid)
+                if(roleModel.userRole != ""){
+                    HomeView(currentRole: roleModel.userRole)
+                }
+                
             }
             
         } else {

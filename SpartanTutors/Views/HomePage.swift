@@ -12,55 +12,30 @@ import FirebaseCore
 struct HomeView: View {
   // 1
     @EnvironmentObject var viewModel: AuthenticationViewModel
-    var currentRole = "admin"
+    var currentRole:String
     var body: some View {
 //    Get user role, depending on the role load certain page
     
-    if currentRole == "user"{
+    if currentRole == "student"{
         UserHomePage()
     }
     else if currentRole == "tutor"{
         TutorHomePage()
     }
-    else{
+    else if currentRole == "admin"{
         AdminHomePage()
     }
-//    NavigationView {
-//      VStack {
-//        HStack {
-//          // 3
-//
-//          VStack(alignment: .leading) {
-//            Text(viewModel.userID.name)
-//              .font(.headline)
-//
-////            Text(user?.profile?.email ?? "")
-////              .font(.subheadline)
-//          }
-//
-//          Spacer()
-//        }
-//        .padding()
-//        .frame(maxWidth: .infinity)
-//        .background(Color(.secondarySystemBackground))
-//        .cornerRadius(12)
-//        .padding()
-//
-//        Spacer()
-//
-//        // 4
-//        Button(action: viewModel.signOut) {
-//          Text("Sign out")
-//            .foregroundColor(.white)
-//            .padding()
-//            .frame(maxWidth: .infinity)
-//            .background(Color(.systemIndigo))
-//            .cornerRadius(12)
-//            .padding()
-//        }
-//      }
-//      .navigationTitle("Ellifit")
-//    }
-//    .navigationViewStyle(StackNavigationViewStyle())
+    else{
+        Text("There was an error, please try again")
+        Button(action: viewModel.signOut) {
+        Text("Sign out")
+            .foregroundColor(.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color(.systemIndigo))
+            .cornerRadius(12)
+            .padding()
+        }
+    }
   }
 }
