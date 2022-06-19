@@ -16,7 +16,8 @@ struct HomeView: View {
     var body: some View {
 //    Get user role, depending on the role load certain page
         if currentRole == "student"{
-            let svm = SessionsVM(id: viewModel.userID.uid)
+            let svm = sessionScheduler(uid: viewModel.userID.uid)
+//            UserHomePage(sessionViewModel: svm, user: viewModel.userID).environmentObject(svm)
             UserHomePage(sessionViewModel: svm, user: viewModel.userID)
         }
         else if currentRole == "tutor"{

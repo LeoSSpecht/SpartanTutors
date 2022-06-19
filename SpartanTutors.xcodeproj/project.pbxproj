@@ -26,6 +26,7 @@
 		B319985428553AE200F57B28 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985328553AE200F57B28 /* LoginButton.swift */; };
 		B319985628553B0400F57B28 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985528553B0400F57B28 /* LoginPage.swift */; };
 		B319985828553B4500F57B28 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985728553B4500F57B28 /* HomePage.swift */; };
+		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */; };
 		B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3C9285B595900B84336 /* FirebaseModel.swift */; };
 		B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */; };
@@ -72,6 +73,7 @@
 		B319985328553AE200F57B28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		B319985528553B0400F57B28 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		B319985728553B4500F57B28 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLogin_User.swift; sourceTree = "<group>"; };
 		B3E4F3C9285B595900B84336 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorHomePage.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				B1966681285BC1CB00E8DBF7 /* ContactUs.swift */,
 				B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */,
 				B3E4F3E1285BA2E900B84336 /* bookSessionView.swift */,
+				B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			files = (
 				B3E4F3E2285BA2E900B84336 /* bookSessionView.swift in Sources */,
 				B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */,
+				B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */,
 				B3E4F3EE285BE97F00B84336 /* SessionRowView.swift in Sources */,
 				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
 				B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */,

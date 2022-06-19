@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 struct UserCreationModel{
     private var db = Firestore.firestore()
-    func createUser(uid:String, userInfo: [String:String]){
+    func createUser(uid:String, userInfo: [String:Any]){
         db.collection("users").document(uid).setData(
             userInfo
         ) { err in

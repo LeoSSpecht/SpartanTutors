@@ -16,11 +16,11 @@ struct ContentView: View {
     var body: some View {
         if viewModel.userID.isSignedIn {
           // User is signed in.
-            if(viewModel.userID.isNewUser){
+            var _: () = roleModel.getRole(uid: viewModel.userID.uid)
+            if(roleModel.isFirstSignIn){
                 FirstLogin_User()
             }
             else{
-                var _: () = roleModel.getRole(uid: viewModel.userID.uid)
                 if(roleModel.userRole != ""){
                     HomeView(currentRole: roleModel.userRole)
                 }

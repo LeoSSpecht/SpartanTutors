@@ -8,17 +8,25 @@
 import SwiftUI
 
 struct bookSessionView: View {
-    @ObservedObject var sessionViewModel: SessionsVM
-    
+    @ObservedObject var sessionViewModel: sessionScheduler
     @State private var classSelection = "CSE 102"
-    @State private var tutorSelection = "Leo"
+    @State private var tutorSelection = "Any"
     @State private var dateSelection:Date = Date()
     @State private var sessionSelections:String = ""
-    
     let classes = ["CSE 102", "CSE 231", "CSE 232"]
-    let availableTimes = ["8:30-10:30","9:00-11:00"]
     let tutors = ["Leo","Chris"]
+//    availableTimes = sessionViewModel.build_final_time_list(tutor: tutorSelection, date: dateSelection, college_class: classSelection)
+    init(VM: sessionScheduler){
+        sessionViewModel = VM
+        sessionViewModel.getTutorSchedules()
+    }
     
+    private var dateProxy:Binding<Date> {
+        Binding<Date>(get: {self.dateSelection }, set: {
+            self.dateSelection = $0
+            sessionViewModel.build_final_time_list(tutor: tutorSelection, date: dateSelection, college_class: classSelection)
+        })
+    }
     
     var body: some View {
         let allSelections:[String:Any] = [
@@ -51,17 +59,18 @@ struct bookSessionView: View {
             
             DatePicker(
                 "Select a date",
-                selection: $dateSelection,
+                selection: dateProxy,
                 in: Date()...,
                 displayedComponents: [.date]
             )
             .id(dateSelection)
-            
             VStack{
-                Text("available dates")
+                Text("available times")
                 Picker("availableTimes",selection: $sessionSelections){
-                    ForEach(availableTimes, id: \.self) { item in
-                        Text(item)
+                    ForEach(sessionViewModel.avaialable_times, id: \.self){ pair in
+                        let _ = print(pair)
+                        Text(pair[0]).tag(pair)
+//                        Text("Hi")
                     }
                 }
                 .pickerStyle(WheelPickerStyle())
@@ -83,4 +92,6 @@ struct bookSessionView: View {
         
         
     }
+    
+    
 }

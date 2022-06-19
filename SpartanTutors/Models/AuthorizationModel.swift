@@ -13,6 +13,7 @@ class AuthenticationViewModel: ObservableObject {
 
     private static func checkSignIn() -> userObject {
         let currentUser = Auth.auth().currentUser
+
         if currentUser != nil{
             return userObject(
                 isSignedIn: true,
@@ -45,10 +46,20 @@ class AuthenticationViewModel: ObservableObject {
         } else {
             guard let newUserStatus = result?.additionalUserInfo?.isNewUser else {return}
             if(newUserStatus){
-//                self.userState = .newUser
+//                If it is a new user, create the user in the database
+                let createUserModel = UserCreationModel()
+                let userData: [String:Any] = [
+                    "name": "",
+                    "major":  "",
+                    "phone": "",
+                    "yearStatus": "",
+                    "role": "student",
+                    "firstSignIn": true
+                ]
                 self.userID.isNewUser = true
+                createUserModel.createUser(uid: (result?.user.uid)!, userInfo: userData)
             }
-//            self.state = .signedIn
+//          gets user info
             self.userID.isSignedIn = true
             self.userID.uid = result?.user.uid ?? "Error"
             self.userID.name = result?.user.displayName ?? "Error"

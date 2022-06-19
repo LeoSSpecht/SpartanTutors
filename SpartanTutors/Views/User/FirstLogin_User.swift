@@ -16,16 +16,14 @@ struct FirstLogin_User: View {
     
     var createUserModel = UserCreationModel()
     var body: some View {
-        let userData: [String:String] = [
+        let userData: [String:Any] = [
             "name": name,
             "major":  major,
             "phone": phone,
             "yearStatus":yearStatus,
-            "role": "student"
+            "role": "student",
+            "firstSignIn": false
         ]
-        
-        
-        
         
         VStack{
             
