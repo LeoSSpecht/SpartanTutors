@@ -10,16 +10,25 @@ import SwiftUI
 struct UserHomePage: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
 //    @ObservedObject var sessionViewModel: sessionScheduler
+    @State var show_book_view = false
     var sessionViewModel: sessionScheduler
     var user: userObject
     var body: some View {
         VStack{
             NavigationView {
                 VStack{
-                    NavigationLink(destination: NavigationLazyView(bookSessionView(VM: sessionViewModel))) {
+//                    NavigationLink(destination: NavigationLazyView(bookSessionView(student_id: user.uid))) {
+                    NavigationLink(destination: bookSessionView(student_id: user.uid,show_book: $show_book_view),isActive: $show_book_view) {
+//                        Text("Book a session")
+                        EmptyView()
+                    }
+                    Button(action: {
+                            show_book_view.toggle()
+                    }){
                         Text("Book a session")
                     }
-                    let _ = print(sessionViewModel.studentSessions.count)
+                    let _ = print(
+                        sessionViewModel.studentSessions.count)
                     NavigationLink(destination: allSessionsView(sessionModel: sessionViewModel)) {
                         VStack{
                             Text("See my sessions")

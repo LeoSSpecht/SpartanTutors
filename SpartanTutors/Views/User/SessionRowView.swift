@@ -21,26 +21,40 @@ struct SessionRowView_Previews: PreviewProvider {
                     "student_uid":"leo",
                     "tutor_uid":"master",
                     "date": Date(),
-                    "time_slot": "8:30",
-                    "college_class":"CSE"
-                ]))
+                    "time_slot": "0222200000000000000000000000",
+                    "college_class":"CSE",
+            "status": "Approved"
+        ]))
     }
 }
 
 struct Row: View{
     var details: Session
     var body: some View{
+        ZStack(alignment: .trailing){
+            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+                .foregroundColor(get_Status_Color(detail: details))
+                .shadow(radius: 3)
+            InnerRow(details: details)
+                .padding(.leading, 10)
+        }
+    
+    }
+}
+
+struct InnerRow: View{
+    var details: Session
+    var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.gray)
-                .shadow(radius: 5)
+//                .shadow(radius: 5)
             HStack{
                 VStack(alignment: .leading){
-//                    Text("Mon - 01/01/2022")
-                    Text(Date_to_string(date: details.date))
+                    Text(details.date_to_string())
                         .font(.title2)
                         .fontWeight(.bold)
-                    Text("10:20 AM - 12:20 PM")
+                    Text(details.get_time_frame())
                         .fontWeight(.bold)
                     Text("Leo")
                     Text(details.college_class)
@@ -59,22 +73,15 @@ struct Row: View{
             }.padding()
         }
     }
-    
-    func Date_to_string(date: Date) -> String{
-        let df = DateFormatter()
-        df.dateFormat = "eee MM/dd/YYYY"
-        let formatted = df.string(from: date)
-        return formatted
+}
+
+func get_Status_Color(detail:Session) -> Color{
+    let status = detail.status
+    if status == "Approved"{
+        return .green
     }
-    
-    func get_Status_Color(detail:Session) -> Color{
-        let status = detail.status
-        if status == "Approved"{
-            return .green
-        }
-        else if status == "Pending"{
-            return .yellow
-        }
-        return .red
+    else if status == "Pending"{
+        return .yellow
     }
+    return .red
 }

@@ -25,7 +25,7 @@ class SessionsVM: ObservableObject{
     }
     
     func book(session: Session){
-        var result = connection.bookSession(session)
+//        var result = connection.bookSession(session)
         connection.retrieveStudentSessions()
     }
     
