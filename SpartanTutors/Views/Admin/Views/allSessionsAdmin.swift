@@ -1,15 +1,15 @@
 //
-//  allSessionsView.swift
+//  allSessionsAdmin.swift
 //  SpartanTutors
 //
-//  Created by Leo on 6/18/22.
+//  Created by Leo on 6/26/22.
 //
 
 import SwiftUI
 
-struct allSessionsView: View {
-    @ObservedObject var sessionModel: sessionScheduler
-
+struct allSessionsAdmin: View {
+//    Change this to environmentObject
+    @ObservedObject var sessionModel: AdminAllSessions
     var body: some View {
 
         let confirmed = sessionModel.studentSessions.filter{ session in
@@ -30,13 +30,13 @@ struct allSessionsView: View {
             Text("Upcoming sessions")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
             ForEach(confirmed_sorted){ session in
-                SessionRowView(details: session)
+                AdminRowView(sessionDetail: session)
             }.padding(.horizontal, 5.0)
             
             Text("Past or canceled sessions")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
             ForEach(other_sorted){ session in
-                SessionRowView(details: session)
+                AdminRowView(sessionDetail: session)
             }.padding(.horizontal, 5.0)
         }
     }

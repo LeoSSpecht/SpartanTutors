@@ -16,13 +16,28 @@ struct ContentView: View {
     var body: some View {
         if viewModel.userID.isSignedIn {
           // User is signed in.
+//          ADD LOADING PAGE WHILE IT GETS ROLE
             var _: () = roleModel.getRole(uid: viewModel.userID.uid)
             if(roleModel.isFirstSignIn){
                 FirstLogin_User()
             }
             else{
                 if(roleModel.userRole != ""){
-                    HomeView(currentRole: roleModel.userRole)
+                    HomeView(isTutorApproved: roleModel.isTutorApproved, isTutorFirstSignIn:roleModel.isTutorFirstSignIn,
+                        currentRole: roleModel.userRole)
+                }
+                else{
+                    Text("An error occured")
+                    let _ = print(viewModel.userID.uid)
+                    Button(action: viewModel.signOut) {
+                    Text("Sign out")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(.systemIndigo))
+                        .cornerRadius(12)
+                        .padding()
+                    }
                 }
                 
             }

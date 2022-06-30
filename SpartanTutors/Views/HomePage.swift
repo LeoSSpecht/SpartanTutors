@@ -12,16 +12,29 @@ import FirebaseCore
 struct HomeView: View {
   // 1
     @EnvironmentObject var viewModel: AuthenticationViewModel
+    var isTutorApproved:Bool
+    var isTutorFirstSignIn:Bool
     var currentRole:String
     var body: some View {
 //    Get user role, depending on the role load certain page
         if currentRole == "student"{
-            let svm = sessionScheduler(uid: viewModel.userID.uid)
-//            UserHomePage(sessionViewModel: svm, user: viewModel.userID).environmentObject(svm)
+            let svm = AllSessionsModel(uid: viewModel.userID.uid)
             UserHomePage(sessionViewModel: svm, user: viewModel.userID)
         }
         else if currentRole == "tutor"{
-            TutorHomePage()
+            if isTutorApproved{
+                if isTutorFirstSignIn{
+                    //Load first time page
+                    TutorFirstTimeLogin()
+                }
+                else{
+                    TutorHomePage()
+                }
+            }
+            else{
+                //Load waiting for approval
+                Text("You are not approved yet, please wait for approval and try again")
+            }
         }
         else if currentRole == "admin"{
             AdminHomePage()

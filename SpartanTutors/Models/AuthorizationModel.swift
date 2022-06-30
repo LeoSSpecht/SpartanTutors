@@ -11,9 +11,10 @@ import GoogleSignIn
 
 class AuthenticationViewModel: ObservableObject {
 
-    private static func checkSignIn() -> userObject {
+    private static func checkSignIn()
+    -> userObject
+    {
         let currentUser = Auth.auth().currentUser
-
         if currentUser != nil{
             return userObject(
                 isSignedIn: true,
@@ -25,7 +26,9 @@ class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    @Published var userID: userObject = checkSignIn()
+    // If this changes to be just a userObject(), the user will have to tap the button to log in everytime (safer)
+    // Otherwise call checkSignIn here for autosignIn
+    @Published var userID: userObject = userObject()
     
     private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
       // 1
@@ -33,13 +36,8 @@ class AuthenticationViewModel: ObservableObject {
         print(error.localizedDescription)
         return
       }
-      
-      // 2
       guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
-      
       let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-      
-      // 3
       Auth.auth().signIn(with: credential) { [unowned self] (result, error) in
         if let error = error {
           print(error.localizedDescription)
@@ -48,16 +46,8 @@ class AuthenticationViewModel: ObservableObject {
             if(newUserStatus){
 //                If it is a new user, create the user in the database
                 let createUserModel = UserCreationModel()
-                let userData: [String:Any] = [
-                    "name": "",
-                    "major":  "",
-                    "phone": "",
-                    "yearStatus": "",
-                    "role": "student",
-                    "firstSignIn": true
-                ]
                 self.userID.isNewUser = true
-                createUserModel.createUser(uid: (result?.user.uid)!, userInfo: userData)
+                createUserModel.createUser(uid: result!.user.uid,first_sign_in: true)
             }
 //          gets user info
             self.userID.isSignedIn = true
@@ -85,8 +75,7 @@ class AuthenticationViewModel: ObservableObject {
         guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
         
         // 5
-        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in authenticateUser(for: user, with: error)
-        }
+        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in authenticateUser(for: user, with: error)}
       }
     }
     func signOut() {

@@ -33,19 +33,23 @@
 		B3B9A1062864FF0200921A61 /* ConfirmSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A1052864FF0200921A61 /* ConfirmSessionView.swift */; };
 		B3B9A1082868C25B00921A61 /* makePaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A1072868C25A00921A61 /* makePaymentView.swift */; };
 		B3B9A10A2868E02E00921A61 /* tutorClassesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A1092868E02D00921A61 /* tutorClassesModel.swift */; };
+		B3B9A11028691D9300921A61 /* allSessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10F28691D9300921A61 /* allSessionsViewModel.swift */; };
+		B3B9A11228691E7700921A61 /* AdminRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A11128691E7700921A61 /* AdminRowView.swift */; };
+		B3B9A1142869234000921A61 /* allSessionsAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A1132869234000921A61 /* allSessionsAdmin.swift */; };
+		B3B9A117286DC4FF00921A61 /* TutorFirstTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A116286DC4FE00921A61 /* TutorFirstTimeViewModel.swift */; };
+		B3B9A11A286DC69600921A61 /* TutorFirstTimeLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A119286DC69600921A61 /* TutorFirstTimeLogin.swift */; };
+		B3B9A11C286DFF9300921A61 /* classSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A11B286DFF9100921A61 /* classSelectionView.swift */; };
+		B3B9A11F286E0A3500921A61 /* classSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A11E286E0A3500921A61 /* classSelectionViewModel.swift */; };
 		B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */; };
-		B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3C9285B595900B84336 /* FirebaseModel.swift */; };
 		B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */; };
 		B3E4F3D2285B6A5100B84336 /* AdminHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */; };
 		B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */; };
-		B3E4F3D6285B6D3800B84336 /* FirebaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */; };
 		B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D8285B793900B84336 /* CreateUserModel.swift */; };
 		B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3DD285B910400B84336 /* getRoleModel.swift */; };
 		B3E4F3E0285BA19100B84336 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3E4F3DF285BA19000B84336 /* GoogleService-Info.plist */; };
 		B3E4F3E2285BA2E900B84336 /* bookSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3E1285BA2E900B84336 /* bookSessionView.swift */; };
-		B3E4F3E5285BC54700B84336 /* SchedulingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3E4285BC54700B84336 /* SchedulingVM.swift */; };
 		B3E4F3E7285BC6B600B84336 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3E6285BC6B600B84336 /* UserObject.swift */; };
-		B3E4F3EC285BC84400B84336 /* sessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3EB285BC84400B84336 /* sessionViewModel.swift */; };
+		B3E4F3EC285BC84400B84336 /* allSessionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3EB285BC84400B84336 /* allSessionsModel.swift */; };
 		B3E4F3EE285BE97F00B84336 /* SessionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3ED285BE97F00B84336 /* SessionRowView.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,19 +90,23 @@
 		B3B9A1052864FF0200921A61 /* ConfirmSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSessionView.swift; sourceTree = "<group>"; };
 		B3B9A1072868C25A00921A61 /* makePaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makePaymentView.swift; sourceTree = "<group>"; };
 		B3B9A1092868E02D00921A61 /* tutorClassesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorClassesModel.swift; sourceTree = "<group>"; };
+		B3B9A10F28691D9300921A61 /* allSessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsViewModel.swift; sourceTree = "<group>"; };
+		B3B9A11128691E7700921A61 /* AdminRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRowView.swift; sourceTree = "<group>"; };
+		B3B9A1132869234000921A61 /* allSessionsAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsAdmin.swift; sourceTree = "<group>"; };
+		B3B9A116286DC4FE00921A61 /* TutorFirstTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorFirstTimeViewModel.swift; sourceTree = "<group>"; };
+		B3B9A119286DC69600921A61 /* TutorFirstTimeLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorFirstTimeLogin.swift; sourceTree = "<group>"; };
+		B3B9A11B286DFF9100921A61 /* classSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classSelectionView.swift; sourceTree = "<group>"; };
+		B3B9A11E286E0A3500921A61 /* classSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classSelectionViewModel.swift; sourceTree = "<group>"; };
 		B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLogin_User.swift; sourceTree = "<group>"; };
-		B3E4F3C9285B595900B84336 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorHomePage.swift; sourceTree = "<group>"; };
 		B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHomePage.swift; sourceTree = "<group>"; };
 		B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomePage.swift; sourceTree = "<group>"; };
-		B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVM.swift; sourceTree = "<group>"; };
 		B3E4F3D8285B793900B84336 /* CreateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserModel.swift; sourceTree = "<group>"; };
 		B3E4F3DD285B910400B84336 /* getRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getRoleModel.swift; sourceTree = "<group>"; };
 		B3E4F3DF285BA19000B84336 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3E4F3E1285BA2E900B84336 /* bookSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionView.swift; sourceTree = "<group>"; };
-		B3E4F3E4285BC54700B84336 /* SchedulingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulingVM.swift; sourceTree = "<group>"; };
 		B3E4F3E6285BC6B600B84336 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
-		B3E4F3EB285BC84400B84336 /* sessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionViewModel.swift; sourceTree = "<group>"; };
+		B3E4F3EB285BC84400B84336 /* allSessionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsModel.swift; sourceTree = "<group>"; };
 		B3E4F3ED285BE97F00B84336 /* SessionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,7 +168,6 @@
 			children = (
 				B3E4F3DF285BA19000B84336 /* GoogleService-Info.plist */,
 				B3E4F3C8285B592200B84336 /* Models */,
-				B3E4F3CB285B63E900B84336 /* ViewModels */,
 				B3E4F3C7285B58CB00B84336 /* Views */,
 				B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */,
 				B31997FF2855108F00F57B28 /* ContentView.swift */,
@@ -191,6 +198,68 @@
 			path = BookSession;
 			sourceTree = "<group>";
 		};
+		B3B9A10B28691C5400921A61 /* AllSessions */ = {
+			isa = PBXGroup;
+			children = (
+				B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */,
+				B3E4F3ED285BE97F00B84336 /* SessionRowView.swift */,
+				B3E4F3EB285BC84400B84336 /* allSessionsModel.swift */,
+			);
+			path = AllSessions;
+			sourceTree = "<group>";
+		};
+		B3B9A10C28691D2A00921A61 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3B9A11128691E7700921A61 /* AdminRowView.swift */,
+				B3B9A1132869234000921A61 /* allSessionsAdmin.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3B9A10D28691D3100921A61 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B3B9A10E28691D3700921A61 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B3B9A10F28691D9300921A61 /* allSessionsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B3B9A115286BB1C800921A61 /* FirstTimeLogIn */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */,
+				B3E4F3D8285B793900B84336 /* CreateUserModel.swift */,
+			);
+			path = FirstTimeLogIn;
+			sourceTree = "<group>";
+		};
+		B3B9A118286DC67C00921A61 /* FirstTimeLogin */ = {
+			isa = PBXGroup;
+			children = (
+				B3B9A11D286E0A1300921A61 /* classSelection */,
+				B3B9A116286DC4FE00921A61 /* TutorFirstTimeViewModel.swift */,
+				B3B9A11B286DFF9100921A61 /* classSelectionView.swift */,
+				B3B9A119286DC69600921A61 /* TutorFirstTimeLogin.swift */,
+			);
+			path = FirstTimeLogin;
+			sourceTree = "<group>";
+		};
+		B3B9A11D286E0A1300921A61 /* classSelection */ = {
+			isa = PBXGroup;
+			children = (
+				B3B9A11E286E0A3500921A61 /* classSelectionViewModel.swift */,
+			);
+			path = classSelection;
+			sourceTree = "<group>";
+		};
 		B3E4F3C7285B58CB00B84336 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,35 +276,22 @@
 		B3E4F3C8285B592200B84336 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B3E4F3E9285BC81700B84336 /* Session */,
-				B3E4F3DC285B90D400B84336 /* Admin */,
-				B3E4F3DB285B90CA00B84336 /* Tutor */,
-				B3E4F3DA285B90C000B84336 /* User */,
 				B3199851285535D100F57B28 /* AuthorizationModel.swift */,
-				B3E4F3D8285B793900B84336 /* CreateUserModel.swift */,
+				B3E4F3E6285BC6B600B84336 /* UserObject.swift */,
 				B3E4F3DD285B910400B84336 /* getRoleModel.swift */,
+				B3B9A0FE286299ED00921A61 /* sessionModels.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		B3E4F3CB285B63E900B84336 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				B3E4F3E3285BC52800B84336 /* User */,
-				B3E4F3D5285B6D3800B84336 /* FirebaseVM.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B3E4F3CC285B6A1600B84336 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				B3B9A115286BB1C800921A61 /* FirstTimeLogIn */,
+				B3B9A10B28691C5400921A61 /* AllSessions */,
 				B3B9A10028647A9500921A61 /* BookSession */,
-				B3E4F3ED285BE97F00B84336 /* SessionRowView.swift */,
-				B3E4F3C52857605C00B84336 /* FirstLogin_User.swift */,
 				B1966681285BC1CB00E8DBF7 /* ContactUs.swift */,
 				B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */,
-				B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -243,6 +299,7 @@
 		B3E4F3CD285B6A1F00B84336 /* Tutor */ = {
 			isa = PBXGroup;
 			children = (
+				B3B9A118286DC67C00921A61 /* FirstTimeLogin */,
 				B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */,
 			);
 			path = Tutor;
@@ -251,49 +308,12 @@
 		B3E4F3CE285B6A2500B84336 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				B3B9A10D28691D3100921A61 /* Models */,
+				B3B9A10E28691D3700921A61 /* ViewModels */,
+				B3B9A10C28691D2A00921A61 /* Views */,
 				B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */,
 			);
 			path = Admin;
-			sourceTree = "<group>";
-		};
-		B3E4F3DA285B90C000B84336 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				B3E4F3C9285B595900B84336 /* FirebaseModel.swift */,
-				B3E4F3E6285BC6B600B84336 /* UserObject.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		B3E4F3DB285B90CA00B84336 /* Tutor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tutor;
-			sourceTree = "<group>";
-		};
-		B3E4F3DC285B90D400B84336 /* Admin */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Admin;
-			sourceTree = "<group>";
-		};
-		B3E4F3E3285BC52800B84336 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				B3E4F3EB285BC84400B84336 /* sessionViewModel.swift */,
-				B3E4F3E4285BC54700B84336 /* SchedulingVM.swift */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		B3E4F3E9285BC81700B84336 /* Session */ = {
-			isa = PBXGroup;
-			children = (
-				B3B9A0FE286299ED00921A61 /* sessionModels.swift */,
-			);
-			path = Session;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,33 +462,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3B9A11228691E7700921A61 /* AdminRowView.swift in Sources */,
 				B3B9A10428647AFA00921A61 /* bookSessionViewModel.swift in Sources */,
+				B3B9A11028691D9300921A61 /* allSessionsViewModel.swift in Sources */,
 				B3E4F3E2285BA2E900B84336 /* bookSessionView.swift in Sources */,
-				B3E4F3CA285B595900B84336 /* FirebaseModel.swift in Sources */,
 				B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */,
 				B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */,
 				B3E4F3EE285BE97F00B84336 /* SessionRowView.swift in Sources */,
 				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
 				B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */,
+				B3B9A117286DC4FF00921A61 /* TutorFirstTimeViewModel.swift in Sources */,
 				B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */,
 				B319985828553B4500F57B28 /* HomePage.swift in Sources */,
 				B3B9A10A2868E02E00921A61 /* tutorClassesModel.swift in Sources */,
-				B3E4F3EC285BC84400B84336 /* sessionViewModel.swift in Sources */,
+				B3E4F3EC285BC84400B84336 /* allSessionsModel.swift in Sources */,
+				B3B9A11F286E0A3500921A61 /* classSelectionViewModel.swift in Sources */,
 				B3B9A1062864FF0200921A61 /* ConfirmSessionView.swift in Sources */,
 				B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */,
 				B3B9A1082868C25B00921A61 /* makePaymentView.swift in Sources */,
 				B3E4F3D2285B6A5100B84336 /* AdminHomePage.swift in Sources */,
 				B319985428553AE200F57B28 /* LoginButton.swift in Sources */,
-				B3E4F3E5285BC54700B84336 /* SchedulingVM.swift in Sources */,
 				B31997FE2855108F00F57B28 /* SpartanTutorsApp.swift in Sources */,
 				B3E4F3E7285BC6B600B84336 /* UserObject.swift in Sources */,
 				B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */,
 				B319985628553B0400F57B28 /* LoginPage.swift in Sources */,
+				B3B9A1142869234000921A61 /* allSessionsAdmin.swift in Sources */,
 				B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */,
 				B3199852285535D100F57B28 /* AuthorizationModel.swift in Sources */,
 				B1966682285BC1CB00E8DBF7 /* ContactUs.swift in Sources */,
 				B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */,
-				B3E4F3D6285B6D3800B84336 /* FirebaseVM.swift in Sources */,
+				B3B9A11C286DFF9300921A61 /* classSelectionView.swift in Sources */,
+				B3B9A11A286DC69600921A61 /* TutorFirstTimeLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

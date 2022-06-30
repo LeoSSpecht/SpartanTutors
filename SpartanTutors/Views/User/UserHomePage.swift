@@ -11,7 +11,7 @@ struct UserHomePage: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
 //    @ObservedObject var sessionViewModel: sessionScheduler
     @State var show_book_view = false
-    var sessionViewModel: sessionScheduler
+    var sessionViewModel: AllSessionsModel
     var user: userObject
     var body: some View {
         VStack{

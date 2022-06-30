@@ -13,7 +13,8 @@ class getRoleModel: ObservableObject{
     private var db = Firestore.firestore()
     @Published var userRole:String = ""
     @Published var isFirstSignIn:Bool = false
-
+    @Published var isTutorApproved:Bool = false
+    @Published var isTutorFirstSignIn:Bool = false
     func getRole(uid:String){
         let docRef = db.collection("users").document(uid)
         docRef.getDocument { (document, error) in
@@ -22,6 +23,15 @@ class getRoleModel: ObservableObject{
                 if let data = data {
                     self.userRole = data["role"] as? String ?? ""
                     self.isFirstSignIn = data["firstSignIn"] as? Bool ?? false
+                    if self.userRole == "tutor"{
+                        //Check for tutor specific variables
+                        if data["approved"] != nil {
+                            self.isTutorApproved = (data["approved"] as? Bool)!
+                        }
+                        if data["TutorFirstSignIn"] != nil{
+                            self.isTutorFirstSignIn = (data["TutorFirstSignIn"] as? Bool)!
+                        }
+                    }
                 }
             } else {
                 print("Document does not exist")

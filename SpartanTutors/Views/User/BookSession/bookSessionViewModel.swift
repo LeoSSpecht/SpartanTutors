@@ -18,15 +18,14 @@ class bookStudentSession: ObservableObject {
     @Published var tutorNames = "Any"
     @Published var dateSelection:Date = Date()
     @Published var sessionSelections:Array<String>?
-    let classes = ["CSE 102", "CSE 231", "CSE 232"]
-//    let tutors = ["Leo","Chris"]
-    
     
     init(student_id:String){
         self.student_id = student_id
         get_all_tutors()
         getTutorSchedules()
     }
+    
+//  MARK: GETTERS
     var available_times:Array<Array<String>> {
         model.available_times
     }
@@ -38,7 +37,8 @@ class bookStudentSession: ObservableObject {
     var classes_:Array<String>{
         Array(self.model.all_classes)
     }
-    
+
+//  MARK: UPDATING FUNCTIONS
     func update_tutor_selection(){
         //        Changes the tutor for tutors available for that class
         tutorSelection = TutorClass(id: "Any", tutorName: "Any", classes: [])
@@ -55,7 +55,18 @@ class bookStudentSession: ObservableObject {
             sessionSelections = nil
         }
     }
+
+    func build_all_classes(){
+        var allClasses: Set<String> = []
+        for tutor in model.all_tutors{
+            for u_class in tutor.classes{
+                allClasses.insert(u_class)
+            }
+        }
+        model.update_classes(new_classes: allClasses)
+    }
     
+//  MARK: DATABASE ACCESS
     func get_all_tutors(){
         let ref = db.collection("users")
         ref.whereField("role", isEqualTo: "tutor")
@@ -77,16 +88,6 @@ class bookStudentSession: ObservableObject {
                 self.build_all_classes()
                 self.classSelection = self.model.all_classes.first ?? ""
             }
-    }
-    
-    func build_all_classes(){
-        var allClasses: Set<String> = []
-        for tutor in model.all_tutors{
-            for u_class in tutor.classes{
-                allClasses.insert(u_class)
-            }
-        }
-        model.update_classes(new_classes: allClasses)
     }
     
     func getTutorSchedules(){
@@ -112,22 +113,6 @@ class bookStudentSession: ObservableObject {
                 self.sessionSelections = nil
             }
         }
-    }
-    
-    func createSessionObject(){
-        var content:[String:Any] = [
-            "id" : "",
-            "tutor_uid" : sessionSelections![1],
-            "date" : dateSelection,
-            "time_slot" : sessionSelections![2],
-            "college_class" : classSelection
-        ]
-        content["student_uid"] = student_id
-        let sessionToBook = Session(content)
-        bookSession(sessionToBook)
-//        if bookSession(sessionToBook){
-//            retrieveStudentSessions()
-//        }
     }
     
     func updateTutorSchedule(tutor_schedule:TutorSchedule) -> Bool{
@@ -157,6 +142,27 @@ class bookStudentSession: ObservableObject {
             complete(true,TutorSchedule(dict,id_i: querySnapshot!.documentID))
         }
     }
+
+// MARK: Helper functions
+    func createSessionObject(){
+        var content:[String:Any] = [
+            "id" : "",
+            "tutor_uid" : sessionSelections![1],
+            "date" : dateSelection,
+            "time_slot" : sessionSelections![2],
+            "college_class" : classSelection
+        ]
+        content["student_uid"] = student_id
+        let sessionToBook = Session(content)
+        bookSession(sessionToBook)
+//        if bookSession(sessionToBook){
+//            retrieveStudentSessions()
+//        }
+    }
+    
+
+    
+    
     
     func update_single_time(session_time_slot:String,tutor_time_slot:String) -> String?{
         let str = session_time_slot
@@ -203,9 +209,10 @@ class bookStudentSession: ObservableObject {
                     isAvailable = false
                 }
             }
-    //        Create session
-    //        Books session
+    
+    
             if isAvailable {
+                //Create session
                 var final_session = session
                 let ref = self.db.collection("Sessions")
                 let docId = ref.document().documentID
