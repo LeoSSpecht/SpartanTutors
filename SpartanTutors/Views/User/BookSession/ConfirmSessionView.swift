@@ -22,13 +22,12 @@ struct ConfirmSessionView: View {
                 .bold()
             Spacer()
             Text("Date: \(Date_to_string(date: bookViewModel.dateSelection))")
-            Text("Time: \(bookViewModel.sessionSelections![0]) am")
+            Text("Time: \(bookViewModel.sessionSelections?[0] ?? "") am")
             Text("Tutor: \(bookViewModel.tutorSelection.tutorName)")
             Text("Class: \(bookViewModel.classSelection)")
             Spacer()
             NavigationLink(
                 destination: makePaymentView(show_book_view: $show_book_view),isActive: $show_payment){
-                
             }
             .isDetailLink(false)
             

@@ -104,7 +104,8 @@ class bookStudentSession: ObservableObject {
                 return TutorSchedule(dict,id_i: queryDocumentSnapshot.documentID)
             }
             self.model.update_tutor_times(new_times: new_schedules)
-            self.model.update_available_times(college_class: self.classSelection)
+            // Gets the first time available for that date
+            self.model.update_available_times(tutor: self.tutorSelection.id ,date: self.dateSelection, college_class: self.classSelection)
             self.model.update_tutors_for_class(class_selection: self.classSelection)
             if !self.model.available_times.isEmpty{
                 self.sessionSelections = self.model.available_times[0]
@@ -159,10 +160,6 @@ class bookStudentSession: ObservableObject {
 //            retrieveStudentSessions()
 //        }
     }
-    
-
-    
-    
     
     func update_single_time(session_time_slot:String,tutor_time_slot:String) -> String?{
         let str = session_time_slot

@@ -19,6 +19,7 @@ struct Session: Codable, Identifiable, Hashable{
     var paid: Bool = false
     var refunded: Bool = false
     var duration: Int = 2
+    var paid_tutor: Bool = false
     
     init(_ content: [String: Any]){
         id = content["id"] as! String
@@ -52,6 +53,7 @@ struct Session: Codable, Identifiable, Hashable{
         case college_class
         case id
         case duration
+        case paid_tutor
     }
     
     func get_time_frame() -> String {

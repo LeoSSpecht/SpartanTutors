@@ -94,7 +94,6 @@ struct bookSessionView: View {
             }.isDetailLink(false)
             
             Button(action: {
-
                 load_confirmation.toggle()
                 print("Going to confirmation")
             }) {
@@ -110,10 +109,12 @@ struct bookSessionView: View {
         .pickerStyle(MenuPickerStyle())
         .padding()
         .onAppear(){
-//            This updates the available times whenever  the view is opened
+//            OPTIONAL: This updates the available times whenever  the view is opened
 //            Another option is to add a listener that updates the view every time the schedule changes
 //            the problem would be when one student selects the time when another student is looking at it
 //            This would cause the time to disapear
+            
+//            ERROR: I only want this to run again when it goes into the view, not when it goes back
             self.bookViewModel.getTutorSchedules()
         }
         
