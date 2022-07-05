@@ -30,13 +30,17 @@ struct allSessionsAdmin: View {
             Text("Upcoming sessions")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
             ForEach(confirmed_sorted){ session in
-                AdminRowView(sessionDetail: session)
+                AdminRowView(sessionDetail: session,
+                             s_name: sessionModel.studentNames[session.student_uid]!,
+                             t_name: sessionModel.tutorNames[session.tutor_uid]!)
             }.padding(.horizontal, 5.0)
             
             Text("Past or canceled sessions")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
             ForEach(other_sorted){ session in
-                AdminRowView(sessionDetail: session)
+                AdminRowView(sessionDetail: session,
+                             s_name: sessionModel.studentNames[session.student_uid]!,
+                             t_name: sessionModel.tutorNames[session.tutor_uid]!)
             }.padding(.horizontal, 5.0)
         }
     }

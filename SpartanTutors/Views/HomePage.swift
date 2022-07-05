@@ -28,7 +28,7 @@ struct HomeView: View {
                     TutorFirstTimeLogin()
                 }
                 else{
-                    TutorHomePage()
+                    TutorHomePage(viewModel.userID.uid)
                 }
             }
             else{

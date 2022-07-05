@@ -15,6 +15,8 @@ class getRoleModel: ObservableObject{
     @Published var isFirstSignIn:Bool = false
     @Published var isTutorApproved:Bool = false
     @Published var isTutorFirstSignIn:Bool = false
+    @Published var isLoading:Bool = true
+    @Published var error:Bool = false
     func getRole(uid:String){
         let docRef = db.collection("users").document(uid)
         docRef.getDocument { (document, error) in
@@ -32,8 +34,11 @@ class getRoleModel: ObservableObject{
                             self.isTutorFirstSignIn = (data["TutorFirstSignIn"] as? Bool)!
                         }
                     }
+                    self.isLoading = false
                 }
             } else {
+                self.isLoading = false
+                self.error = true
                 print("Document does not exist")
             }
         }

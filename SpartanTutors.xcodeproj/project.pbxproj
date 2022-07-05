@@ -26,6 +26,13 @@
 		B319985428553AE200F57B28 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985328553AE200F57B28 /* LoginButton.swift */; };
 		B319985628553B0400F57B28 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985528553B0400F57B28 /* LoginPage.swift */; };
 		B319985828553B4500F57B28 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319985728553B4500F57B28 /* HomePage.swift */; };
+		B34DA772286F162C005D3258 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = B34DA771286F162C005D3258 /* PopupView */; };
+		B34DA7742872229F005D3258 /* updateScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DA7732872229F005D3258 /* updateScheduleViewModel.swift */; };
+		B34DA7762872232F005D3258 /* tutorScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34DA7752872232F005D3258 /* tutorScheduleModel.swift */; };
+		B360A751286E3B9D00E56509 /* TutorSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A750286E3B9D00E56509 /* TutorSessionViewModel.swift */; };
+		B360A753286E3BB300E56509 /* TutorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A752286E3BB300E56509 /* TutorRowView.swift */; };
+		B360A755286E3BC000E56509 /* TutorAllSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A754286E3BC000E56509 /* TutorAllSessionsView.swift */; };
+		B360A758286E4AFF00E56509 /* updateScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A757286E4AFF00E56509 /* updateScheduleView.swift */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -83,6 +90,12 @@
 		B319985328553AE200F57B28 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		B319985528553B0400F57B28 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		B319985728553B4500F57B28 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		B34DA7732872229F005D3258 /* updateScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateScheduleViewModel.swift; sourceTree = "<group>"; };
+		B34DA7752872232F005D3258 /* tutorScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorScheduleModel.swift; sourceTree = "<group>"; };
+		B360A750286E3B9D00E56509 /* TutorSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorSessionViewModel.swift; sourceTree = "<group>"; };
+		B360A752286E3BB300E56509 /* TutorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorRowView.swift; sourceTree = "<group>"; };
+		B360A754286E3BC000E56509 /* TutorAllSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAllSessionsView.swift; sourceTree = "<group>"; };
+		B360A757286E4AFF00E56509 /* updateScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateScheduleView.swift; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -118,6 +131,7 @@
 				B319984528552D8E00F57B28 /* FirebaseDatabase in Frameworks */,
 				B319984728552D8E00F57B28 /* FirebaseAuth in Frameworks */,
 				B319984128552D8E00F57B28 /* FirebaseDatabaseSwift in Frameworks */,
+				B34DA772286F162C005D3258 /* PopupView in Frameworks */,
 				B319984328552D8E00F57B28 /* FirebaseFirestore in Frameworks */,
 				B319983F28552D8E00F57B28 /* FirebaseAnalytics in Frameworks */,
 				B319985028552F8A00F57B28 /* GoogleSignInSwift in Frameworks */,
@@ -183,6 +197,26 @@
 				B31998042855109200F57B28 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B360A74F286E3B4600E56509 /* ViewAllSessions */ = {
+			isa = PBXGroup;
+			children = (
+				B360A750286E3B9D00E56509 /* TutorSessionViewModel.swift */,
+				B360A752286E3BB300E56509 /* TutorRowView.swift */,
+				B360A754286E3BC000E56509 /* TutorAllSessionsView.swift */,
+			);
+			path = ViewAllSessions;
+			sourceTree = "<group>";
+		};
+		B360A756286E4AA800E56509 /* updateSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				B360A757286E4AFF00E56509 /* updateScheduleView.swift */,
+				B34DA7732872229F005D3258 /* updateScheduleViewModel.swift */,
+				B34DA7752872232F005D3258 /* tutorScheduleModel.swift */,
+			);
+			path = updateSchedule;
 			sourceTree = "<group>";
 		};
 		B3B9A10028647A9500921A61 /* BookSession */ = {
@@ -299,6 +333,8 @@
 		B3E4F3CD285B6A1F00B84336 /* Tutor */ = {
 			isa = PBXGroup;
 			children = (
+				B360A756286E4AA800E56509 /* updateSchedule */,
+				B360A74F286E3B4600E56509 /* ViewAllSessions */,
 				B3B9A118286DC67C00921A61 /* FirstTimeLogin */,
 				B3E4F3CF285B6A4600B84336 /* TutorHomePage.swift */,
 			);
@@ -343,6 +379,7 @@
 				B319984A28552D8E00F57B28 /* FirebaseFirestoreSwift */,
 				B319984D28552F8A00F57B28 /* GoogleSignIn */,
 				B319984F28552F8A00F57B28 /* GoogleSignInSwift */,
+				B34DA771286F162C005D3258 /* PopupView */,
 			);
 			productName = SpartanTutors;
 			productReference = B31997FA2855108F00F57B28 /* SpartanTutors.app */;
@@ -418,6 +455,7 @@
 			packageReferences = (
 				B319983B28552D8E00F57B28 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B319984C28552F8A00F57B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				B34DA770286F162C005D3258 /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = B31997FB2855108F00F57B28 /* Products */;
 			projectDirPath = "";
@@ -466,9 +504,14 @@
 				B3B9A10428647AFA00921A61 /* bookSessionViewModel.swift in Sources */,
 				B3B9A11028691D9300921A61 /* allSessionsViewModel.swift in Sources */,
 				B3E4F3E2285BA2E900B84336 /* bookSessionView.swift in Sources */,
+				B360A755286E3BC000E56509 /* TutorAllSessionsView.swift in Sources */,
+				B34DA7762872232F005D3258 /* tutorScheduleModel.swift in Sources */,
+				B360A751286E3B9D00E56509 /* TutorSessionViewModel.swift in Sources */,
+				B360A758286E4AFF00E56509 /* updateScheduleView.swift in Sources */,
 				B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */,
 				B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */,
 				B3E4F3EE285BE97F00B84336 /* SessionRowView.swift in Sources */,
+				B34DA7742872229F005D3258 /* updateScheduleViewModel.swift in Sources */,
 				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
 				B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */,
 				B3B9A117286DC4FF00921A61 /* TutorFirstTimeViewModel.swift in Sources */,
@@ -493,6 +536,7 @@
 				B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */,
 				B3B9A11C286DFF9300921A61 /* classSelectionView.swift in Sources */,
 				B3B9A11A286DC69600921A61 /* TutorFirstTimeLogin.swift in Sources */,
+				B360A753286E3BB300E56509 /* TutorRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +628,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -638,6 +683,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -822,6 +868,14 @@
 				minimumVersion = 6.2.2;
 			};
 		};
+		B34DA770286F162C005D3258 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -874,6 +928,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B319984C28552F8A00F57B28 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
+		};
+		B34DA771286F162C005D3258 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B34DA770286F162C005D3258 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

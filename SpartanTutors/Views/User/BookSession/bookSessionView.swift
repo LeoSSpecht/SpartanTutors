@@ -113,8 +113,6 @@ struct bookSessionView: View {
 //            Another option is to add a listener that updates the view every time the schedule changes
 //            the problem would be when one student selects the time when another student is looking at it
 //            This would cause the time to disapear
-            
-//            ERROR: I only want this to run again when it goes into the view, not when it goes back
             self.bookViewModel.getTutorSchedules()
         }
         

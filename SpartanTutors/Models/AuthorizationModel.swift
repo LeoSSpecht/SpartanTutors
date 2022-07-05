@@ -27,8 +27,8 @@ class AuthenticationViewModel: ObservableObject {
     }
 
     // If this changes to be just a userObject(), the user will have to tap the button to log in everytime (safer)
-    // Otherwise call checkSignIn here for autosignIn
-    @Published var userID: userObject = userObject()
+    // Otherwise call checkSignIn here for autosignIn -> Risk of token expiration
+    @Published var userID: userObject = checkSignIn()
     
     private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
       // 1

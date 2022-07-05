@@ -17,10 +17,16 @@ struct AdminHomePage: View {
             VStack{
                 Text("Admin page")
                 
+                //THIS IS A FUCKING WORKAROUND FOR IOS 14, ONCE UPDATED CHANGE THE NAVIGATION VIEW STYLE TO .stack and it should work
+                NavigationLink(destination: EmptyView()) {
+                  EmptyView()
+                }
+                
                 NavigationLink(destination: allSessionsAdmin(
                                 sessionModel: adminViewModel)){
                     Text("View all student sessions")
                 }
+                
                 Button(action: viewModel.signOut) {
                   Text("Sign out")
                     .foregroundColor(.white)
@@ -31,7 +37,7 @@ struct AdminHomePage: View {
                     .padding()
                 }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

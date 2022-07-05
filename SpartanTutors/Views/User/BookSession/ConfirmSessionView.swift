@@ -12,6 +12,7 @@ struct ConfirmSessionView: View {
     @State var show_payment = false
     @Binding var show_book_view:Bool
     
+    //STORE THE CURRENT SESSION SELECTION IN A SESSION OBJECT
     var body: some View {
         VStack{
             
@@ -22,7 +23,7 @@ struct ConfirmSessionView: View {
                 .bold()
             Spacer()
             Text("Date: \(Date_to_string(date: bookViewModel.dateSelection))")
-            Text("Time: \(bookViewModel.sessionSelections?[0] ?? "") am")
+            Text("Time: \(get_time_frame(time_slot: bookViewModel.sessionSelections?[2] ?? "Error"))")
             Text("Tutor: \(bookViewModel.tutorSelection.tutorName)")
             Text("Class: \(bookViewModel.classSelection)")
             Spacer()
@@ -58,11 +59,32 @@ struct ConfirmSessionView: View {
     
     func Date_to_time(date: Date) -> String{
         let df = DateFormatter()
-        df.dateFormat = "hh:mm a 'on'"
+        df.dateFormat = "hh:mm a"
         df.amSymbol = "AM"
         df.pmSymbol = "PM"
         let formatted = df.string(from: date)
         return formatted
+    }
+    
+    //REPEATED FUNCTION
+    func get_time_frame(time_slot:String) -> String {
+        if time_slot == "Error"{return "Error"}
+        let inital_time = 8
+        let duration = 2
+        var ind:Int = 0
+        for i in time_slot{
+            if i == "2"{
+                break
+            }
+            ind += 1
+        }
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+        components.hour = inital_time+ind/2
+        components.minute = ind%2 == 0 ? 0 : 30
+        let start_time = Calendar.current.date(from: components)
+        components.hour = inital_time+ind/2 + duration
+        let end_time = Calendar.current.date(from: components)
+        return "\(Date_to_time(date: start_time!)) - \(Date_to_time(date: end_time!))"
     }
 }
 

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct UserHomePage: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
-//    @ObservedObject var sessionViewModel: sessionScheduler
     @State var show_book_view = false
+    //Maybe change this to observable object
     var sessionViewModel: AllSessionsModel
     var user: userObject
     var body: some View {
@@ -45,8 +45,8 @@ struct UserHomePage: View {
                     }
                 }
             }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .padding()
+//            .navigationViewStyle(StackNavigationViewStyle())
+//            .padding()
             
         }
     }

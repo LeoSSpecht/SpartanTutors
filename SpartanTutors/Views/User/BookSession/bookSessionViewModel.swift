@@ -6,7 +6,6 @@
 //
 import Foundation
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 class bookStudentSession: ObservableObject {
     private var db = Firestore.firestore()

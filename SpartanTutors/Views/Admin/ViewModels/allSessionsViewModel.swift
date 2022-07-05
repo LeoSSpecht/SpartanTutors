@@ -12,8 +12,34 @@ class AdminAllSessions: ObservableObject{
     private var initial_time = 8
     @Published private (set) var studentSessions: Array<Session> = []
     
+    @Published var tutorSchedules = [String:TutorScheduleModel]()
+    @Published var studentNames = [String:String]()
+    @Published var tutorNames = [String:String]()
+    
     init(){
         retrieveStudentSessions()
+        getAllTutorSchedules()
+        retrieveNames(role: "student")
+        retrieveNames(role: "tutor")
+    }
+    
+    func retrieveNames(role:String){
+        let ref = db.collection("users").whereField("role", isEqualTo: role)
+        ref.addSnapshotListener(){(querySnapshot, err) in
+            guard let documents = querySnapshot?.documents else {
+                print("No documents")
+                return
+            }
+            
+            documents.forEach{
+                if role == "student"{
+                    self.studentNames[$0.documentID] = $0["name"] as? String
+                }
+                else{
+                    self.tutorNames[$0.documentID] = $0["name"] as? String
+                }
+            }
+        }
     }
     
     func retrieveStudentSessions(){
@@ -35,7 +61,7 @@ class AdminAllSessions: ObservableObject{
         }
     }
     
-    func changeSessionStatus(session_id: String, session_status: String) -> Bool{
+    func changeSessionStatus(session: Session, session_status: String) -> Bool{
         var newStatus: [String:Any] = [
             "status": session_status
         ]
@@ -44,12 +70,14 @@ class AdminAllSessions: ObservableObject{
                 newStatus["paid"] = true
             case "Canceled":
                 newStatus["refunded"] = true
+                //Update tutor schedule
+                updateCanceledSchedule(date: session.date, sessionTimeFrame: session.time_slot, tutor_id: session.tutor_uid)
             default:
                 print("do nothing")
         }
         let ref = db.collection("Sessions")
         var result = false
-        ref.document(session_id).updateData(newStatus) { (err) in
+        ref.document(session.id).updateData(newStatus){ (err) in
             if let err = err {
                 print("Error updating document: \(err)")
                 result = false
@@ -59,6 +87,55 @@ class AdminAllSessions: ObservableObject{
             }
         }
         return result
+    }
+    
+    func getAllTutorSchedules(){
+        db.collection("tutor_schedules").addSnapshotListener{result, err in
+            guard let documents = result?.documents else {
+                print("Error fetching documents: \(err!)")
+                return
+            }
+            
+            var schedules = [String:TutorScheduleModel] ()
+            documents.forEach{tutor in
+                schedules[tutor.documentID] = TutorScheduleModel(new: tutor.data() as? [String:String] ?? nil)
+            }
+            self.tutorSchedules = schedules
+        }
+    }
+    
+    func updateCanceledSchedule(date:Date,sessionTimeFrame:String,tutor_id:String){
+        let day = self.dateToIntStr(date)
+        
+        //Updates the model variable
+        for i in sessionTimeFrame.indices{
+            if sessionTimeFrame[i] == "2"{
+                self.tutorSchedules[tutor_id]!.schedule[day]![i.utf16Offset(in: sessionTimeFrame)] = 1
+            }
+        }
+        
+        //Converting the array of ints to Array of string
+        let schedule_string = self.tutorSchedules[tutor_id]!.schedule[day]!.map{time in
+            String(time)
+        }
+        
+        db.collection("tutor_schedules").document(tutor_id).updateData(
+            //Updates only the day the tutor has currently selected
+            //If you want to update all the changes made do: model.schedule -> Remeber to make all of them strings
+            [day:schedule_string.joined()]
+        )
+        {(err) in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    //Repeated function
+    func dateToIntStr(_ date: Date) -> String{
+        return "\(Int((((date.timeIntervalSince1970/60)/60)/24)))"
     }
 }
 
