@@ -37,7 +37,7 @@ struct InnerTutorRow: View{
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             HStack{
                 VStack(alignment: .leading){
                     Text(details.date_to_string())

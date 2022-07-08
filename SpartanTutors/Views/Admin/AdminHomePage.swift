@@ -11,7 +11,7 @@ struct AdminHomePage: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     
     var adminViewModel = AdminAllSessions() // Change this to environment object
-    
+    var approval_tutor_view_model = ApproveTutorViewModel()
     var body: some View {
         NavigationView{
             VStack{
@@ -27,15 +27,10 @@ struct AdminHomePage: View {
                     Text("View all student sessions")
                 }
                 
-                Button(action: viewModel.signOut) {
-                  Text("Sign out")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color(.systemIndigo))
-                    .cornerRadius(12)
-                    .padding()
+                NavigationLink(destination: ApproveTutors(AllTutors: approval_tutor_view_model)){
+                    Text("Approved tutors")
                 }
+            
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

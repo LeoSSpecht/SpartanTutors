@@ -67,12 +67,6 @@ struct updateScheduleView: View {
                 .padding()
             }
         }
-        .popup(isPresented: $UpdateScheduleViewModel.showInvalidPopUp, type: .toast, position: .top, autohideIn: 1.8) { // 3
-            PopUpBody(text: "You need to select at least 4 blocks, for 2 hour sessions", color: Color(red: 1, green: 0.8, blue: 0.8))
-        }
-        .popup(isPresented: $UpdateScheduleViewModel.showWorkedPopUp, type: .toast, position: .top, autohideIn: 2) { // 3
-            PopUpBody(text: "Updated schedule for \(date_to_pop_string(UpdateScheduleViewModel.date))", color: Color(red: 0.8, green: 1, blue: 0.8))
-        }
         .navigationBarBackButtonHidden(self.UpdateScheduleViewModel.hide_bar)
         .navigationBarTitle("",displayMode: .inline).padding(0)
         .toolbar{
@@ -86,6 +80,12 @@ struct updateScheduleView: View {
                     }
                 }
             }
+        }
+        .popup(isPresented: $UpdateScheduleViewModel.showInvalidPopUp, type: .toast, position: .top, autohideIn: 1.8) { // 3
+            PopUpBody(text: "You need to select at least 4 blocks, for 2 hour sessions", color: Color(red: 1, green: 0.8, blue: 0.8))
+        }
+        .popup(isPresented: $UpdateScheduleViewModel.showWorkedPopUp, type: .toast, position: .top, autohideIn: 2) { // 3
+            PopUpBody(text: "Updated schedule for \(date_to_pop_string(UpdateScheduleViewModel.date))", color: Color(red: 0.8, green: 1, blue: 0.8))
         }
         
     }

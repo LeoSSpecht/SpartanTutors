@@ -33,6 +33,11 @@
 		B360A753286E3BB300E56509 /* TutorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A752286E3BB300E56509 /* TutorRowView.swift */; };
 		B360A755286E3BC000E56509 /* TutorAllSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A754286E3BC000E56509 /* TutorAllSessionsView.swift */; };
 		B360A758286E4AFF00E56509 /* updateScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360A757286E4AFF00E56509 /* updateScheduleView.swift */; };
+		B362D41D2874EC5F0021D848 /* ApproveTutorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D41C2874EC5F0021D848 /* ApproveTutorRow.swift */; };
+		B362D41F2874F2DD0021D848 /* ApproveTutors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D41E2874F2DD0021D848 /* ApproveTutors.swift */; };
+		B362D4212878AE6F0021D848 /* TutorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D4202878AE6F0021D848 /* TutorModel.swift */; };
+		B362D4232878B0100021D848 /* ApproveTutorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D4222878B0100021D848 /* ApproveTutorViewModel.swift */; };
+		B362D4252878B2450021D848 /* AllTutorsForApproval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D4242878B2450021D848 /* AllTutorsForApproval.swift */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -96,6 +101,11 @@
 		B360A752286E3BB300E56509 /* TutorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorRowView.swift; sourceTree = "<group>"; };
 		B360A754286E3BC000E56509 /* TutorAllSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorAllSessionsView.swift; sourceTree = "<group>"; };
 		B360A757286E4AFF00E56509 /* updateScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateScheduleView.swift; sourceTree = "<group>"; };
+		B362D41C2874EC5F0021D848 /* ApproveTutorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveTutorRow.swift; sourceTree = "<group>"; };
+		B362D41E2874F2DD0021D848 /* ApproveTutors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveTutors.swift; sourceTree = "<group>"; };
+		B362D4202878AE6F0021D848 /* TutorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorModel.swift; sourceTree = "<group>"; };
+		B362D4222878B0100021D848 /* ApproveTutorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveTutorViewModel.swift; sourceTree = "<group>"; };
+		B362D4242878B2450021D848 /* AllTutorsForApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTutorsForApproval.swift; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -219,6 +229,41 @@
 			path = updateSchedule;
 			sourceTree = "<group>";
 		};
+		B362D4172874EB7E0021D848 /* ApproveTutors */ = {
+			isa = PBXGroup;
+			children = (
+				B362D41B2874EBA20021D848 /* View */,
+				B362D41A2874EB9B0021D848 /* ViewModel */,
+				B362D4182874EB890021D848 /* Model */,
+			);
+			path = ApproveTutors;
+			sourceTree = "<group>";
+		};
+		B362D4182874EB890021D848 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B362D4242878B2450021D848 /* AllTutorsForApproval.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B362D41A2874EB9B0021D848 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B362D4222878B0100021D848 /* ApproveTutorViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B362D41B2874EBA20021D848 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B362D41C2874EC5F0021D848 /* ApproveTutorRow.swift */,
+				B362D41E2874F2DD0021D848 /* ApproveTutors.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		B3B9A10028647A9500921A61 /* BookSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +359,7 @@
 				B3E4F3E6285BC6B600B84336 /* UserObject.swift */,
 				B3E4F3DD285B910400B84336 /* getRoleModel.swift */,
 				B3B9A0FE286299ED00921A61 /* sessionModels.swift */,
+				B362D4202878AE6F0021D848 /* TutorModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +390,7 @@
 		B3E4F3CE285B6A2500B84336 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				B362D4172874EB7E0021D848 /* ApproveTutors */,
 				B3B9A10D28691D3100921A61 /* Models */,
 				B3B9A10E28691D3700921A61 /* ViewModels */,
 				B3B9A10C28691D2A00921A61 /* Views */,
@@ -510,21 +557,26 @@
 				B360A758286E4AFF00E56509 /* updateScheduleView.swift in Sources */,
 				B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */,
 				B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */,
+				B362D4212878AE6F0021D848 /* TutorModel.swift in Sources */,
 				B3E4F3EE285BE97F00B84336 /* SessionRowView.swift in Sources */,
 				B34DA7742872229F005D3258 /* updateScheduleViewModel.swift in Sources */,
 				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
 				B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */,
 				B3B9A117286DC4FF00921A61 /* TutorFirstTimeViewModel.swift in Sources */,
 				B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */,
+				B362D4252878B2450021D848 /* AllTutorsForApproval.swift in Sources */,
 				B319985828553B4500F57B28 /* HomePage.swift in Sources */,
+				B362D4232878B0100021D848 /* ApproveTutorViewModel.swift in Sources */,
 				B3B9A10A2868E02E00921A61 /* tutorClassesModel.swift in Sources */,
 				B3E4F3EC285BC84400B84336 /* allSessionsModel.swift in Sources */,
 				B3B9A11F286E0A3500921A61 /* classSelectionViewModel.swift in Sources */,
+				B362D41F2874F2DD0021D848 /* ApproveTutors.swift in Sources */,
 				B3B9A1062864FF0200921A61 /* ConfirmSessionView.swift in Sources */,
 				B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */,
 				B3B9A1082868C25B00921A61 /* makePaymentView.swift in Sources */,
 				B3E4F3D2285B6A5100B84336 /* AdminHomePage.swift in Sources */,
 				B319985428553AE200F57B28 /* LoginButton.swift in Sources */,
+				B362D41D2874EC5F0021D848 /* ApproveTutorRow.swift in Sources */,
 				B31997FE2855108F00F57B28 /* SpartanTutorsApp.swift in Sources */,
 				B3E4F3E7285BC6B600B84336 /* UserObject.swift in Sources */,
 				B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */,
