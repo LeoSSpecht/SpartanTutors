@@ -38,6 +38,11 @@
 		B362D4212878AE6F0021D848 /* TutorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D4202878AE6F0021D848 /* TutorModel.swift */; };
 		B362D4232878B0100021D848 /* ApproveTutorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D4222878B0100021D848 /* ApproveTutorViewModel.swift */; };
 		B362D4252878B2450021D848 /* AllTutorsForApproval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D4242878B2450021D848 /* AllTutorsForApproval.swift */; };
+		B362D427287A01090021D848 /* LoadingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B362D426287A01080021D848 /* LoadingCircle.swift */; };
+		B371B943287A24C200E42485 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B93E287A24C200E42485 /* DayView.swift */; };
+		B371B944287A24C200E42485 /* CalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B940287A24C200E42485 /* CalendarVM.swift */; };
+		B371B945287A24C200E42485 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B942287A24C200E42485 /* CalendarModel.swift */; };
+		B371B94E287A32BB00E42485 /* SessionSelectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B94D287A32BB00E42485 /* SessionSelectionObject.swift */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -106,6 +111,11 @@
 		B362D4202878AE6F0021D848 /* TutorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorModel.swift; sourceTree = "<group>"; };
 		B362D4222878B0100021D848 /* ApproveTutorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveTutorViewModel.swift; sourceTree = "<group>"; };
 		B362D4242878B2450021D848 /* AllTutorsForApproval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTutorsForApproval.swift; sourceTree = "<group>"; };
+		B362D426287A01080021D848 /* LoadingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircle.swift; sourceTree = "<group>"; };
+		B371B93E287A24C200E42485 /* DayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		B371B940287A24C200E42485 /* CalendarVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVM.swift; sourceTree = "<group>"; };
+		B371B942287A24C200E42485 /* CalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		B371B94D287A32BB00E42485 /* SessionSelectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSelectionObject.swift; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -264,6 +274,40 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		B371B93C287A246B00E42485 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				B371B941287A24C200E42485 /* Models */,
+				B371B93F287A24C200E42485 /* ViewModel */,
+				B371B93D287A24C200E42485 /* Views */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		B371B93D287A24C200E42485 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B371B93E287A24C200E42485 /* DayView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B371B93F287A24C200E42485 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B371B940287A24C200E42485 /* CalendarVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B371B941287A24C200E42485 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B371B942287A24C200E42485 /* CalendarModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B3B9A10028647A9500921A61 /* BookSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +317,7 @@
 				B3B9A1052864FF0200921A61 /* ConfirmSessionView.swift */,
 				B3B9A1072868C25A00921A61 /* makePaymentView.swift */,
 				B3E4F3E1285BA2E900B84336 /* bookSessionView.swift */,
+				B371B94D287A32BB00E42485 /* SessionSelectionObject.swift */,
 			);
 			path = BookSession;
 			sourceTree = "<group>";
@@ -355,11 +400,13 @@
 		B3E4F3C8285B592200B84336 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B371B93C287A246B00E42485 /* CalendarView */,
 				B3199851285535D100F57B28 /* AuthorizationModel.swift */,
 				B3E4F3E6285BC6B600B84336 /* UserObject.swift */,
 				B3E4F3DD285B910400B84336 /* getRoleModel.swift */,
 				B3B9A0FE286299ED00921A61 /* sessionModels.swift */,
 				B362D4202878AE6F0021D848 /* TutorModel.swift */,
+				B362D426287A01080021D848 /* LoadingCircle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -548,12 +595,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3B9A11228691E7700921A61 /* AdminRowView.swift in Sources */,
+				B371B943287A24C200E42485 /* DayView.swift in Sources */,
 				B3B9A10428647AFA00921A61 /* bookSessionViewModel.swift in Sources */,
 				B3B9A11028691D9300921A61 /* allSessionsViewModel.swift in Sources */,
 				B3E4F3E2285BA2E900B84336 /* bookSessionView.swift in Sources */,
 				B360A755286E3BC000E56509 /* TutorAllSessionsView.swift in Sources */,
 				B34DA7762872232F005D3258 /* tutorScheduleModel.swift in Sources */,
 				B360A751286E3B9D00E56509 /* TutorSessionViewModel.swift in Sources */,
+				B371B94E287A32BB00E42485 /* SessionSelectionObject.swift in Sources */,
 				B360A758286E4AFF00E56509 /* updateScheduleView.swift in Sources */,
 				B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */,
 				B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */,
@@ -575,14 +624,17 @@
 				B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */,
 				B3B9A1082868C25B00921A61 /* makePaymentView.swift in Sources */,
 				B3E4F3D2285B6A5100B84336 /* AdminHomePage.swift in Sources */,
+				B362D427287A01090021D848 /* LoadingCircle.swift in Sources */,
 				B319985428553AE200F57B28 /* LoginButton.swift in Sources */,
 				B362D41D2874EC5F0021D848 /* ApproveTutorRow.swift in Sources */,
 				B31997FE2855108F00F57B28 /* SpartanTutorsApp.swift in Sources */,
 				B3E4F3E7285BC6B600B84336 /* UserObject.swift in Sources */,
+				B371B944287A24C200E42485 /* CalendarVM.swift in Sources */,
 				B3E4F3C62857605C00B84336 /* FirstLogin_User.swift in Sources */,
 				B319985628553B0400F57B28 /* LoginPage.swift in Sources */,
 				B3B9A1142869234000921A61 /* allSessionsAdmin.swift in Sources */,
 				B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */,
+				B371B945287A24C200E42485 /* CalendarModel.swift in Sources */,
 				B3199852285535D100F57B28 /* AuthorizationModel.swift in Sources */,
 				B1966682285BC1CB00E8DBF7 /* ContactUs.swift in Sources */,
 				B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */,

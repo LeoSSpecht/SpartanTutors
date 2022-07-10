@@ -6,65 +6,57 @@
 //
 import Foundation
 import FirebaseFirestore
-
+import Firebase
+import FirebaseFirestoreSwift
 class bookStudentSession: ObservableObject {
-    private var db = Firestore.firestore()
+//    settings.isPersistenceEnabled = false
+    private var db =  Firestore.firestore()
     private let student_id:String
     
     @Published var model = sessionBookerData()
-    @Published var classSelection:String = ""
-    @Published var tutorSelection:TutorClass = TutorClass(id: "Any", tutorName: "Any", classes: [])
-    @Published var tutorNames = "Any"
+    @Published var tutorSelection:TutorSummary = TutorSummary(id: "Any", tutorName: "Any")
     @Published var dateSelection:Date = Date()
-    @Published var sessionSelections:Array<String>?
+    @Published var sessionSelections:sessionTime?
+    @Published var selectedClass:String = ""
+    @Published var finishedLoading = false
+    
+    //ID -> Schedule
     
     init(student_id:String){
         self.student_id = student_id
         get_all_tutors()
-        getTutorSchedules()
     }
     
 //  MARK: GETTERS
-    var available_times:Array<Array<String>> {
+    var classes_:Array<String>{
+        self.model.all_classes
+    }
+    
+    var available_times:Array<sessionTime>{
         model.available_times
     }
     
-    var tutors:Array<TutorClass> {
-        model.tutors_for_class
+    var tutors:Array<TutorSummary> {
+        if let av = model.classes_dict[selectedClass]{
+            return av.map{ (tutor_id) -> TutorSummary in
+                return TutorSummary(id: tutor_id, tutorName: model.id_schedule_dict[tutor_id]!.tutorName)
+            }
+            
+        }
+        return []
     }
     
-    var classes_:Array<String>{
-        Array(self.model.all_classes)
-    }
-
 //  MARK: UPDATING FUNCTIONS
-    func update_tutor_selection(){
-        //        Changes the tutor for tutors available for that class
-        tutorSelection = TutorClass(id: "Any", tutorName: "Any", classes: [])
-        model.update_tutors_for_class(class_selection: classSelection)
-    }
-    
     func update_times(){
-        model.update_available_times(tutor: tutorSelection.id, date: dateSelection, college_class: classSelection)
-//        Set the current time selection for the first one
+        model.create_available_times(tutor: tutorSelection.id, date: dateSelection, college_class: selectedClass)
         if !self.model.available_times.isEmpty{
-            sessionSelections = self.model.available_times[0]
+            self.choose_session(0)
         }
         else{
             sessionSelections = nil
         }
     }
 
-    func build_all_classes(){
-        var allClasses: Set<String> = []
-        for tutor in model.all_tutors{
-            for u_class in tutor.classes{
-                allClasses.insert(u_class)
-            }
-        }
-        model.update_classes(new_classes: allClasses)
-    }
-    
 //  MARK: DATABASE ACCESS
     func get_all_tutors(){
         let ref = db.collection("users")
@@ -75,43 +67,67 @@ class bookStudentSession: ObservableObject {
                     return
                 }
                 
-                let allTutors = documents.map { (queryDocumentSnapshot) -> TutorClass in
+                var dataDict = [String:TutorSchedule]()
+                var classes_dict = [String:Array<String>]()
+                //Creates a dictionary with id -> TutorSchedule, but empyt schedule
+                documents.forEach{ queryDocumentSnapshot in
+                    let doc_id = queryDocumentSnapshot.documentID
                     let dict = queryDocumentSnapshot.data()
-                    return TutorClass(
-                        id: queryDocumentSnapshot.documentID,
-                        tutorName: dict["name"] as! String,
-                        classes: dict["classes"] as! Array<String>)
+                    let classes = dict["classes"] as! Array<String>
+                    let name = dict["name"] as! String
+                    dataDict[doc_id] = TutorSchedule(id: doc_id, available_classes: classes, name: name)
+                    //Creates a dict with all the classes -> ID of the tutors for that class
+                    classes.forEach{ available_class in
+                        if classes_dict[available_class] == nil{
+                            classes_dict[available_class] = []
+                        }
+                        classes_dict[available_class]?.append(doc_id)
+                    }
                 }
-                print(allTutors)
-                self.model.update_tutors(new_tutors: allTutors)
-                self.build_all_classes()
-                self.classSelection = self.model.all_classes.first ?? ""
+                
+                self.model.update_id_schedule(new: dataDict, classes_available: classes_dict)
+                self.selectedClass = self.model.all_classes.first ?? "Bug"
+                self.generateTutorSchedules()
             }
     }
     
-    func getTutorSchedules(){
+    func choose_session(_ ind: Int){
+        self.sessionSelections = self.model.available_times[ind]
+        self.model.choose_session(ind)
+    }
+    
+    func generateTutorSchedules(){
         let ref = db.collection("tutor_schedules")
-        ref.getDocuments(){ (querySnapshot, err) in
-//        ref.addSnapshotListener{ (querySnapshot, err) in
+//        ref.getDocuments{ (querySnapshot, err) in
+        ref.addSnapshotListener{ (querySnapshot, err) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
             }
             
-            let new_schedules = documents.map { (queryDocumentSnapshot) -> TutorSchedule in
+            print("Fetched Times")
+            documents.forEach{ queryDocumentSnapshot in
                 let dict = queryDocumentSnapshot.data()
-                return TutorSchedule(dict,id_i: queryDocumentSnapshot.documentID)
+                let doc_id = queryDocumentSnapshot.documentID
+                if self.model.id_schedule_dict[doc_id] != nil{
+                    self.model.update_tutor_schedule(new_schedule: dict, id: doc_id)
+                }
             }
-            self.model.update_tutor_times(new_times: new_schedules)
+            
+            self.selectedClass = self.model.all_classes.first ?? "Bug"
+            
             // Gets the first time available for that date
-            self.model.update_available_times(tutor: self.tutorSelection.id ,date: self.dateSelection, college_class: self.classSelection)
-            self.model.update_tutors_for_class(class_selection: self.classSelection)
+            if self.selectedClass != "Bug"{
+                self.model.create_available_times(tutor: self.tutorSelection.id ,date: self.dateSelection, college_class: self.selectedClass)
+            }
+
             if !self.model.available_times.isEmpty{
-                self.sessionSelections = self.model.available_times[0]
+                self.choose_session(0)
             }
             else{
                 self.sessionSelections = nil
             }
+            self.finishedLoading = true
         }
     }
     
@@ -129,17 +145,19 @@ class bookStudentSession: ObservableObject {
         return updated
     }
     
-    typealias CompletionHandler = (_ success:Bool, _ schedule: TutorSchedule) -> Void
+    typealias CompletionHandler = (_ success:Bool, _ schedule: TutorSchedule?) -> Void
     func getSpecificTutorTime(tutor_uid: String, complete: @escaping CompletionHandler){
         let ref = db.collection("tutor_schedules").document(tutor_uid)
         ref.getDocument{ (querySnapshot, err) in
             guard let documents = querySnapshot?.data() else {
                 print("No documents")
-                complete(false,TutorSchedule([:],id_i:""))
+                complete(false,nil)
                 return
             }
             let dict = documents
-            complete(true,TutorSchedule(dict,id_i: querySnapshot!.documentID))
+            var schedule = TutorSchedule(id: querySnapshot!.documentID, available_classes: [], name: "")
+            schedule.update_schedule(dict)
+            complete(true,schedule)
         }
     }
 
@@ -147,17 +165,14 @@ class bookStudentSession: ObservableObject {
     func createSessionObject(){
         var content:[String:Any] = [
             "id" : "",
-            "tutor_uid" : sessionSelections![1],
-            "date" : dateSelection,
-            "time_slot" : sessionSelections![2],
-            "college_class" : classSelection
+            "tutor_uid" : sessionSelections?.tutor as Any,
+            "date" : sessionSelections?.sessionDate as Any,
+            "time_slot" : sessionSelections?.timeframe as Any,
+            "college_class" : selectedClass
         ]
         content["student_uid"] = student_id
         let sessionToBook = Session(content)
         bookSession(sessionToBook)
-//        if bookSession(sessionToBook){
-//            retrieveStudentSessions()
-//        }
     }
     
     func update_single_time(session_time_slot:String,tutor_time_slot:String) -> String?{
@@ -184,9 +199,11 @@ class bookStudentSession: ObservableObject {
 //        Check if tutor is really available
         let myGroup = DispatchGroup()
         myGroup.enter()
-        var updated_scheduled:TutorSchedule = TutorSchedule([:],id_i: "")
+        var updated_scheduled:TutorSchedule = TutorSchedule(id: "", available_classes: [], name: "")
         self.getSpecificTutorTime(tutor_uid: session.tutor_uid,complete: { success, schedule in
-            updated_scheduled = schedule
+            if let s = schedule{
+                updated_scheduled = s
+            }
             myGroup.leave()
         })
         

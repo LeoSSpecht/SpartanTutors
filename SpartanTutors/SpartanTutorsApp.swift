@@ -12,7 +12,10 @@ import Firebase
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    let settings = FirestoreSettings()
+    settings.isPersistenceEnabled = false
     FirebaseApp.configure()
+    Firestore.firestore().settings = settings
     return true
   }
 }
@@ -23,7 +26,7 @@ struct SpartanTutorsApp: App {
     @StateObject var viewModel = AuthenticationViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(viewModel)
+            ContentView(viewModel.userID.uid).environmentObject(viewModel)
         }
     }
 }

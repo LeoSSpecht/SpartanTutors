@@ -18,8 +18,7 @@ struct HomeView: View {
     var body: some View {
 //    Get user role, depending on the role load certain page
         if currentRole == "student"{
-            let svm = AllSessionsModel(uid: viewModel.userID.uid)
-            UserHomePage(sessionViewModel: svm, user: viewModel.userID)
+            UserHomePage(id: viewModel.userID.uid)
         }
         else if currentRole == "tutor"{
             if isTutorApproved{

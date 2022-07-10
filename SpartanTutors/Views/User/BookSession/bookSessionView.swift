@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct bookSessionView: View {
-    @ObservedObject var bookViewModel: bookStudentSession
-    @Binding var show_book_view: Bool
+    @EnvironmentObject var bookViewModel: bookStudentSession
+    @StateObject var calendarViewModel = calendarVM()
     @State var load_confirmation = false
-    
-    init(student_id:String,show_book:Binding<Bool>){
-        bookViewModel = bookStudentSession(student_id: student_id)
-        _show_book_view = show_book
-    }
-    
+    @State var animationAmount = 1.0
+    var maxAnimation = 2.0
+
     private var dateProxy:Binding<Date> {
         Binding<Date>(get: {self.bookViewModel.dateSelection }, set: {
             self.bookViewModel.dateSelection = $0
@@ -24,101 +21,87 @@ struct bookSessionView: View {
         })
     }
     
-    private var tutorProxy:Binding<TutorClass> {
-        Binding<TutorClass>(get: {self.bookViewModel.tutorSelection }, set: {
+    private var tutorProxy:Binding<TutorSummary> {
+        Binding<TutorSummary>(get: {self.bookViewModel.tutorSelection }, set: {
             self.bookViewModel.tutorSelection = $0
             bookViewModel.update_times()
-            print(bookViewModel.classes_)
-            print(bookViewModel.tutors)
-            print(bookViewModel.available_times)
         })
     }
     
     private var classProxy:Binding<String> {
-        Binding<String>(get: {self.bookViewModel.classSelection }, set: {
-            self.bookViewModel.classSelection = $0
-            bookViewModel.update_tutor_selection()
+        Binding<String>(get: {self.bookViewModel.selectedClass }, set: {
+            self.bookViewModel.selectedClass = $0
+            self.bookViewModel.tutorSelection = TutorSummary(id: "Any", tutorName: "Any")
             bookViewModel.update_times()
         })
     }
     
     var body: some View {
+        
+        //TODO:
+        // Book session is not working
+        // Corrigir datas invalidas podem ser selecionadas
+        
+        
+        if !bookViewModel.finishedLoading{
+            LoadingCircle()
+        }
+        else{
+            NavigationView{
+                VStack{
+                    HStack{
+                        Text("Select a class")
+                        Spacer()
+                        Picker(self.bookViewModel.selectedClass, selection: classProxy) {
+                            ForEach(bookViewModel.classes_, id: \.self) { item in
+                                Text(item)
+                            }
+                        }
+                    }
 
-        VStack{
-            HStack{
-                Text("Select a class")
-                Spacer()
-                Picker(bookViewModel.classSelection, selection: classProxy) {
-                    ForEach(bookViewModel.classes_, id: \.self) { item in
-                        Text(item)
+                    HStack{
+                        Text("Select a tutor")
+                        Spacer()
+                        Picker(bookViewModel.tutorSelection.tutorName, selection: tutorProxy) {
+                            Text("Any").tag(TutorSummary(id: "Any", tutorName: "Any"))
+                            ForEach(bookViewModel.tutors, id: \.self) { item in
+                                Text(item.tutorName).tag(item)
+                            }
+                        }
                     }
+
+                    CalendarView(calendarViewModel: calendarViewModel,selected_date: dateProxy).padding(0)
+                    SessionSelectionObject(ViewModel: bookViewModel)
+                    NavigationLink(
+                        destination: ConfirmSessionView(show_confirm: $load_confirmation)
+                        ,isActive: $load_confirmation
+                    ){
+                        EmptyView()
+                    }.isDetailLink(false)
+
+                    Button(action: {
+                        load_confirmation.toggle()
+                        print("Going to confirmation")
+                    }) {
+                        Text("Book session")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(self.bookViewModel.sessionSelections != nil ? .systemIndigo: .gray))
+                            .cornerRadius(12)
+                            .padding()
+                    }.disabled(!(self.bookViewModel.sessionSelections != nil))
+                }
+                .padding()
+                .pickerStyle(MenuPickerStyle())
+                .onAppear(){
+        //            OPTIONAL: This updates the available times whenever  the view is opened
+        //            Another option is to add a listener that updates the view every time the schedule changes
+        //            the problem would be when one student selects the time when another student is looking at it
+        //            This would cause the time to disapear
+        //                self.bookViewModel.getTutorSchedules()
                 }
             }
-            
-            HStack{
-                Text("Select a tutor")
-                Spacer()
-                Picker(bookViewModel.tutorSelection.tutorName, selection: tutorProxy) {
-                    Text("Any").tag(TutorClass(id: "Any", tutorName: "Any", classes: []))
-                    ForEach(bookViewModel.tutors, id: \.self) { item in
-                        Text(item.tutorName).tag(item)
-                    }
-                }
-            }
-            
-            DatePicker(
-                "Select a date",
-                selection: dateProxy,
-                in: Date()...,
-                displayedComponents: [.date]
-            )
-            .id(self.bookViewModel.dateSelection)
-            
-            VStack{
-                Text("available times")
-                Picker("availableTimes",selection: $bookViewModel.sessionSelections){
-                    ForEach(bookViewModel.available_times, id: \.self){ pair in
-                        Text(pair[0]).tag(pair as Array<String>?)
-                    }
-                }
-//                This line solves a bug in swift, prevents from crashing
-                .id(UUID())
-                .pickerStyle(WheelPickerStyle())
-            }
-            
-            NavigationLink(
-                destination: ConfirmSessionView(bookViewModel: bookViewModel,show_book_view: $show_book_view)
-                ,isActive: $load_confirmation
-            ){
-                EmptyView()
-            }.isDetailLink(false)
-            
-            Button(action: {
-                load_confirmation.toggle()
-                print("Going to confirmation")
-            }) {
-                Text("Book session")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color(self.bookViewModel.sessionSelections != nil ? .systemIndigo: .gray))
-                    .cornerRadius(12)
-                    .padding()
-            }.disabled(!(self.bookViewModel.sessionSelections != nil))
         }
-        .pickerStyle(MenuPickerStyle())
-        .padding()
-        .onAppear(){
-//            OPTIONAL: This updates the available times whenever  the view is opened
-//            Another option is to add a listener that updates the view every time the schedule changes
-//            the problem would be when one student selects the time when another student is looking at it
-//            This would cause the time to disapear
-            self.bookViewModel.getTutorSchedules()
-        }
-        
-        
-        
     }
-    
-    
 }

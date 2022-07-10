@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct TutorClass: Hashable {
+struct TutorSummary: Hashable {
     var id:String
     var tutorName:String
-    var classes: Array<String>
 }

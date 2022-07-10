@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct allSessionsView: View {
-    @ObservedObject var sessionModel: AllSessionsModel
+    @EnvironmentObject var sessionModel: AllSessionsModel
 
     var body: some View {
 

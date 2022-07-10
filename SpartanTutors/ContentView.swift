@@ -16,10 +16,16 @@ struct ContentView: View {
     @State var animationStarter = false
     @State var opacityStarter = false
     @State var loadHomeView = false
+    
+    init(_ id: String){
+        if id != ""{
+            roleModel.getRole(uid: id)
+        }
+    }
+    
     var body: some View {
         if viewModel.userID.isSignedIn {
           // User is signed in.
-            var _: () = roleModel.getRole(uid: viewModel.userID.uid)
             let Title = Text("Spartan Tutors")
                 .fontWeight(.bold)
                 .font(.largeTitle)
@@ -115,14 +121,14 @@ struct ContentView: View {
         }
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    @StateObject static var viewModel = AuthenticationViewModel()
-    static var previews: some View {
-        Group {
-            ContentView()
-                .environmentObject(viewModel)
-        }
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    @StateObject static var viewModel = AuthenticationViewModel()
+//    static var previews: some View {
+//        Group {
+//            ContentView()
+//                .environmentObject(viewModel)
+//        }
+//    }
+//}
 

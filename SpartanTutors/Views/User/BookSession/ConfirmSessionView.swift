@@ -8,27 +8,24 @@
 import SwiftUI
 
 struct ConfirmSessionView: View {
-    @ObservedObject var bookViewModel: bookStudentSession
+    @EnvironmentObject var bookViewModel: bookStudentSession
+    @Binding var show_confirm: Bool
     @State var show_payment = false
-    @Binding var show_book_view:Bool
-    
     //STORE THE CURRENT SESSION SELECTION IN A SESSION OBJECT
     var body: some View {
         VStack{
-            
-            
             Spacer()
                 .frame(maxHeight: 50)
             Text("Would you like to confirm this session?")
                 .bold()
             Spacer()
             Text("Date: \(Date_to_string(date: bookViewModel.dateSelection))")
-            Text("Time: \(get_time_frame(time_slot: bookViewModel.sessionSelections?[2] ?? "Error"))")
+            Text("Time: \(bookViewModel.sessionSelections!.time_string)")
             Text("Tutor: \(bookViewModel.tutorSelection.tutorName)")
-            Text("Class: \(bookViewModel.classSelection)")
+            Text("Class: \(bookViewModel.selectedClass)")
             Spacer()
             NavigationLink(
-                destination: makePaymentView(show_book_view: $show_book_view),isActive: $show_payment){
+                destination: makePaymentView(payment_active:$show_confirm),isActive: $show_payment){
             }
             .isDetailLink(false)
             

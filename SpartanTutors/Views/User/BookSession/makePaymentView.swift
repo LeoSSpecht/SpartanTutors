@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct makePaymentView: View {
-    @Binding var show_book_view:Bool
-    
+    @Binding var payment_active: Bool
     var body: some View {
         VStack{
             Text("Awesome, your sesion was booked and is now pending. Once we confirm your session you will see it as confirmed")
             Text("Payment link")
             Button(action: {
                 print("go back")
-                show_book_view = false
+                payment_active.toggle()
             }) {
                 Text("Go back to home page")
                     .foregroundColor(.white)

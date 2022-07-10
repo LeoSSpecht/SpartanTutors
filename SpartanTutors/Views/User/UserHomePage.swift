@@ -11,58 +11,39 @@ struct UserHomePage: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @State var show_book_view = false
     //Maybe change this to observable object
-    var sessionViewModel: AllSessionsModel
-    var user: userObject
+    @ObservedObject var sessionViewModel: AllSessionsModel
+    @ObservedObject var bookSessionViewModel: bookStudentSession
+    var id: String
+    
+    init(id: String){
+        self.id = id
+        sessionViewModel = AllSessionsModel(uid: id)
+        bookSessionViewModel = bookStudentSession(student_id: id)
+    }
+    
     var body: some View {
-        VStack{
-            NavigationView {
-                VStack{
-//                    NavigationLink(destination: NavigationLazyView(bookSessionView(student_id: user.uid))) {
-                    NavigationLink(destination: bookSessionView(student_id: user.uid,show_book: $show_book_view),isActive: $show_book_view) {
-//                        Text("Book a session")
-                        EmptyView()
-                    }
-                    Button(action: {
-                            show_book_view.toggle()
-                    }){
-                        Text("Book a session")
-                    }
-                    let _ = print(
-                        sessionViewModel.studentSessions.count)
-                    NavigationLink(destination: allSessionsView(sessionModel: sessionViewModel)) {
-                        VStack{
-                            Text("See my sessions")
-                        }
-                    }
-                    Button(action: viewModel.signOut) {
-                      Text("Sign out")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemIndigo))
-                        .cornerRadius(12)
-                        .padding()
-                    }
+        TabView{
+//            bookSessionView(student_id:self.id)
+            bookSessionView().environmentObject(bookSessionViewModel)
+                .tabItem{
+                    Label("Book", systemImage: "calendar")
                 }
+//            allSessionsView(sessionModel: sessionViewModel)
+            allSessionsView().environmentObject(sessionViewModel)
+                .tabItem{
+                    Label("My sessions", systemImage:"square.and.pencil")
+                }
+            Button(action: viewModel.signOut) {
+              Text("Sign out")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemIndigo))
+                .cornerRadius(12)
+                .padding()
+            }.tabItem{
+                Label("My account",systemImage:"person.circle")
             }
-//            .navigationViewStyle(StackNavigationViewStyle())
-//            .padding()
-            
-        }
+        }.animation(nil)
     }
 }
-
-struct NavigationLazyView<Content: View>: View {
-    let build: () -> Content
-    init(_ build: @autoclosure @escaping () -> Content) {
-        self.build = build
-    }
-    var body: Content {
-        build()
-    }
-}
-//struct UserHomePage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UserHomePage()
-//    }
-//}
