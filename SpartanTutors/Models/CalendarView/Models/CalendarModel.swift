@@ -21,6 +21,7 @@ struct calendarModel{
         while start < end{
             var isValid = true
             var isSelected = false
+            
             if start < today{
                 isValid = false
             }

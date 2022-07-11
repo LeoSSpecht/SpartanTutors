@@ -40,14 +40,17 @@ struct sessionBookerData{
         print("Started updating available times")
         available_times = build_final_time_list(tutor: tutor, date: date, college_class: college_class)
         print("Finished updating times")
-        print(available_times)
     }
     
-    mutating func choose_session(_ ind: Int){
-        for i in available_times.indices{
-            self.available_times[i].selected = false
+    mutating func choose_session(_ id: Int) -> sessionTime?{
+        if let index = available_times.firstIndex(where: {$0.id == id}){
+            for i in available_times.indices{
+                self.available_times[i].selected = false
+            }
+            self.available_times[index].selected = true
+            return self.available_times[index]
         }
-        self.available_times[ind].selected = true
+        return nil
     }
     
     private func build_available_times(time_frame:String, duration:Int ,date:Date,string_date: String,tutor_id:String) ->[Int:sessionTime]{
@@ -177,7 +180,7 @@ struct TutorSchedule: Codable, Identifiable, Hashable {
     
 }
 
-struct sessionTime: Equatable, Hashable, Identifiable{
+struct sessionTime: Hashable, Identifiable{
     //Date in the right format
     var sessionDate:Date
     //Date in the int-string format
@@ -188,10 +191,6 @@ struct sessionTime: Equatable, Hashable, Identifiable{
     var timeframe:String
     var id: Int
     var selected = false
-    
-    static func == (lhs: sessionTime, rhs: sessionTime) -> Bool {
-            return lhs.string_date == rhs.string_date && lhs.timeframe == rhs.timeframe
-        }
     
     var time_string: String{
         let df = DateFormatter()

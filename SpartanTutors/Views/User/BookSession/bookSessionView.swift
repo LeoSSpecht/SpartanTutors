@@ -40,7 +40,6 @@ struct bookSessionView: View {
         
         //TODO:
         // Book session is not working
-        // Corrigir datas invalidas podem ser selecionadas
         
         
         if !bookViewModel.finishedLoading{
@@ -72,6 +71,7 @@ struct bookSessionView: View {
 
                     CalendarView(calendarViewModel: calendarViewModel,selected_date: dateProxy).padding(0)
                     SessionSelectionObject(ViewModel: bookViewModel)
+                    
                     NavigationLink(
                         destination: ConfirmSessionView(show_confirm: $load_confirmation)
                         ,isActive: $load_confirmation
@@ -99,7 +99,7 @@ struct bookSessionView: View {
         //            Another option is to add a listener that updates the view every time the schedule changes
         //            the problem would be when one student selects the time when another student is looking at it
         //            This would cause the time to disapear
-        //                self.bookViewModel.getTutorSchedules()
+//                    self.bookViewModel.update_times()
                 }
             }
         }

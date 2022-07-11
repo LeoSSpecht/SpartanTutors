@@ -15,9 +15,8 @@ struct SessionSelectionObject: View {
             ScrollView(.horizontal){
                 LazyHStack{
                     ForEach(ViewModel.available_times){i in
-                        TimeCell(time: i.time_string, isSelected: i.selected)
+                        TimeCell(session: i)
                             .onTapGesture {
-                                print("hi")
                                 ViewModel.choose_session(i.id)
                             }
                     }
@@ -29,15 +28,15 @@ struct SessionSelectionObject: View {
 }
 
 struct TimeCell:View{
-    var time: String
-    var isSelected: Bool
+//    var time: String
+//    var isSelected: Bool
+    var session: sessionTime
     var body: some View{
-        let _ = print(time)
         ZStack{
             RoundedRectangle(cornerRadius: 10)
-                .stroke(isSelected ? Color.blue : Color.gray, lineWidth: 3)
+                .stroke(session.selected ? Color.blue : Color.gray, lineWidth: 3)
                 .foregroundColor(.white)
-            Text(time)
+            Text(session.time_string)
         }
         .aspectRatio(2.5, contentMode: .fit)
         .frame(height:45)

@@ -20,7 +20,7 @@ class getRoleModel: ObservableObject{
     func getRole(uid:String){
         print("Getting role")
         let docRef = db.collection("users").document(uid)
-        docRef.getDocument{ (document, error) in
+        docRef.addSnapshotListener{ (document, error) in
             if let document = document, document.exists {
                 let data = document.data()
                 if let data = data {

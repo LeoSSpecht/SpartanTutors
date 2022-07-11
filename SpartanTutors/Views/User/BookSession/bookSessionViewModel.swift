@@ -50,7 +50,7 @@ class bookStudentSession: ObservableObject {
     func update_times(){
         model.create_available_times(tutor: tutorSelection.id, date: dateSelection, college_class: selectedClass)
         if !self.model.available_times.isEmpty{
-            self.choose_session(0)
+            self.choose_session(self.model.available_times.first!.id)
         }
         else{
             sessionSelections = nil
@@ -91,9 +91,8 @@ class bookStudentSession: ObservableObject {
             }
     }
     
-    func choose_session(_ ind: Int){
-        self.sessionSelections = self.model.available_times[ind]
-        self.model.choose_session(ind)
+    func choose_session(_ id: Int){
+        self.sessionSelections = self.model.choose_session(id)
     }
     
     func generateTutorSchedules(){
@@ -122,7 +121,7 @@ class bookStudentSession: ObservableObject {
             }
 
             if !self.model.available_times.isEmpty{
-                self.choose_session(0)
+                self.choose_session(self.model.available_times.first!.id)
             }
             else{
                 self.sessionSelections = nil

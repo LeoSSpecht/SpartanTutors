@@ -56,8 +56,10 @@ struct CalendarView: View {
                                     isValid: day.isValid,
                                     isSelected: day.isSelected)
                                 .onTapGesture{
-                                    calendarViewModel.choose(day.index)
-                                    selected_date = day.date
+                                    if day.isValid{
+                                        calendarViewModel.choose(day.index)
+                                        selected_date = day.date
+                                    }
                                 }
                         }
                     }
