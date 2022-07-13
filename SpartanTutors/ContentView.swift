@@ -15,7 +15,7 @@ struct ContentView: View {
     @ObservedObject var roleModel: getRoleModel = getRoleModel()
     @State var animationStarter = false
     @State var opacityStarter = false
-    @State var loadHomeView = false
+    @State var hide_header = false
     
     init(_ id: String){
         if id != ""{
@@ -26,15 +26,11 @@ struct ContentView: View {
     var body: some View {
         if viewModel.userID.isSignedIn {
           // User is signed in.
-            let Title = Text("Spartan Tutors")
-                .fontWeight(.bold)
-                .font(.largeTitle)
-                .scaleEffect(1)
-                .foregroundColor(Color(red: 0.11, green: 0.34, blue: 0.17))
+
             if roleModel.isLoading{
                 //Loading page
                 Spacer()
-                Title
+                Header_begin()
                 Spacer()
             }
             
@@ -47,29 +43,10 @@ struct ContentView: View {
                     let animation_time = 0.5
                     VStack{
                         //MARK: Title
-                        HStack(spacing: 0){
-                            //Title
-                            Spacer()
-                                .frame(maxWidth: .infinity)
-                            Title
-                                .scaleEffect(animationStarter ? 0.5 : 1)
-                                .frame(alignment: .center)
-                                .layoutPriority(1)
-
-//                          Menu for sign out
-                            if opacityStarter{
-                                Menu{
-                                    Button("Sign out",action:{viewModel.signOut()})
-                                } label: {
-                                    Image(systemName: "gear").padding().frame(maxWidth: .infinity, alignment: .trailing)
-                                }
-                            }
-                            else{
-                                Spacer().frame(maxWidth: .infinity)
-                            }
-                        }
-//                        .frame(maxHeight:50)
-                        
+//                        if !hide_header{
+                            Header_Animation(animationStarter: animationStarter)
+//                                .transition(.asymmetric(insertion: .identity, removal: .opacity))
+//                        }
                         //MARK: View loading
                         if animationStarter{
                             VStack{
@@ -77,7 +54,7 @@ struct ContentView: View {
                                     HomeView(isTutorApproved: roleModel.isTutorApproved, isTutorFirstSignIn:roleModel.isTutorFirstSignIn,
                                              currentRole: roleModel.userRole)
                                         .transition(
-                                            AnyTransition.opacity
+                                            AnyTransition.scale
 //                                                .combined(with: .move(edge: .bottom))
                                                 .animation(.linear(duration: animation_time).delay(animation_time/2))
                                         )
@@ -86,6 +63,10 @@ struct ContentView: View {
                             .onAppear{
                                 withAnimation{
                                     opacityStarter = true
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + animation_time) {
+                                        // your code here
+                                        hide_header = true
+                                    }
                                 }
                             }
                         }

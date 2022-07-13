@@ -22,6 +22,7 @@ struct UserHomePage: View {
     }
     
     var body: some View {
+//        Header_end()
         TabView{
 //            bookSessionView(student_id:self.id)
             bookSessionView().environmentObject(bookSessionViewModel)

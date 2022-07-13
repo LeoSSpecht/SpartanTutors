@@ -74,7 +74,7 @@ struct CalendarView: View {
                     }
                 
             }
-        }
+        }.padding(.vertical)
         
     }
 }
@@ -85,14 +85,17 @@ struct dayView: View{
     var isSelected: Bool
     
     var body: some View{
-        ZStack{
-            RoundedRectangle(cornerRadius: 15)
-                .stroke(isSelected ? .blue : Color.white, lineWidth: 2)
-            Text(day)
-                .font(.title3)
-                .foregroundColor(isValid ? .black : .gray)
-                .fontWeight(isSelected ? .bold : .regular)
-        }.aspectRatio(1,contentMode: .fit)
+        GeometryReader{ geometry in
+            ZStack{
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(isSelected ? .blue : Color.white, lineWidth: 2)
+                Text(day)
+                    .font(Font.system(size: geometry.size.height*FontConstants.calendar_day_scale))
+                    .foregroundColor(isValid ? .black : .gray)
+                    .fontWeight(isSelected ? .bold : .regular)
+            }.aspectRatio(1,contentMode: .fill)
+        }
+        
     }
 }
 //

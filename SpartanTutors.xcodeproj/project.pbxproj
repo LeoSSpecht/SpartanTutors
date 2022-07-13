@@ -46,6 +46,7 @@
 		B371B950287CD19700E42485 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B94F287CD19700E42485 /* Constants.swift */; };
 		B371B953287CE71E00E42485 /* TimeframeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B952287CE71E00E42485 /* TimeframeModel.swift */; };
 		B371B955287CEA7F00E42485 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B954287CEA7F00E42485 /* DateFormatters.swift */; };
+		B371B958287F6F1A00E42485 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B957287F6F1A00E42485 /* Header.swift */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -122,6 +123,7 @@
 		B371B94F287CD19700E42485 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B371B952287CE71E00E42485 /* TimeframeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeModel.swift; sourceTree = "<group>"; };
 		B371B954287CEA7F00E42485 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
+		B371B957287F6F1A00E42485 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				B371B94F287CD19700E42485 /* Constants.swift */,
 				B371B952287CE71E00E42485 /* TimeframeModel.swift */,
 				B371B954287CEA7F00E42485 /* DateFormatters.swift */,
+				B371B957287F6F1A00E42485 /* Header.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -636,6 +639,7 @@
 				B319985828553B4500F57B28 /* HomePage.swift in Sources */,
 				B362D4232878B0100021D848 /* ApproveTutorViewModel.swift in Sources */,
 				B3B9A10A2868E02E00921A61 /* tutorClassesModel.swift in Sources */,
+				B371B958287F6F1A00E42485 /* Header.swift in Sources */,
 				B371B950287CD19700E42485 /* Constants.swift in Sources */,
 				B3E4F3EC285BC84400B84336 /* allSessionsModel.swift in Sources */,
 				B3B9A11F286E0A3500921A61 /* classSelectionViewModel.swift in Sources */,

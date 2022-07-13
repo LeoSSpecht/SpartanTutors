@@ -39,6 +39,15 @@ struct TutorHomePage: View {
                 
                 Text("Update my info")
                 
+                Button(action: viewModel.signOut) {
+                  Text("Sign out")
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color(.systemIndigo))
+                    .cornerRadius(12)
+                    .padding()
+                }
                 Spacer().frame(maxHeight:.infinity)
             }
         }

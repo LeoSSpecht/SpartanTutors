@@ -71,14 +71,15 @@ struct InnerRow: View{
                             .fontWeight(.bold)
                             .foregroundColor(get_Status_Color(detail: details))
                     }
-                    HStack{
-                        Image(systemName: "doc.on.clipboard")
-                            .imageScale(.small)
-                        Text("Copy zoom link")
-                    }.onTapGesture{
-                        UIPasteboard.general.string = tutor_detail.zoom_link
+                    if details.status == "Approved"{
+                        HStack{
+                            Image(systemName: "doc.on.clipboard")
+                                .imageScale(.small)
+                            Text("Copy zoom link")
+                        }.onTapGesture{
+                            UIPasteboard.general.string = tutor_detail.zoom_link
+                        }
                     }
-                    
                 }
             }.padding()
         }

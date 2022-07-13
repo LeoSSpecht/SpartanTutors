@@ -30,7 +30,16 @@ struct AdminHomePage: View {
                 NavigationLink(destination: ApproveTutors(AllTutors: approval_tutor_view_model)){
                     Text("Approved tutors")
                 }
-            
+                
+                Button(action: viewModel.signOut) {
+                  Text("Sign out")
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color(.systemIndigo))
+                    .cornerRadius(12)
+                    .padding()
+                }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

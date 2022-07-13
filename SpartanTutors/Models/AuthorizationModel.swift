@@ -43,7 +43,8 @@ class AuthenticationViewModel: ObservableObject {
     
     init(){
         //This auto signs the user in, if you dont want that remove this.
-        checkSignIn()
+//        checkSignIn()
+        loadedCheckSignIn = true
     }
     private func authenticateUser(for user: GIDGoogleUser?, with error: Error?,completion: @escaping () -> Void) {
       // 1
