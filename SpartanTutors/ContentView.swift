@@ -117,7 +117,9 @@ struct ContentView: View {
             
         } else {
           // No user is signed in.
-            LoginView()
+            if viewModel.loadedCheckSignIn{
+                LoginView()
+            }
         }
     }
 }

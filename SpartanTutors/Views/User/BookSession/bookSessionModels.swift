@@ -8,7 +8,7 @@
 import Foundation
 
 struct sessionBookerData{
-    let initial_time = 8
+    let initial_time = DayConstants.starting_time
     private (set) var all_tutors: Array<TutorSummary> = []
     private (set) var tutors_for_class:Array<TutorSummary> = []
     private (set) var id_schedule_dict = [String:TutorSchedule]()
@@ -53,21 +53,17 @@ struct sessionBookerData{
         return nil
     }
     
-    private func build_available_times(time_frame:String, duration:Int ,date:Date,string_date: String,tutor_id:String) ->[Int:sessionTime]{
+    private func build_available_times(time_frame: Timeframe, duration:Int ,date:Date,string_date: String,tutor_id:String) ->[Int:sessionTime]{
 //      Description: Decodes from bitstring date format to string time and returns available bitstrings
         var all_available_times:[Int:sessionTime] = [:]
-        let str = time_frame
-//        Times from 8-22 from 30-30 min
-        for i in 0..<(28-duration*2+1){
-            let start = str.index(str.startIndex, offsetBy: i)
-            let end = str.index(str.startIndex, offsetBy: i+duration*2)
-            let range = start..<end
-            let mySubstring = String(str[range]) // play
-            if mySubstring == String(repeating: "1", count: duration*2){
+//        Times from 8-22 from 15-15 min
+        for i in 0..<(TimeConstants.times_in_day-duration*TimeConstants.times_in_hour+1){
+            let nextSessionTime = Array(time_frame.data[i..<i+duration*TimeConstants.times_in_hour])
+            if nextSessionTime == Array(repeating: 1, count: duration*TimeConstants.times_in_hour){
 //              If time is already not taken
-                let timeframe = String(repeating: "0", count: i)+String(repeating: "2", count: duration*2)+String(repeating: "0", count: 28-i-duration*2)
-                let formatted_date = time_frame_to_date(time_slot:timeframe, date: date, duration: duration)
-                all_available_times[i] = sessionTime(sessionDate: formatted_date, string_date: string_date, tutor: tutor_id, timeframe: timeframe, id: i)
+                let timeframe = String(repeating: "0", count: i)+String(repeating: "2", count: duration*TimeConstants.times_in_hour)+String(repeating: "0", count: TimeConstants.times_in_day-i-duration*TimeConstants.times_in_hour)
+                let formatted_date = time_frame_to_date(time_slot: Timeframe(timeframe), date: date)
+                all_available_times[i] = sessionTime(sessionDate: formatted_date, string_date: string_date, tutor: tutor_id, timeframe: Timeframe(timeframe), id: i)
             }
         }
         return all_available_times
@@ -80,7 +76,8 @@ struct sessionBookerData{
     }
     
     private func build_final_time_list(tutor:String, date:Date,college_class:String) -> Array<sessionTime>{
-        let date_convert:String = String(Int((((date.timeIntervalSince1970/60)/60)/24)))
+        let date_convert:String = date.to_int_format()
+        print(date_convert)
         if tutor != "Any"{
             //Get times available for specific tutor
             if let timeframe = self.id_schedule_dict[tutor]!.schedule[date_convert]{
@@ -124,18 +121,11 @@ struct sessionBookerData{
         }
     }
     
-    //REPEATED FUNCTION
-    func time_frame_to_date(time_slot:String, date:Date, initial_time:Int = 8, duration:Int = 2) -> Date {
-        var ind:Int = 0
-        for i in time_slot{
-            if i == "2"{
-                break
-            }
-            ind += 1
-        }
+    func time_frame_to_date(time_slot:Timeframe, date:Date) -> Date {
+        let ind = time_slot.get_first_session_index()!
         var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
-        components.hour = initial_time+ind/2
-        components.minute = ind%2 == 0 ? 0 : 30
+        components.hour = Timeframe.ind_to_hour(ind: ind)
+        components.minute = Timeframe.ind_to_min(ind: ind)
         let start_time = Calendar.current.date(from: components)
         return start_time!
     }
@@ -145,10 +135,18 @@ struct TutorSchedule: Codable, Identifiable, Hashable {
 //    Tutor ID
     var id:String = ""
 //    Date:Time bitstring
-    var schedule: [String:String] = [:]
+    var schedule: [String:Timeframe] = [:]
 //    Classes available
     var classes: Array<String> = []
     var tutorName:String
+    
+    var schedule_to_string: [String:String]{
+        var new_dict = [String:String]()
+        for key in schedule.keys{
+            new_dict[key] = schedule[key]!.to_string
+        }
+        return new_dict
+    }
     
     init(id:String, available_classes: Array<String>, name: String){
         self.id = id
@@ -165,19 +163,10 @@ struct TutorSchedule: Codable, Identifiable, Hashable {
     }
     
     mutating func update_schedule(_ content: [String:Any]){
-        schedule = Dictionary(uniqueKeysWithValues:
-                    content.map{key, value in
-                        (String(key),value as! String )
-                    }
-                )
+        for key in content.keys{
+            schedule[key] = Timeframe(content[key]! as! String)
+        }
     }
-    
-    enum CodingKeys: String, CodingKey {
-        case schedule
-        case classes
-        case tutorName
-    }
-    
 }
 
 struct sessionTime: Hashable, Identifiable{
@@ -188,16 +177,11 @@ struct sessionTime: Hashable, Identifiable{
     //Tutor id
     var tutor:String
     //bitstring
-    var timeframe:String
+    var timeframe:Timeframe
     var id: Int
     var selected = false
     
     var time_string: String{
-        let df = DateFormatter()
-        df.dateFormat = "hh:mm a"
-        df.amSymbol = "AM"
-        df.pmSymbol = "PM"
-        let formatted = df.string(from: sessionDate)
-        return formatted
+        sessionDate.to_time()
     }
 }

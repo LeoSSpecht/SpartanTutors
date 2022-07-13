@@ -40,7 +40,7 @@ struct InnerTutorRow: View{
                 .foregroundColor(.white)
             HStack{
                 VStack(alignment: .leading){
-                    Text(details.date_to_string())
+                    Text(details.date.to_WeekDay_date())
                         .font(.title2)
                         .fontWeight(.bold)
                     Text(details.get_time_frame())

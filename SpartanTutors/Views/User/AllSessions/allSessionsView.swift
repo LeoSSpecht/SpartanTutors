@@ -30,13 +30,15 @@ struct allSessionsView: View {
             Text("Upcoming sessions")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
             ForEach(confirmed_sorted){ session in
-                SessionRowView(details: session)
+                var tutor_detail = sessionModel.tutors.first(where: {$0.id == session.tutor_uid})!
+                SessionRowView(details: session,tutor_detail: tutor_detail)
             }.padding(.horizontal, 5.0)
             
             Text("Past or canceled sessions")
                 .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
             ForEach(other_sorted){ session in
-                SessionRowView(details: session)
+                var tutor_detail = sessionModel.tutors.first(where: {$0.id == session.tutor_uid})!
+                SessionRowView(details: session,tutor_detail: tutor_detail)
             }.padding(.horizontal, 5.0)
         }
     }

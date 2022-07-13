@@ -11,26 +11,41 @@ import GoogleSignIn
 
 class AuthenticationViewModel: ObservableObject {
 
-    private static func checkSignIn()
-    -> userObject
+    private func checkSignIn()
+//    -> userObject
     {
-        let currentUser = Auth.auth().currentUser
-        if currentUser != nil{
-            return userObject(
-                isSignedIn: true,
-                uid: currentUser?.uid ?? "",
-                name: currentUser?.displayName ?? "")
+//        let currentUser = Auth.auth().currentUser
+//        if currentUser != nil{
+//            return userObject(
+//                isSignedIn: true,
+//                uid: currentUser?.uid ?? "",
+//                name: currentUser?.displayName ?? "")
+//        }
+//        else{
+//            return userObject()
+//        }
+        if GIDSignIn.sharedInstance.hasPreviousSignIn() {
+          GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
+            authenticateUser(for: user, with: error){
+                loadedCheckSignIn = true
+            }
+          }
         }
         else{
-            return userObject()
+            loadedCheckSignIn = true
         }
     }
 
     // If this changes to be just a userObject(), the user will have to tap the button to log in everytime (safer)
     // Otherwise call checkSignIn here for autosignIn -> Risk of token expiration
-    @Published var userID: userObject = checkSignIn()
+    @Published var userID: userObject = userObject()
+    @Published var loadedCheckSignIn = false
     
-    private func authenticateUser(for user: GIDGoogleUser?, with error: Error?) {
+    init(){
+        //This auto signs the user in, if you dont want that remove this.
+        checkSignIn()
+    }
+    private func authenticateUser(for user: GIDGoogleUser?, with error: Error?,completion: @escaping () -> Void) {
       // 1
       if let error = error {
         print(error.localizedDescription)
@@ -53,6 +68,7 @@ class AuthenticationViewModel: ObservableObject {
             self.userID.isSignedIn = true
             self.userID.uid = result?.user.uid ?? "Error"
             self.userID.name = result?.user.displayName ?? "Error"
+            completion()
         }
       }
     }
@@ -61,7 +77,7 @@ class AuthenticationViewModel: ObservableObject {
       // 1
       if GIDSignIn.sharedInstance.hasPreviousSignIn() {
         GIDSignIn.sharedInstance.restorePreviousSignIn { [unowned self] user, error in
-            authenticateUser(for: user, with: error)
+            authenticateUser(for: user, with: error){return}
         }
       } else {
         // 2
@@ -75,7 +91,7 @@ class AuthenticationViewModel: ObservableObject {
         guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
         
         // 5
-        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in authenticateUser(for: user, with: error)}
+        GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in authenticateUser(for: user, with: error){return}}
       }
     }
     func signOut() {

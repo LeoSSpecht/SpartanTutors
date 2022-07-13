@@ -51,6 +51,7 @@ struct TutorFirstTimeLogin: View {
                         .padding(3)
                     }
                     TextBox(variable: $createUserModel.venmo, text: "Venmo username")
+                    TextBox(variable: $createUserModel.zoom_link, text: "Your zoom link")
                 }
                 .padding()
 
@@ -68,6 +69,7 @@ struct TutorFirstTimeLogin: View {
                         .cornerRadius(12)
                         .padding()
                 }
+                .disabled(!createUserModel.both_filled)
             }
         }
     }

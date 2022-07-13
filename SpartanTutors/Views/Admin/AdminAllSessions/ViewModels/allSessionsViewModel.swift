@@ -9,7 +9,6 @@ import FirebaseFirestoreSwift
 
 class AdminAllSessions: ObservableObject{
     private var db = Firestore.firestore()
-    private var initial_time = 8
     @Published private (set) var studentSessions: Array<Session> = []
     
     @Published var tutorSchedules = [String:TutorScheduleModel]()
@@ -105,24 +104,20 @@ class AdminAllSessions: ObservableObject{
     }
     
     func updateCanceledSchedule(date:Date,sessionTimeFrame:String,tutor_id:String){
-        let day = self.dateToIntStr(date)
+        let day = date.to_int_format()
         
         //Updates the model variable
         for i in sessionTimeFrame.indices{
             if sessionTimeFrame[i] == "2"{
-                self.tutorSchedules[tutor_id]!.schedule[day]![i.utf16Offset(in: sessionTimeFrame)] = 1
+                self.tutorSchedules[tutor_id]!.schedule[day]!.cancel_session_time(ind: i.utf16Offset(in: sessionTimeFrame))
             }
         }
         
         //Converting the array of ints to Array of string
-        let schedule_string = self.tutorSchedules[tutor_id]!.schedule[day]!.map{time in
-            String(time)
-        }
+        let schedule_string = self.tutorSchedules[tutor_id]!.schedule[day]!.to_string
         
         db.collection("tutor_schedules").document(tutor_id).updateData(
-            //Updates only the day the tutor has currently selected
-            //If you want to update all the changes made do: model.schedule -> Remeber to make all of them strings
-            [day:schedule_string.joined()]
+            [day:schedule_string]
         )
         {(err) in
             if let err = err {
@@ -131,11 +126,6 @@ class AdminAllSessions: ObservableObject{
                 print("Document successfully updated")
             }
         }
-    }
-    
-    //Repeated function
-    func dateToIntStr(_ date: Date) -> String{
-        return "\(Int((((date.timeIntervalSince1970/60)/60)/24)))"
     }
 }
 

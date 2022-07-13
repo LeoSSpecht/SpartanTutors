@@ -43,8 +43,6 @@ class TutorAllSessionsViewModel: ObservableObject{
                 dict["date"] = stamp.dateValue()
                 return Session(dict)
             }
-//            print(documents)
-            print(studentSessions)
             self.model.update_session(new: studentSessions)
         }
     }

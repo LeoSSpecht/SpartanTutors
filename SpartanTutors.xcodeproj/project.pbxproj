@@ -43,6 +43,9 @@
 		B371B944287A24C200E42485 /* CalendarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B940287A24C200E42485 /* CalendarVM.swift */; };
 		B371B945287A24C200E42485 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B942287A24C200E42485 /* CalendarModel.swift */; };
 		B371B94E287A32BB00E42485 /* SessionSelectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B94D287A32BB00E42485 /* SessionSelectionObject.swift */; };
+		B371B950287CD19700E42485 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B94F287CD19700E42485 /* Constants.swift */; };
+		B371B953287CE71E00E42485 /* TimeframeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B952287CE71E00E42485 /* TimeframeModel.swift */; };
+		B371B955287CEA7F00E42485 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B954287CEA7F00E42485 /* DateFormatters.swift */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -116,6 +119,9 @@
 		B371B940287A24C200E42485 /* CalendarVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVM.swift; sourceTree = "<group>"; };
 		B371B942287A24C200E42485 /* CalendarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		B371B94D287A32BB00E42485 /* SessionSelectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSelectionObject.swift; sourceTree = "<group>"; };
+		B371B94F287CD19700E42485 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B371B952287CE71E00E42485 /* TimeframeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeModel.swift; sourceTree = "<group>"; };
+		B371B954287CEA7F00E42485 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -308,6 +314,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B371B956287D087200E42485 /* AdminAllSessions */ = {
+			isa = PBXGroup;
+			children = (
+				B3B9A10D28691D3100921A61 /* Models */,
+				B3B9A10E28691D3700921A61 /* ViewModels */,
+				B3B9A10C28691D2A00921A61 /* Views */,
+			);
+			path = AdminAllSessions;
+			sourceTree = "<group>";
+		};
 		B3B9A10028647A9500921A61 /* BookSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,11 +418,14 @@
 			children = (
 				B371B93C287A246B00E42485 /* CalendarView */,
 				B3199851285535D100F57B28 /* AuthorizationModel.swift */,
-				B3E4F3E6285BC6B600B84336 /* UserObject.swift */,
 				B3E4F3DD285B910400B84336 /* getRoleModel.swift */,
+				B3E4F3E6285BC6B600B84336 /* UserObject.swift */,
 				B3B9A0FE286299ED00921A61 /* sessionModels.swift */,
 				B362D4202878AE6F0021D848 /* TutorModel.swift */,
 				B362D426287A01080021D848 /* LoadingCircle.swift */,
+				B371B94F287CD19700E42485 /* Constants.swift */,
+				B371B952287CE71E00E42485 /* TimeframeModel.swift */,
+				B371B954287CEA7F00E42485 /* DateFormatters.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -437,10 +456,8 @@
 		B3E4F3CE285B6A2500B84336 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				B371B956287D087200E42485 /* AdminAllSessions */,
 				B362D4172874EB7E0021D848 /* ApproveTutors */,
-				B3B9A10D28691D3100921A61 /* Models */,
-				B3B9A10E28691D3700921A61 /* ViewModels */,
-				B3B9A10C28691D2A00921A61 /* Views */,
 				B3E4F3D1285B6A5100B84336 /* AdminHomePage.swift */,
 			);
 			path = Admin;
@@ -603,12 +620,14 @@
 				B34DA7762872232F005D3258 /* tutorScheduleModel.swift in Sources */,
 				B360A751286E3B9D00E56509 /* TutorSessionViewModel.swift in Sources */,
 				B371B94E287A32BB00E42485 /* SessionSelectionObject.swift in Sources */,
+				B371B953287CE71E00E42485 /* TimeframeModel.swift in Sources */,
 				B360A758286E4AFF00E56509 /* updateScheduleView.swift in Sources */,
 				B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */,
 				B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */,
 				B362D4212878AE6F0021D848 /* TutorModel.swift in Sources */,
 				B3E4F3EE285BE97F00B84336 /* SessionRowView.swift in Sources */,
 				B34DA7742872229F005D3258 /* updateScheduleViewModel.swift in Sources */,
+				B371B955287CEA7F00E42485 /* DateFormatters.swift in Sources */,
 				B31998002855108F00F57B28 /* ContentView.swift in Sources */,
 				B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */,
 				B3B9A117286DC4FF00921A61 /* TutorFirstTimeViewModel.swift in Sources */,
@@ -617,6 +636,7 @@
 				B319985828553B4500F57B28 /* HomePage.swift in Sources */,
 				B362D4232878B0100021D848 /* ApproveTutorViewModel.swift in Sources */,
 				B3B9A10A2868E02E00921A61 /* tutorClassesModel.swift in Sources */,
+				B371B950287CD19700E42485 /* Constants.swift in Sources */,
 				B3E4F3EC285BC84400B84336 /* allSessionsModel.swift in Sources */,
 				B3B9A11F286E0A3500921A61 /* classSelectionViewModel.swift in Sources */,
 				B362D41F2874F2DD0021D848 /* ApproveTutors.swift in Sources */,

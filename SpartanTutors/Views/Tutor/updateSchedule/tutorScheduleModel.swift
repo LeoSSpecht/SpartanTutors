@@ -8,12 +8,13 @@
 import Foundation
 
 struct TutorScheduleModel{
-    var schedule: [String:Array<Int>] = [:]
+    var schedule: [String:Timeframe] = [:]
     
     init(){
         
     }
     
+    //Gets a date in int format and timeframe as string
     init(new: [String:String]?){
         if let unwrapped = new{
             self.updateSchedule(new: unwrapped)
@@ -21,38 +22,29 @@ struct TutorScheduleModel{
     }
     
     mutating func updateSchedule(new: [String:String]){
-        var new_dict:[String:Array<Int>] = [:]
+        var new_dict:[String:Timeframe] = [:]
         for day_schedule in new.keys{
-            new_dict[day_schedule] = []
-            for i in new[day_schedule]!{
-                let time_frame_value = Int(String(i))
-                new_dict[day_schedule]?.append(time_frame_value!)
-            }
+            new_dict[day_schedule] = Timeframe(new[day_schedule]!)
         }
         self.schedule = new_dict
     }
     
-    mutating func update_time(ind:Int, date:String,new_value:Int){
-        self.schedule[date]![ind] = new_value
+    mutating func update_time(ind:Int, date:String){
+        self.schedule[date]!.update_time(ind: ind)
     }
     
     mutating func set_day(date:String){
-        self.schedule[date] = Array(repeating: 0, count: 28)
+        self.schedule[date] = Timeframe()
     }
     
     mutating func clear_schedule(date:String){
-        for i in schedule[date]!.indices{
-            if schedule[date]![i] == 1{
-                schedule[date]![i] = 0
-            }
-        }
+        schedule[date]!.clear_schedule()
     }
     
     mutating func full_schedule(date:String){
-        for i in schedule[date]!.indices{
-            if schedule[date]![i] == 0{
-                schedule[date]![i] = 1
-            }
-        }
+        schedule[date]!.full_schedule()
     }
 }
+
+
+

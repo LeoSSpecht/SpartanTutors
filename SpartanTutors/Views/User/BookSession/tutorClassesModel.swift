@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct TutorSummary: Hashable {
+struct TutorSummary: Codable, Hashable {
     var id:String
-    var tutorName:String
+    var name:String
+    var zoom_link:String  = ""
 }

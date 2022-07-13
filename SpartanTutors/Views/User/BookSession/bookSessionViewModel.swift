@@ -14,7 +14,7 @@ class bookStudentSession: ObservableObject {
     private let student_id:String
     
     @Published var model = sessionBookerData()
-    @Published var tutorSelection:TutorSummary = TutorSummary(id: "Any", tutorName: "Any")
+    @Published var tutorSelection:TutorSummary = TutorSummary(id: "Any", name: "Any", zoom_link: "")
     @Published var dateSelection:Date = Date()
     @Published var sessionSelections:sessionTime?
     @Published var selectedClass:String = ""
@@ -39,7 +39,7 @@ class bookStudentSession: ObservableObject {
     var tutors:Array<TutorSummary> {
         if let av = model.classes_dict[selectedClass]{
             return av.map{ (tutor_id) -> TutorSummary in
-                return TutorSummary(id: tutor_id, tutorName: model.id_schedule_dict[tutor_id]!.tutorName)
+                return TutorSummary(id: tutor_id, name: model.id_schedule_dict[tutor_id]!.tutorName, zoom_link: "")
             }
             
         }
@@ -97,7 +97,6 @@ class bookStudentSession: ObservableObject {
     
     func generateTutorSchedules(){
         let ref = db.collection("tutor_schedules")
-//        ref.getDocuments{ (querySnapshot, err) in
         ref.addSnapshotListener{ (querySnapshot, err) in
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
@@ -130,18 +129,15 @@ class bookStudentSession: ObservableObject {
         }
     }
     
-    func updateTutorSchedule(tutor_schedule:TutorSchedule) -> Bool{
+    func updateTutorSchedule(tutor_schedule:TutorSchedule){
         let ref = db.collection("tutor_schedules").document(tutor_schedule.id)
-        var updated = false
-        ref.updateData(tutor_schedule.schedule){(err) in
+        ref.updateData(tutor_schedule.schedule_to_string){(err) in
             if let err = err {
-                print("Error updating document: \(err)")
+                print("Error updating tutor schedule: \(err)")
             } else {
-                print("Document successfully updated")
-                updated = true
+                print("Sucessufuly updated tutor schedule")
             }
         }
-        return updated
     }
     
     typealias CompletionHandler = (_ success:Bool, _ schedule: TutorSchedule?) -> Void
@@ -166,7 +162,7 @@ class bookStudentSession: ObservableObject {
             "id" : "",
             "tutor_uid" : sessionSelections?.tutor as Any,
             "date" : sessionSelections?.sessionDate as Any,
-            "time_slot" : sessionSelections?.timeframe as Any,
+            "time_slot" : sessionSelections?.timeframe.to_string as Any,
             "college_class" : selectedClass
         ]
         content["student_uid"] = student_id
@@ -174,28 +170,15 @@ class bookStudentSession: ObservableObject {
         bookSession(sessionToBook)
     }
     
-    func update_single_time(session_time_slot:String,tutor_time_slot:String) -> String?{
-        let str = session_time_slot
-        let tutor_updated_str = tutor_time_slot
-        var final_tutor_schedule = ""
-        for time in 0..<session_time_slot.count{
-            let index = str.index(str.startIndex, offsetBy: time)
-            let index_tutor = str.index(tutor_updated_str.startIndex, offsetBy: time)
-            if str[index] == "2" && tutor_updated_str[index_tutor] != "1"{
-                return nil
-            }
-            else if str[index] == "2" && tutor_updated_str[index_tutor] == "1"{
-                final_tutor_schedule = final_tutor_schedule + "2"
-            }
-            else if str[index] != "2"{
-                final_tutor_schedule = final_tutor_schedule + String(tutor_updated_str[index_tutor])
-            }
-        }
-        return final_tutor_schedule
+    func update_single_time(session_timeframe:Timeframe,tutor_timeframe:Timeframe) -> Timeframe?{
+        var tutor_updated_str = tutor_timeframe
+        if tutor_updated_str.update_time_for_new_session(session_time: session_timeframe){return tutor_updated_str}
+        return nil
     }
     
     func bookSession(_ session: Session) -> Bool{
 //        Check if tutor is really available
+        
         let myGroup = DispatchGroup()
         myGroup.enter()
         var updated_scheduled:TutorSchedule = TutorSchedule(id: "", available_classes: [], name: "")
@@ -208,13 +191,14 @@ class bookStudentSession: ObservableObject {
         
         myGroup.notify(queue: .main) {
             var isAvailable = true
-            let date_convert:String = "\(Int((((session.date.timeIntervalSince1970/60)/60)/24)))"
-            var final_tutor_schedule = ""
+            let date_convert:String = session.date.to_int_format()
+            print(date_convert)
+            var final_tutor_schedule = Timeframe()
             if(updated_scheduled.schedule[date_convert] != nil){
-                let str = session.time_slot
+                let str = session.time_slot_obj
                 let tutor_updated_str = updated_scheduled.schedule[date_convert]!
                 
-                if let schedule = self.update_single_time(session_time_slot: str, tutor_time_slot: tutor_updated_str){
+                if let schedule = self.update_single_time(session_timeframe: str, tutor_timeframe: tutor_updated_str){
                     final_tutor_schedule = schedule
                 }
                 else{
@@ -222,30 +206,35 @@ class bookStudentSession: ObservableObject {
                 }
             }
     
-    
             if isAvailable {
                 //Create session
-                var final_session = session
-                let ref = self.db.collection("Sessions")
-                let docId = ref.document().documentID
-                var created_session = false
-                do {
-                    final_session.id = docId
-                    try self.db.collection("Sessions").document(docId).setData(from: final_session)
-                    created_session = true
-                } catch let error {
-                    print("Error writing session to Firestore: \(error)")
-                }
-    //            Updates tutor
-                if created_session{
-                //        Changes tutor schedule
-                    updated_scheduled.schedule[date_convert] = final_tutor_schedule
-                    print("Session was created")
-                    print(updated_scheduled)
-                    self.updateTutorSchedule(tutor_schedule: updated_scheduled)
+                self.upload_session_to_database(session: session){ uploaded in
+                    if uploaded{
+                        updated_scheduled.schedule[date_convert] = final_tutor_schedule
+                        print("Starting tutor schedule update")
+                        self.updateTutorSchedule(tutor_schedule: updated_scheduled)
+                    }
                 }
             }
         }
         return false
     }
+    
+    func upload_session_to_database(session: Session, completion: @escaping (_: Bool) -> Void){
+        var final_session = session
+        let ref = self.db.collection("Sessions")
+        let docId = ref.document().documentID
+        final_session.id = docId
+        self.db.collection("Sessions").document(docId).setData(final_session.generate_dict()){(err) in
+            if let err = err {
+                print("Error on creating session: \(err)")
+                completion(false)
+            } else {
+                print("Session created")
+                completion(true)
+            }
+        }
+    }
+    
+    
 }

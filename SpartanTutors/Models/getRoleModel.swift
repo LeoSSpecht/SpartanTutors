@@ -17,6 +17,8 @@ class getRoleModel: ObservableObject{
     @Published var isTutorFirstSignIn:Bool = false
     @Published var isLoading:Bool = true
     @Published var error:Bool = false
+    
+    
     func getRole(uid:String){
         print("Getting role")
         let docRef = db.collection("users").document(uid)

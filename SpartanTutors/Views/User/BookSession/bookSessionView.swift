@@ -31,7 +31,7 @@ struct bookSessionView: View {
     private var classProxy:Binding<String> {
         Binding<String>(get: {self.bookViewModel.selectedClass }, set: {
             self.bookViewModel.selectedClass = $0
-            self.bookViewModel.tutorSelection = TutorSummary(id: "Any", tutorName: "Any")
+            self.bookViewModel.tutorSelection = TutorSummary(id: "Any", name: "Any")
             bookViewModel.update_times()
         })
     }
@@ -39,9 +39,8 @@ struct bookSessionView: View {
     var body: some View {
         
         //TODO:
-        // Book session is not working
-        
-        
+        // DeInit snapshor listeners
+        // Tabs for tutor
         if !bookViewModel.finishedLoading{
             LoadingCircle()
         }
@@ -61,10 +60,10 @@ struct bookSessionView: View {
                     HStack{
                         Text("Select a tutor")
                         Spacer()
-                        Picker(bookViewModel.tutorSelection.tutorName, selection: tutorProxy) {
-                            Text("Any").tag(TutorSummary(id: "Any", tutorName: "Any"))
+                        Picker(bookViewModel.tutorSelection.name, selection: tutorProxy) {
+                            Text("Any").tag(TutorSummary(id: "Any", name: "Any"))
                             ForEach(bookViewModel.tutors, id: \.self) { item in
-                                Text(item.tutorName).tag(item)
+                                Text(item.name).tag(item)
                             }
                         }
                     }

@@ -24,8 +24,8 @@ class scheduleUpdateViewModel: ObservableObject{
     
     private var db = Firestore.firestore()
     
-    var schedule: Array<Int>?{
-        let day = dateToIntStr(date)
+    var schedule: Timeframe?{
+        let day = date.to_int_format()
         check_if_date_exists()
         return model.schedule[day]
     }
@@ -34,11 +34,11 @@ class scheduleUpdateViewModel: ObservableObject{
         self.showInvalidPopUp || self.showWorkedPopUp
     }
     func clear_schedule(){
-        let day = dateToIntStr(date)
+        let day = date.to_int_format()
         model.clear_schedule(date: day)
     }
     func full_schedule(){
-        let day = dateToIntStr(date)
+        let day = date.to_int_format()
         model.full_schedule(date: day)
     }
     
@@ -64,7 +64,7 @@ class scheduleUpdateViewModel: ObservableObject{
     }
     
     func check_if_date_exists(){
-        let day = dateToIntStr(date)
+        let day = date.to_int_format()
         if model.schedule[day] == nil{
             //Date  doesn't exists
             model.set_day(date: day)
@@ -72,17 +72,8 @@ class scheduleUpdateViewModel: ObservableObject{
     }
     
     func selectTime(ind:Int){
-        let day = dateToIntStr(date)
-        let current = model.schedule[day]![ind]
-        if current == 1{
-            //Change the index to 0
-            model.update_time(ind: ind, date: day, new_value: 0)
-        }
-        else if current == 0{
-            //Change the index to 1
-            model.update_time(ind: ind, date: day, new_value: 1)
-        }
-        
+        let day = date.to_int_format()
+        model.update_time(ind: ind, date: day)
     }
     
     func getAllSchedules(){
@@ -99,19 +90,21 @@ class scheduleUpdateViewModel: ObservableObject{
     }
     
     func updateSchedule(_ completion: @escaping (_ err:Bool) -> Void){
-        let day = self.dateToIntStr(self.date)
-        //Converting the array of ints to Array of string
-        let schedule_string = model.schedule[day]!.map{time in
-            String(time)
-        }
-        db.collection("tutor_schedules").document(self.id).updateData(
+        //VERY CAREFUL WITH THIS CORRECTING TIME ZONE STUFF FOR POSSIBLE CONFUSIONS - WORKAROUND!!!!!
+//        let corrected_time_zone_date = correct_time_zone(date: self.date)
+//        print(corrected_time_zone_date)
+        let day = self.date.to_int_format()
+        print(day)
+        let schedule_string = model.schedule[day]!.to_string
+        db.collection("tutor_schedules").document(self.id).setData(
             //Updates only the day the tutor has currently selected
             //If you want to update all the changes made do: model.schedule -> Remeber to make all of them strings
-            [day:schedule_string.joined()]
+            [day:schedule_string], merge: true
         )
         {(err) in
             if let err = err {
                 print("Error updating document: \(err)")
+                
                 completion(false)
             } else {
                 print("Document successfully updated")
@@ -120,31 +113,14 @@ class scheduleUpdateViewModel: ObservableObject{
         }
     }
     
-    func dateToIntStr(_ date: Date) -> String{
-        return "\(Int((((date.timeIntervalSince1970/60)/60)/24)))"
-    }
-    
     func checkIfSelectedValid() -> Bool{
-        let day = dateToIntStr(date)
-        let schedule = model.schedule[day]!
-        var counter = 0
-        var isValid = true
-        for ind in schedule.indices{
-            let i = schedule[ind]
-            if i == 1{
-                counter += 1
-            }
-            else if i == 0{
-                if counter < 4 && counter > 0{
-                    isValid = false
-                }
-                else{
-                    counter = 0
-                }
-            }
-        }
-        return isValid
+        let day = date.to_int_format()
+        return model.schedule[day]!.is_valid_to_update()
     }
     
-    
+    func correct_time_zone(date:Date) -> Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        let start_time = Calendar.current.date(from: components)
+        return start_time!
+    }
 }

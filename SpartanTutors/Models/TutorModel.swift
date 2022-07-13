@@ -17,6 +17,7 @@ struct Tutor:  Codable, Identifiable, Hashable{
     var approved = false
     var classes:Array<String> = []
     var venmo = ""
+    var zoom_link = ""
     var TutorFirstSignIn = true
     
     init(student_keys: user_first_time){
@@ -37,7 +38,14 @@ struct Tutor:  Codable, Identifiable, Hashable{
         case approved
         case classes
         case venmo
+        case zoom_link
         case TutorFirstSignIn
     }
 }
+//
+//struct TutorSummary{
+//    var id:String
+//    var name:String
+//    var zoom_link:String
+//}
 
