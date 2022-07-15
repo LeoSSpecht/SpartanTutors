@@ -48,7 +48,7 @@ struct InnerRow: View{
                             .fontWeight(.bold)
                             .foregroundColor(get_Status_Color(detail: details))
                     }
-                    if details.status == "Approved"{
+                    if details.status == "Approved" && details.date >= Date(){
                         Button(action:{
                             UIPasteboard.general.string = tutor_detail.zoom_link
                         }){
@@ -69,7 +69,7 @@ struct InnerRow: View{
                                 Text("Cancel session")
                                     .foregroundColor(.black)
                                 Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(Color(red: 0.8, green: 0.3, blue: 0.3))
+                                    .foregroundColor(Color(red: 0.82, green: 0.1, blue: 0.1))
                                     .imageScale(.medium)
                             }
                         }.padding(.top, 0.5)
@@ -88,5 +88,5 @@ func get_Status_Color(detail:Session) -> Color{
     else if status == "Pending"{
         return .yellow
     }
-    return Color(red: 0.95, green: 0.30, blue: 0.30)
+    return Color(red: 0.82, green: 0.1, blue: 0.1)
 }
