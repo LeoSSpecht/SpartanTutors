@@ -11,28 +11,6 @@ struct SessionRowView: View {
     var details:Session
     var tutor_detail: TutorSummary
     var body: some View {
-        Row(details: details,tutor_detail: tutor_detail).aspectRatio(2.5/1, contentMode: .fit)
-    }
-}
-//
-//struct SessionRowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SessionRowView(details: Session([
-//                    "id":"123",
-//                    "student_uid":"leo",
-//                    "tutor_uid":"master",
-//                    "date": Date(),
-//                    "time_slot": "0222200000000000000000000000",
-//                    "college_class":"CSE",
-//            "status": "Approved"
-//        ]))
-//    }
-//}
-
-struct Row: View{
-    var details: Session
-    var tutor_detail: TutorSummary
-    var body: some View{
         ZStack(alignment: .trailing){
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
                 .foregroundColor(get_Status_Color(detail: details))
@@ -40,18 +18,17 @@ struct Row: View{
             InnerRow(details: details,tutor_detail: tutor_detail)
                 .padding(.leading, 10)
         }
-    
     }
 }
 
 struct InnerRow: View{
     var details: Session
     var tutor_detail: TutorSummary
+    @EnvironmentObject var sessionModel: AllSessionsModel
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.gray)
-//                .shadow(radius: 5)
             HStack{
                 VStack(alignment: .leading){
                     Text(details.date.to_WeekDay_date())
@@ -72,13 +49,30 @@ struct InnerRow: View{
                             .foregroundColor(get_Status_Color(detail: details))
                     }
                     if details.status == "Approved"{
-                        HStack{
-                            Image(systemName: "doc.on.clipboard")
-                                .imageScale(.small)
-                            Text("Copy zoom link")
-                        }.onTapGesture{
+                        Button(action:{
                             UIPasteboard.general.string = tutor_detail.zoom_link
+                        }){
+                            HStack{
+                                Image(systemName: "doc.on.clipboard")
+                                    .imageScale(.small)
+                                Text("Copy zoom link")
+                                    
+                            }
+                            .foregroundColor(.black)
                         }
+                    }
+                    else if details.status == "Pending"{
+                        Button(action: {
+                            sessionModel.cancel_session(session: details)
+                        }){
+                            HStack{
+                                Text("Cancel session")
+                                    .foregroundColor(.black)
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(Color(red: 0.8, green: 0.3, blue: 0.3))
+                                    .imageScale(.medium)
+                            }
+                        }.padding(.top, 0.5)
                     }
                 }
             }.padding()
@@ -94,5 +88,5 @@ func get_Status_Color(detail:Session) -> Color{
     else if status == "Pending"{
         return .yellow
     }
-    return .red
+    return Color(red: 0.95, green: 0.30, blue: 0.30)
 }

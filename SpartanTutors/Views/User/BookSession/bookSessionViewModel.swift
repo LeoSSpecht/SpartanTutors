@@ -12,7 +12,7 @@ class bookStudentSession: ObservableObject {
 //    settings.isPersistenceEnabled = false
     private var db =  Firestore.firestore()
     private let student_id:String
-    
+    private var listeners =  [ListenerRegistration]()
     @Published var model = sessionBookerData()
     @Published var tutorSelection:TutorSummary = TutorSummary(id: "Any", name: "Any", zoom_link: "")
     @Published var dateSelection:Date = Date()
@@ -25,6 +25,12 @@ class bookStudentSession: ObservableObject {
     init(student_id:String){
         self.student_id = student_id
         get_all_tutors()
+    }
+    
+    deinit{
+        for i in self.listeners.indices{
+            self.listeners[i].remove()
+        }
     }
     
 //  MARK: GETTERS
@@ -60,7 +66,7 @@ class bookStudentSession: ObservableObject {
 //  MARK: DATABASE ACCESS
     func get_all_tutors(){
         let ref = db.collection("users")
-        ref.whereField("role", isEqualTo: "tutor")
+        ref.whereField("role", isEqualTo: "tutor").whereField("approved", isEqualTo: true)
             .getDocuments() { (querySnapshot, err) in
                 guard let documents = querySnapshot?.documents else {
                     print("No documents")
@@ -97,7 +103,8 @@ class bookStudentSession: ObservableObject {
     
     func generateTutorSchedules(){
         let ref = db.collection("tutor_schedules")
-        ref.addSnapshotListener{ (querySnapshot, err) in
+        let listen = ref.addSnapshotListener{ (querySnapshot, err) in
+            
             guard let documents = querySnapshot?.documents else {
                 print("No documents")
                 return
@@ -127,6 +134,7 @@ class bookStudentSession: ObservableObject {
             }
             self.finishedLoading = true
         }
+        self.listeners.append(listen)
     }
     
     func updateTutorSchedule(tutor_schedule:TutorSchedule){

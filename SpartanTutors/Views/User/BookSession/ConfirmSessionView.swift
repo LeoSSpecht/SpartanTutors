@@ -19,10 +19,16 @@ struct ConfirmSessionView: View {
             Text("Would you like to confirm this session?")
                 .bold()
             Spacer()
-            Text("Date: \(bookViewModel.dateSelection.to_WeekDay_date())")
-            Text("Time: \(bookViewModel.sessionSelections!.time_string)")
-            Text("Tutor: \(bookViewModel.tutorSelection.name)")
-            Text("Class: \(bookViewModel.selectedClass)")
+            VStack{
+                Text("Date: \(bookViewModel.dateSelection.to_WeekDay_date())")
+                Text("Time: \(bookViewModel.sessionSelections?.time_string ?? "No session selection")")
+                Text("Tutor: \(bookViewModel.tutorSelection.name)")
+                Text("Class: \(bookViewModel.selectedClass)")
+                Text("Duration: 2h")
+                Text("Total price: $55")
+                    .bold()
+            }
+            
             Spacer()
             NavigationLink(
                 destination: makePaymentView(payment_active:$show_confirm),isActive: $show_payment){

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>382667765133-ib63co2au4t1pc3rlertpb01ong9s1on.apps.googleusercontent.com</string>
+	<string>382667765133-qk50r43b8b0sfk5k5jdbcaarkcv87bt0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.382667765133-ib63co2au4t1pc3rlertpb01ong9s1on</string>
+	<string>com.googleusercontent.apps.382667765133-qk50r43b8b0sfk5k5jdbcaarkcv87bt0</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDRR3k_6Z2PYqWtI51jo9rqe87X3P-WjpA</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.spartantutors.SpartanTutors</string>
+	<string>com.spartantutor.SpartanTutor</string>
 	<key>PROJECT_ID</key>
 	<string>spartantutorsapp</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:382667765133:ios:40cd94ca103506b13379c4</string>
+	<string>1:382667765133:ios:28434a7b961bf3b53379c4</string>
 </dict>
 </plist>

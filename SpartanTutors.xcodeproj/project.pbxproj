@@ -47,6 +47,8 @@
 		B371B953287CE71E00E42485 /* TimeframeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B952287CE71E00E42485 /* TimeframeModel.swift */; };
 		B371B955287CEA7F00E42485 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B954287CEA7F00E42485 /* DateFormatters.swift */; };
 		B371B958287F6F1A00E42485 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B957287F6F1A00E42485 /* Header.swift */; };
+		B371B95A287F840900E42485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B371B959287F840900E42485 /* GoogleService-Info.plist */; };
+		B371B95C2880DC4900E42485 /* tab_selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B95B2880DC4800E42485 /* tab_selection.swift */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -67,7 +69,6 @@
 		B3E4F3D4285B6A6700B84336 /* UserHomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */; };
 		B3E4F3D9285B793A00B84336 /* CreateUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3D8285B793900B84336 /* CreateUserModel.swift */; };
 		B3E4F3DE285B910400B84336 /* getRoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3DD285B910400B84336 /* getRoleModel.swift */; };
-		B3E4F3E0285BA19100B84336 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3E4F3DF285BA19000B84336 /* GoogleService-Info.plist */; };
 		B3E4F3E2285BA2E900B84336 /* bookSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3E1285BA2E900B84336 /* bookSessionView.swift */; };
 		B3E4F3E7285BC6B600B84336 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3E6285BC6B600B84336 /* UserObject.swift */; };
 		B3E4F3EC285BC84400B84336 /* allSessionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4F3EB285BC84400B84336 /* allSessionsModel.swift */; };
@@ -124,6 +125,8 @@
 		B371B952287CE71E00E42485 /* TimeframeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeModel.swift; sourceTree = "<group>"; };
 		B371B954287CEA7F00E42485 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		B371B957287F6F1A00E42485 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		B371B959287F840900E42485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B371B95B2880DC4800E42485 /* tab_selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab_selection.swift; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -144,7 +147,6 @@
 		B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomePage.swift; sourceTree = "<group>"; };
 		B3E4F3D8285B793900B84336 /* CreateUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserModel.swift; sourceTree = "<group>"; };
 		B3E4F3DD285B910400B84336 /* getRoleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getRoleModel.swift; sourceTree = "<group>"; };
-		B3E4F3DF285BA19000B84336 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3E4F3E1285BA2E900B84336 /* bookSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionView.swift; sourceTree = "<group>"; };
 		B3E4F3E6285BC6B600B84336 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		B3E4F3EB285BC84400B84336 /* allSessionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsModel.swift; sourceTree = "<group>"; };
@@ -208,7 +210,7 @@
 		B31997FC2855108F00F57B28 /* SpartanTutors */ = {
 			isa = PBXGroup;
 			children = (
-				B3E4F3DF285BA19000B84336 /* GoogleService-Info.plist */,
+				B371B959287F840900E42485 /* GoogleService-Info.plist */,
 				B3E4F3C8285B592200B84336 /* Models */,
 				B3E4F3C7285B58CB00B84336 /* Views */,
 				B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */,
@@ -441,6 +443,7 @@
 				B3B9A10028647A9500921A61 /* BookSession */,
 				B1966681285BC1CB00E8DBF7 /* ContactUs.swift */,
 				B3E4F3D3285B6A6700B84336 /* UserHomePage.swift */,
+				B371B95B2880DC4800E42485 /* tab_selection.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -589,7 +592,7 @@
 			files = (
 				B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */,
 				B31998022855109200F57B28 /* Assets.xcassets in Resources */,
-				B3E4F3E0285BA19100B84336 /* GoogleService-Info.plist in Resources */,
+				B371B95A287F840900E42485 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +663,7 @@
 				B3E4F3D0285B6A4600B84336 /* TutorHomePage.swift in Sources */,
 				B371B945287A24C200E42485 /* CalendarModel.swift in Sources */,
 				B3199852285535D100F57B28 /* AuthorizationModel.swift in Sources */,
+				B371B95C2880DC4900E42485 /* tab_selection.swift in Sources */,
 				B1966682285BC1CB00E8DBF7 /* ContactUs.swift in Sources */,
 				B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */,
 				B3B9A11C286DFF9300921A61 /* classSelectionView.swift in Sources */,
@@ -823,6 +827,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SpartanTutors/Preview Content\"";
+				DEVELOPMENT_TEAM = 4G95MPGD52;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SpartanTutors/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -830,7 +835,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutors;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutor.SpartanTutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -844,6 +849,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SpartanTutors/Preview Content\"";
+				DEVELOPMENT_TEAM = 4G95MPGD52;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SpartanTutors/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
@@ -851,7 +857,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutors.SpartanTutors;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spartantutor.SpartanTutor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -9,15 +9,19 @@ import SwiftUI
 
 struct makePaymentView: View {
     @Binding var payment_active: Bool
+    @EnvironmentObject var tab_vm: tab_selection
     var body: some View {
         VStack{
             Text("Awesome, your sesion was booked and is now pending. Once we confirm your session you will see it as confirmed")
-            Text("Payment link")
+            Link("Go to Venmo",
+                  destination: URL(string: "https://venmo.com/code?user_id=3452041510782782609&created=1657753854.0826159&printed=1")!)
             Button(action: {
-                print("go back")
+                print("See sessions")
+                tab_vm.selection = 2
                 payment_active.toggle()
+                
             }) {
-                Text("Go back to home page")
+                Text("See my sessions")
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)

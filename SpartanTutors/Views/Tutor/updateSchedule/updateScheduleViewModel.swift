@@ -15,6 +15,7 @@ class scheduleUpdateViewModel: ObservableObject{
     @Published var showErrorPopUp = false
     @Published var model = TutorScheduleModel()
     
+    private var listeners: [ListenerRegistration] = []
     private var id:String
     
     init(_ id:String){
@@ -22,6 +23,11 @@ class scheduleUpdateViewModel: ObservableObject{
         getAllSchedules()
     }
     
+    deinit{
+        for i in listeners.indices{
+            listeners[i].remove()
+        }
+    }
     private var db = Firestore.firestore()
     
     var schedule: Timeframe?{
@@ -77,7 +83,7 @@ class scheduleUpdateViewModel: ObservableObject{
     }
     
     func getAllSchedules(){
-        db.collection("tutor_schedules").document(self.id).addSnapshotListener{result, err in
+        let listen = db.collection("tutor_schedules").document(self.id).addSnapshotListener{result, err in
             if let result = result, result.exists{
                 let data = result.data()!
                 let tutor_schedules = data as! [String:String]
@@ -87,6 +93,7 @@ class scheduleUpdateViewModel: ObservableObject{
                 print("No schedule exists yet")
             }
         }
+        listeners.append(listen)
     }
     
     func updateSchedule(_ completion: @escaping (_ err:Bool) -> Void){
