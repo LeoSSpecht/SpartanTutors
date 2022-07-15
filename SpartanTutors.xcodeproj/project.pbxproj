@@ -47,8 +47,8 @@
 		B371B953287CE71E00E42485 /* TimeframeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B952287CE71E00E42485 /* TimeframeModel.swift */; };
 		B371B955287CEA7F00E42485 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B954287CEA7F00E42485 /* DateFormatters.swift */; };
 		B371B958287F6F1A00E42485 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B957287F6F1A00E42485 /* Header.swift */; };
-		B371B95A287F840900E42485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B371B959287F840900E42485 /* GoogleService-Info.plist */; };
 		B371B95C2880DC4900E42485 /* tab_selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B371B95B2880DC4800E42485 /* tab_selection.swift */; };
+		B371B95E2880F42200E42485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B371B95D2880F42100E42485 /* GoogleService-Info.plist */; };
 		B3B9A0FD285E1B2200921A61 /* allSessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */; };
 		B3B9A0FF286299ED00921A61 /* sessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A0FE286299ED00921A61 /* sessionModels.swift */; };
 		B3B9A10228647ADD00921A61 /* bookSessionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B9A10128647ADD00921A61 /* bookSessionModels.swift */; };
@@ -125,8 +125,8 @@
 		B371B952287CE71E00E42485 /* TimeframeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeframeModel.swift; sourceTree = "<group>"; };
 		B371B954287CEA7F00E42485 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		B371B957287F6F1A00E42485 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
-		B371B959287F840900E42485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B371B95B2880DC4800E42485 /* tab_selection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab_selection.swift; sourceTree = "<group>"; };
+		B371B95D2880F42100E42485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3B9A0FC285E1B2200921A61 /* allSessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = allSessionsView.swift; sourceTree = "<group>"; };
 		B3B9A0FE286299ED00921A61 /* sessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sessionModels.swift; sourceTree = "<group>"; };
 		B3B9A10128647ADD00921A61 /* bookSessionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookSessionModels.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		B31997FC2855108F00F57B28 /* SpartanTutors */ = {
 			isa = PBXGroup;
 			children = (
-				B371B959287F840900E42485 /* GoogleService-Info.plist */,
+				B371B95D2880F42100E42485 /* GoogleService-Info.plist */,
 				B3E4F3C8285B592200B84336 /* Models */,
 				B3E4F3C7285B58CB00B84336 /* Views */,
 				B31997FD2855108F00F57B28 /* SpartanTutorsApp.swift */,
@@ -590,9 +590,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B371B95E2880F42200E42485 /* GoogleService-Info.plist in Resources */,
 				B31998052855109200F57B28 /* Preview Assets.xcassets in Resources */,
 				B31998022855109200F57B28 /* Assets.xcassets in Resources */,
-				B371B95A287F840900E42485 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
