@@ -18,47 +18,31 @@ struct TutorHomePage: View {
     }
     
     var body: some View {
-        NavigationView{
-            VStack{
-//
-                Spacer().frame(maxHeight: 230)
-                //THIS IS A FUCKING WORKAROUND FOR IOS 14, ONCE UPDATED CHANGE THE NAVIGATION VIEW STYLE TO .stack and it should work
-                NavigationLink(destination: EmptyView()) {
-                  EmptyView()
+        Header_end()
+        TabView(){
+            allSessionsTutor(sessions: tutorSessionsViewModel.specific_tutor_sessions, names: tutorSessionsViewModel.studentNames)
+                .tabItem{
+                    Label("My sessions", systemImage: "calendar")
                 }
-                NavigationLink(destination: allSessionsTutor(sessions: tutorSessionsViewModel.specific_tutor_sessions, names: tutorSessionsViewModel.studentNames)){
-                    Text("View scheduled sessions \(tutorSessionsViewModel.specific_tutor_sessions.count)")
+            updateScheduleView(self.id)
+                .tabItem{
+                    Label("My schedule", systemImage: "square.and.pencil")
                 }
-                .isDetailLink(false)
-                .navigationBarTitleDisplayMode(.inline)
-                
-                NavigationLink(destination: updateScheduleView(self.id)){
-                    Text("Update my schedule")
-                }
-                .isDetailLink(false)
-                
-                Text("Update my info")
-                
-                Button(action: viewModel.signOut) {
-                  Text("Sign out")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color(.systemIndigo))
-                    .cornerRadius(12)
-                    .padding()
-                }
-                Spacer().frame(maxHeight:.infinity)
+            
+            
+            
+            
+            Button(action: viewModel.signOut) {
+              Text("Sign out")
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemIndigo))
+                .cornerRadius(12)
+                .padding()
+            }.tabItem{
+                Label("My account", systemImage: "person.circle")
             }
-        }
-        .padding(.top,-15)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationViewStyle(StackNavigationViewStyle())
+        }.animation(nil)
     }
 }
-//
-//struct TutorHomePage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TutorHomePage("123")
-//    }
-//}

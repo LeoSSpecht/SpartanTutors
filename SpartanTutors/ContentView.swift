@@ -13,9 +13,8 @@ import GoogleSignIn
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @ObservedObject var roleModel: getRoleModel = getRoleModel()
-    @State var animationStarter = false
-    @State var opacityStarter = false
-    @State var hide_header = false
+    @State var first_animation = false
+    @State var second_animation = false
     
     init(_ id: String){
         if id != ""{
@@ -41,43 +40,35 @@ struct ContentView: View {
             else if !roleModel.error{
                 if(roleModel.userRole != ""){
                     let animation_time = 0.5
-                    VStack{
-                        //MARK: Title
-//                        if !hide_header{
-                            Header_Animation(animationStarter: animationStarter)
-//                                .transition(.asymmetric(insertion: .identity, removal: .opacity))
-//                        }
-                        //MARK: View loading
-                        if animationStarter{
-                            VStack{
-                                if opacityStarter{
-                                    HomeView(isTutorApproved: roleModel.isTutorApproved, isTutorFirstSignIn:roleModel.isTutorFirstSignIn,
-                                             currentRole: roleModel.userRole)
-                                        .transition(
-                                            AnyTransition.scale
-//                                                .combined(with: .move(edge: .bottom))
-                                                .animation(.linear(duration: animation_time).delay(animation_time/2))
-                                        )
-                                }
-                            }
-                            .onAppear{
-                                withAnimation{
-                                    opacityStarter = true
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + animation_time) {
-                                        // your code here
-                                        hide_header = true
-                                    }
-                                }
+                    ZStack{
+                        VStack{
+                            if second_animation{
+                                HomeView(isTutorApproved: roleModel.isTutorApproved, isTutorFirstSignIn:roleModel.isTutorFirstSignIn,
+                    currentRole: roleModel.userRole)
                             }
                         }
+                        .animation(.easeInOut(duration: animation_time))
+                        if !second_animation{
+                            Header_Animation(animationStarter: first_animation)
+                                .animation(.easeInOut(duration: animation_time),value: first_animation)
+                                .transition(
+                                    .asymmetric(
+                                        insertion: .identity,
+                                        removal: .opacity.animation(
+                                            .easeIn(duration: animation_time)
+                                                .delay(animation_time)
+                                        )))
+                        }
                     }
-                    //Animation for the title
-                    .animation(.easeInOut(duration: animation_time))
                     .onAppear{
-                        animationStarter = true
-                    }.onDisappear{
-                        animationStarter = false
-                        opacityStarter = false
+                        first_animation = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + animation_time) {
+                            second_animation = true
+                        }
+                    }
+                    .onDisappear{
+                        first_animation = false
+                        second_animation = false
                     }
                 }
             }

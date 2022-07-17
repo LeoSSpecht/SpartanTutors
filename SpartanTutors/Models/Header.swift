@@ -1,21 +1,21 @@
 //
 //  Header.swift
 //  SpartanTutors
-//
-//  Created by Leo on 7/13/22.
-//
 
 import SwiftUI
 
 struct Header_Animation: View {
     var animationStarter: Bool
     var body: some View {
-        HStack(spacing: 0){
+        VStack{
             //Title
             Header_begin()
                 .scaleEffect(animationStarter ? 0.5 : 1)
                 .frame(alignment: .center)
                 .layoutPriority(1)
+            if animationStarter{
+                Spacer()
+            }
         }
     }
 }
