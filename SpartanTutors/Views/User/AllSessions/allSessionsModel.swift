@@ -112,6 +112,7 @@ class AllSessionsModel: ObservableObject{
     func updateCanceledSchedule(date:Date,sessionTimeFrame:String,tutor_id:String){
         let day = date.to_int_format()
         get_specific_tutor_schedule(tutor_id: tutor_id, day: day, session_schedule: Timeframe(sessionTimeFrame)){ new_schedule in
+            print(new_schedule!)
             self.db.collection("tutor_schedules").document(tutor_id).updateData(
                 [day:new_schedule as Any]
             )
@@ -119,7 +120,7 @@ class AllSessionsModel: ObservableObject{
                 if let err = err {
                     print("Error updating document: \(err)")
                 } else {
-                    print("Document successfully updated")
+                    print("Made tutor available again")
                 }
             }
         }
@@ -141,13 +142,16 @@ class AllSessionsModel: ObservableObject{
     }
     
     func change_session_time(session_time:Timeframe, tutor_schedule: Timeframe) -> Timeframe{
+        print("Session time \(session_time.to_string)")
+        print("tutor time \(tutor_schedule.to_string)")
         var tutor = tutor_schedule
         for i in session_time.data.indices{
             if session_time.data[i] == 2{
                 tutor.data[i] = 1
             }
         }
-        return tutor_schedule
+        print("tutor new time \(tutor.to_string)")
+        return tutor
     }
 }
 

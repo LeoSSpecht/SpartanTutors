@@ -22,7 +22,7 @@ struct UserHomePage: View {
     }
     
     var body: some View {
-        Header_end()
+        
         TabView(selection: $tab_vm.selection){
             bookSessionView().environmentObject(bookSessionViewModel).environmentObject(tab_vm)
                 .tabItem{

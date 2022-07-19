@@ -21,13 +21,13 @@ struct updateScheduleView: View {
     
     var body: some View {
         let space = Spacer().frame(width: 50)
-        VStack{
+        VStack(spacing:0){
             Text("Please select your schedule")
                 .font(.title3)
                 .bold()
-                .padding([.leading, .bottom, .trailing])
+                .padding(.horizontal)
             
-            CalendarView(calendarViewModel: calendarViewModel,selected_date: $UpdateScheduleViewModel.date).padding(0)
+            CalendarView(calendarViewModel: calendarViewModel,selected_date: $UpdateScheduleViewModel.date)
             
             ScrollView{
                 ForEach(UpdateScheduleViewModel.schedule!.data.indices){ ind in
@@ -49,20 +49,37 @@ struct updateScheduleView: View {
                 }.padding(.vertical)
             }
             
-            Button(action: {
-                UpdateScheduleViewModel.try_to_update_schedule()
-            }) {
-              Text("Update times")
-                .foregroundColor(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemIndigo))
-                .cornerRadius(12)
-                .padding()
+            HStack(spacing:0){
+                VStack(spacing:5){
+                    Button(action: UpdateScheduleViewModel.clear_schedule){
+                        Text("Clear")
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: 50)
+                    }
+                    
+                    Button(action: UpdateScheduleViewModel.full_schedule){
+                        Text("Full")
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: 50)
+                    }
+                }
+                .padding(.leading,10)
+                .buttonStyle(SmallButtonLegend())
+                
+                Button(action: {
+                    UpdateScheduleViewModel.try_to_update_schedule()
+                }) {
+                  Text("Update times")
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color(.systemIndigo))
+                    .cornerRadius(12)
+                    .padding(10)
+                }
             }
+            .padding(.vertical,5)
         }
-        .navigationBarBackButtonHidden(self.UpdateScheduleViewModel.hide_bar)
-        .navigationBarTitle("",displayMode: .inline).padding(0)
         .toolbar{
             ToolbarItemGroup{
                 HStack{

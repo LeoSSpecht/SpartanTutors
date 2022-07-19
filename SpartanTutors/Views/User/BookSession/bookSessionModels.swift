@@ -63,7 +63,11 @@ struct sessionBookerData{
 //              If time is already not taken
                 let timeframe = String(repeating: "0", count: i)+String(repeating: "2", count: duration*TimeConstants.times_in_hour)+String(repeating: "0", count: TimeConstants.times_in_day-i-duration*TimeConstants.times_in_hour)
                 let formatted_date = time_frame_to_date(time_slot: Timeframe(timeframe), date: date)
-                all_available_times[i] = sessionTime(sessionDate: formatted_date, string_date: string_date, tutor: tutor_id, timeframe: Timeframe(timeframe), id: i)
+                
+                // Checks if time is greater than now
+                if formatted_date > Date(){
+                    all_available_times[i] = sessionTime(sessionDate: formatted_date, string_date: string_date, tutor: tutor_id, timeframe: Timeframe(timeframe), id: i)
+                }
             }
         }
         return all_available_times

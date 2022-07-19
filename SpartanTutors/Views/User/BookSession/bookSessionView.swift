@@ -42,11 +42,17 @@ struct bookSessionView: View {
         // DeInit snapshor listeners
         // Tabs for tutor
         if !bookViewModel.finishedLoading{
-            LoadingCircle()
+            VStack{
+                Header_end()
+                LoadingCircle()
+            }
         }
         else{
             NavigationView{
                 VStack{
+                    Header_end()
+                    Spacer(minLength: 50)
+
                     HStack{
                         Text("Select a class")
                         Spacer()
@@ -55,7 +61,7 @@ struct bookSessionView: View {
                                 Text(item)
                             }
                         }
-                    }
+                    }.padding(.horizontal)
 
                     HStack{
                         Text("Select a tutor")
@@ -66,10 +72,11 @@ struct bookSessionView: View {
                                 Text(item.name).tag(item)
                             }
                         }
-                    }
+                    }.padding(.horizontal)
 
-                    CalendarView(calendarViewModel: calendarViewModel,selected_date: dateProxy).padding(0)
+                    CalendarView(calendarViewModel: calendarViewModel,selected_date: dateProxy)
                     SessionSelectionObject(ViewModel: bookViewModel)
+                        .frame(maxHeight: 300)
                     
                     NavigationLink(
                         destination: ConfirmSessionView(show_confirm: $load_confirmation)
@@ -91,16 +98,10 @@ struct bookSessionView: View {
                             .padding()
                     }.disabled(!(self.bookViewModel.sessionSelections != nil))
                 }
-                .padding()
+                .navigationBarHidden(true)
                 .pickerStyle(MenuPickerStyle())
-                .onAppear(){
-        //            OPTIONAL: This updates the available times whenever  the view is opened
-        //            Another option is to add a listener that updates the view every time the schedule changes
-        //            the problem would be when one student selects the time when another student is looking at it
-        //            This would cause the time to disapear
-//                    self.bookViewModel.update_times()
-                }
             }
+//            .statusBar(hidden: true)
         }
     }
 }

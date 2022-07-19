@@ -21,3 +21,16 @@ struct DayConstants{
 struct FontConstants{
     static var calendar_day_scale:CGFloat = 1.6
 }
+
+struct SmallButtonLegend: ButtonStyle {
+    var color_main = Color(red: 0.6, green: 0.6, blue: 0.6)
+    var color_pressed = Color(red: 0.5, green: 0.5, blue: 0.5)
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.caption)
+            .padding(5)
+            .background(configuration.isPressed ? color_pressed : color_main)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+    }
+}

@@ -124,10 +124,4 @@ class scheduleUpdateViewModel: ObservableObject{
         let day = date.to_int_format()
         return model.schedule[day]!.is_valid_to_update()
     }
-    
-    func correct_time_zone(date:Date) -> Date {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        let start_time = Calendar.current.date(from: components)
-        return start_time!
-    }
 }
