@@ -15,6 +15,15 @@ class calendarVM: ObservableObject{
         startingIndex*7
     }
     
+    var is_there_next_week: Bool{
+        let maxIndex = (model.days_list.count-1)/7
+        return startingIndex < maxIndex
+    }
+    
+    var is_there_previous_week: Bool{
+        startingIndex > 0
+    }
+    
     var month_selected:String{
         let df = DateFormatter()
         df.dateFormat = "MMMM"

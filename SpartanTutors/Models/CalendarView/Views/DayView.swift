@@ -38,6 +38,7 @@ struct CalendarView: View {
                 Image(systemName: "chevron.left")
                     .padding(.leading)
                     .imageScale(.small)
+                    .opacity(calendarViewModel.is_there_previous_week ? 1 : 0)
                     .onTapGesture {
                         calendarViewModel.change_week(to: -1)
                     }
@@ -91,6 +92,7 @@ struct CalendarView: View {
                 Image(systemName: "chevron.right")
                     .imageScale(.small)
                     .padding(.trailing)
+                    .opacity(calendarViewModel.is_there_next_week ? 1 : 0)
                     .onTapGesture {
                         calendarViewModel.change_week(to: 1)
                     }
