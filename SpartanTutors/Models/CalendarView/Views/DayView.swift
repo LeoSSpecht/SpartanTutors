@@ -42,50 +42,50 @@ struct CalendarView: View {
                         calendarViewModel.change_week(to: -1)
                     }
                 Spacer()
-                GeometryReader{ geometry in
-                    LazyVGrid(columns:columns){
-                        ForEach(
-                            (calendarViewModel.ind_begin...calendarViewModel.ind_end),
-                            id: \.self)
-                        { i in
-                            VStack{
-                                Text("\(days[i%7])")
-                                    .foregroundColor(.gray)
-                                    .scaledToFill()
-                                let day = calendarViewModel.model.days_list[i]
-                                dayView(day: day.day_number,
-                                        isValid: day.isValid,
-                                        isSelected: day.isSelected)
+                VStack{
+                    GeometryReader{ geometry in
+                        LazyVGrid(columns:columns){
+                            ForEach(
+                                (calendarViewModel.ind_begin...calendarViewModel.ind_end),
+                                id: \.self)
+                            { i in
+                                VStack{
+                                    Text("\(days[i%7])")
+                                        .foregroundColor(.gray)
+                                        .scaledToFill()
+                                    let day = calendarViewModel.model.days_list[i]
+                                    dayView(day: day.day_number,
+                                            isValid: day.isValid,
+                                            isSelected: day.isSelected)
                                     .onTapGesture{
                                         if day.isValid{
                                             calendarViewModel.choose(day.index)
                                             selected_date = day.date
                                         }
                                     }
+                                }
                             }
                         }
-                    }
-                    .padding([.leading, .bottom, .trailing])
-                    .layoutPriority(1)
-                    .gesture(
-                        DragGesture()
-                                .onEnded {value in
-                                    let minimun_offset = geometry.size.width/5
-                                    let offset = value.translation.width
-                                    if abs(offset) > minimun_offset{
-                                        if offset > 0{
-                                            calendarViewModel.change_week(to: -1)
-                                        }
-                                        else{
-                                            calendarViewModel.change_week(to: 1)
-                                        }
+                        .padding([.leading, .bottom, .trailing])
+                        .layoutPriority(1)
+                        .gesture(
+                            DragGesture()
+                            .onEnded {value in
+                                let minimun_offset = geometry.size.width/5
+                                let offset = value.translation.width
+                                if abs(offset) > minimun_offset{
+                                    if offset > 0{
+                                        calendarViewModel.change_week(to: -1)
+                                    }
+                                    else{
+                                        calendarViewModel.change_week(to: 1)
                                     }
                                 }
-                    )
+                            }
+                        )
+                    }
                 }
-                
-                
-                
+                .frame(maxHeight: 60)
                 
                 Spacer()
                 Image(systemName: "chevron.right")
