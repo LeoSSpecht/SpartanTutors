@@ -112,6 +112,27 @@ struct Timeframe: Codable, Hashable{
         return "\(start_time!.to_time())"
     }
     
+    func get_duration() -> Int{
+        var ind = self.get_first_session_index()!
+        var counter = 0
+        while self.data[ind] == 2{
+            counter += 1
+            ind += 1
+        }
+        return counter/TimeConstants.times_in_hour
+    }
+    
+    func get_start_end_time() -> String{
+        let ind = self.get_first_session_index()!
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: Date())
+        components.hour = Timeframe.ind_to_hour(ind: ind)
+        components.minute = Timeframe.ind_to_min(ind: ind)
+        let start_time = Calendar.current.date(from: components)
+        components.hour = components.hour! + self.get_duration()
+        let end_time = Calendar.current.date(from: components)
+        return "\(start_time!.to_time()) - \(end_time!.to_time())"
+    }
+    
     func is_valid_to_update() -> Bool{
         var counter = 0
         var isValid = true

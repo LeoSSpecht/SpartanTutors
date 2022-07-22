@@ -17,9 +17,9 @@ struct sessionBookerData{
     private (set) var available_times:Array<sessionTime> = []
     
 //    MARK: UPDATING FUNCTIONS
-    mutating func update_tutors(new_tutors:Array<TutorSummary>){
-        self.all_tutors = new_tutors
-    }
+//    mutating func update_tutors(new_tutors:Array<TutorSummary>){
+//        self.all_tutors = new_tutors
+//    }
     //NEW
     mutating func update_id_schedule(new: [String:TutorSchedule], classes_available: [String:Array<String>]){
         id_schedule_dict = new
@@ -53,7 +53,11 @@ struct sessionBookerData{
         return nil
     }
     
-    private func build_available_times(time_frame: Timeframe, duration:Int ,date:Date,string_date: String,tutor_id:String) ->[Int:sessionTime]{
+    func get_tutor_name(id: String) -> String{
+        return id_schedule_dict[id]!.tutorName
+    }
+    
+    private func build_available_times(time_frame: Timeframe, duration:Int ,date:Date,string_date: String,tutor_id:String, tutor_name: String) ->[Int:sessionTime]{
 //      Description: Decodes from bitstring date format to string time and returns available bitstrings
         var all_available_times:[Int:sessionTime] = [:]
 //        Times from 8-22 from 15-15 min
@@ -66,7 +70,7 @@ struct sessionBookerData{
                 
                 // Checks if time is greater than now
                 if formatted_date > Date(){
-                    all_available_times[i] = sessionTime(sessionDate: formatted_date, string_date: string_date, tutor: tutor_id, timeframe: Timeframe(timeframe), id: i)
+                    all_available_times[i] = sessionTime(sessionDate: formatted_date, string_date: string_date, tutor: tutor_id, tutor_name: tutor_name, timeframe: Timeframe(timeframe), id: i)
                 }
             }
         }
@@ -84,9 +88,10 @@ struct sessionBookerData{
         print(date_convert)
         if tutor != "Any"{
             //Get times available for specific tutor
+            let tutor_name = self.get_tutor_name(id: tutor)
             if let timeframe = self.id_schedule_dict[tutor]!.schedule[date_convert]{
                 //DICT index -> Session time with times for specifict tutors
-                let availableTimes = build_available_times(time_frame: timeframe, duration: 2, date: date, string_date: date_convert, tutor_id: tutor)
+                let availableTimes = build_available_times(time_frame: timeframe, duration: 2, date: date, string_date: date_convert, tutor_id: tutor, tutor_name: tutor_name)
                 return return_sorted_schedule(schedule: availableTimes)
             }
             
@@ -107,12 +112,14 @@ struct sessionBookerData{
                 //Creating schedule for all tutors
                 var final_random_tutor_schedule = [Int:sessionTime]()
                 all_tutors_schedule.forEach{ tutor_schedule in
+                    let tutor_name = self.get_tutor_name(id: tutor_schedule.id)
                     let availableTimes = build_available_times(
                         time_frame: tutor_schedule.schedule[date_convert]!,
                         duration: 2,
                         date: date,
                         string_date: date_convert,
-                        tutor_id: tutor_schedule.id)
+                        tutor_id: tutor_schedule.id,
+                        tutor_name: tutor_name)
                     availableTimes.forEach{time in
                         if final_random_tutor_schedule[time.key] == nil{
                             final_random_tutor_schedule[time.key] = time.value
@@ -180,6 +187,7 @@ struct sessionTime: Hashable, Identifiable{
     var string_date:String
     //Tutor id
     var tutor:String
+    var tutor_name:String
     //bitstring
     var timeframe:Timeframe
     var id: Int

@@ -75,6 +75,7 @@ class bookStudentSession: ObservableObject {
                 
                 var dataDict = [String:TutorSchedule]()
                 var classes_dict = [String:Array<String>]()
+//                var allTutors = [TutorSummary]()
                 //Creates a dictionary with id -> TutorSchedule, but empyt schedule
                 documents.forEach{ queryDocumentSnapshot in
                     let doc_id = queryDocumentSnapshot.documentID
@@ -82,6 +83,7 @@ class bookStudentSession: ObservableObject {
                     let classes = dict["classes"] as! Array<String>
                     let name = dict["name"] as! String
                     dataDict[doc_id] = TutorSchedule(id: doc_id, available_classes: classes, name: name)
+//                    allTutors.append(TutorSummary(id: doc_id, name: name))
                     //Creates a dict with all the classes -> ID of the tutors for that class
                     classes.forEach{ available_class in
                         if classes_dict[available_class] == nil{
@@ -91,6 +93,7 @@ class bookStudentSession: ObservableObject {
                     }
                 }
                 
+//                self.model.update_tutors(new_tutors: allTutors)
                 self.model.update_id_schedule(new: dataDict, classes_available: classes_dict)
                 self.selectedClass = self.model.all_classes.first ?? "Bug"
                 self.generateTutorSchedules()

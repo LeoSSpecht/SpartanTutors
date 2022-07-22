@@ -56,7 +56,7 @@ struct bookSessionView: View {
                     HStack{
                         Text("Select a class")
                         Spacer()
-                        Picker(self.bookViewModel.selectedClass, selection: classProxy) {
+                        Picker(selection: classProxy, label: picker_label(selection: self.bookViewModel.selectedClass)) {
                             ForEach(bookViewModel.classes_, id: \.self) { item in
                                 Text(item)
                             }
@@ -66,7 +66,7 @@ struct bookSessionView: View {
                     HStack{
                         Text("Select a tutor")
                         Spacer()
-                        Picker(bookViewModel.tutorSelection.name, selection: tutorProxy) {
+                        Picker(selection: tutorProxy, label: picker_label(selection: bookViewModel.tutorSelection.name)) {
                             Text("Any").tag(TutorSummary(id: "Any", name: "Any"))
                             ForEach(bookViewModel.tutors, id: \.self) { item in
                                 Text(item.name).tag(item)
@@ -103,5 +103,28 @@ struct bookSessionView: View {
             }
 //            .statusBar(hidden: true)
         }
+    }
+}
+
+struct picker_label:View {
+    var selection: String
+    
+    var body: some View{
+        HStack{
+            Text(selection)
+                .font(.subheadline)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+            Spacer()
+                .frame(maxWidth: 10)
+            Image(systemName: "chevron.down")
+                .foregroundColor(.gray)
+        }
+        .padding(.vertical,5)
+        .padding(.horizontal,10)
+        .background(
+            Capsule()
+                .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+        )
     }
 }

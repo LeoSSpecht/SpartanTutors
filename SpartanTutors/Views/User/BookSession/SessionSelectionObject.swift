@@ -12,16 +12,34 @@ struct SessionSelectionObject: View {
     var body: some View {
         VStack{
             Text("Select starting time")
-            ScrollView(.horizontal){
-                LazyHStack{
-                    ForEach(ViewModel.available_times){i in
-                        TimeCell(session: i)
-                            .onTapGesture {
-                                ViewModel.choose_session(i.id)
-                            }
+            if ViewModel.available_times.isEmpty{
+//              There are no sessions available
+                VStack{
+                    Spacer()
+                    VStack(alignment: .center){
+                        Text("Sorry :( there are no available times for the tutor and date selected.")
+                        Text("Please select another time/tutor")
+                            
                     }
-                }.padding()
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    Spacer()
+                }
+//                .frame(minHeight: .infinity)
             }
+            else{
+                ScrollView(.horizontal){
+                    LazyHStack{
+                        ForEach(ViewModel.available_times){i in
+                            TimeCell(session: i)
+                                .onTapGesture {
+                                    ViewModel.choose_session(i.id)
+                                }
+                        }
+                    }.padding()
+                }
+            }
+            
         }
         
     }

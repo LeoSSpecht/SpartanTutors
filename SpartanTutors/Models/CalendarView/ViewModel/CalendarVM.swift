@@ -18,6 +18,9 @@ class calendarVM: ObservableObject{
     var month_selected:String{
         let df = DateFormatter()
         df.dateFormat = "MMMM"
+//        print(model.days_list.count)
+//        print(ind_begin)
+//        print(ind_end)
         let start_month = df.string(from: model.days_list[ind_begin].date)
         let end_month = df.string(from: model.days_list[ind_end].date)
         if start_month == end_month{
@@ -48,7 +51,7 @@ class calendarVM: ObservableObject{
             }
         }
         else{
-            let maxIndex = model.days_list.count/7
+            let maxIndex = (model.days_list.count-1)/7
             if startingIndex < maxIndex{
                 startingIndex += 1
             }

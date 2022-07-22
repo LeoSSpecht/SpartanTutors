@@ -61,7 +61,7 @@ struct InnerRow: View{
                             .foregroundColor(.black)
                         }
                     }
-                    else if details.status == "Pending"{
+                    else if details.status == "Pending" && details.date >= Date(){
                         Button(action: {
                             sessionModel.cancel_session(session: details)
                         }){

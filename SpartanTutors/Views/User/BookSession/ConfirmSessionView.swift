@@ -21,8 +21,8 @@ struct ConfirmSessionView: View {
             Spacer()
             VStack{
                 Text("Date: \(bookViewModel.dateSelection.to_WeekDay_date())")
-                Text("Time: \(bookViewModel.sessionSelections?.time_string ?? "No session selection")")
-                Text("Tutor: \(bookViewModel.tutorSelection.name)")
+                Text("Time: \(bookViewModel.sessionSelections?.timeframe.get_start_end_time() ?? "No session selected")")
+                Text("Tutor: \(bookViewModel.sessionSelections?.tutor_name ?? "No session selected")")
                 Text("Class: \(bookViewModel.selectedClass)")
                 Text("Duration: 2h")
                 Text("Total price: $55")
