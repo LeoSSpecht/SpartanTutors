@@ -56,22 +56,33 @@ struct bookSessionView: View {
                     HStack{
                         Text("Select a class")
                         Spacer()
-                        Picker(selection: classProxy, label: picker_label(selection: self.bookViewModel.selectedClass)) {
-                            ForEach(bookViewModel.classes_, id: \.self) { item in
-                                Text(item)
+                        
+                        Menu{
+                            Picker(selection: classProxy, label: EmptyView()) {
+                                ForEach(bookViewModel.classes_, id: \.self) { item in
+                                    Text(item)
+                                }
                             }
+                        }label: {
+                            picker_label(selection: self.bookViewModel.selectedClass)
                         }
                     }.padding(.horizontal)
 
                     HStack{
                         Text("Select a tutor")
                         Spacer()
-                        Picker(selection: tutorProxy, label: picker_label(selection: bookViewModel.tutorSelection.name)) {
-                            Text("Any").tag(TutorSummary(id: "Any", name: "Any"))
-                            ForEach(bookViewModel.tutors, id: \.self) { item in
-                                Text(item.name).tag(item)
+                        Menu{
+                            Picker(selection: tutorProxy, label: EmptyView()
+                            ) {
+                                Text("Any").tag(TutorSummary(id: "Any", name: "Any"))
+                                ForEach(bookViewModel.tutors, id: \.self) { item in
+                                    Text(item.name).tag(item)
+                                }
                             }
+                        }label: {
+                            picker_label(selection: self.bookViewModel.tutorSelection.name)
                         }
+                        
                     }.padding(.horizontal)
 
                     CalendarView(calendarViewModel: calendarViewModel,selected_date: dateProxy)
@@ -99,9 +110,8 @@ struct bookSessionView: View {
                     }.disabled(!(self.bookViewModel.sessionSelections != nil))
                 }
                 .navigationBarHidden(true)
-                .pickerStyle(MenuPickerStyle())
+//                .pickerStyle(MenuPickerStyle())
             }
-//            .statusBar(hidden: true)
         }
     }
 }
