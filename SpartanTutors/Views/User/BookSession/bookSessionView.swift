@@ -37,10 +37,6 @@ struct bookSessionView: View {
     }
     
     var body: some View {
-        
-        //TODO:
-        // DeInit snapshor listeners
-        // Tabs for tutor
         if !bookViewModel.finishedLoading{
             VStack{
                 Header_end()
@@ -49,7 +45,7 @@ struct bookSessionView: View {
         }
         else{
             NavigationView{
-                VStack{
+                VStack(alignment: .trailing){
                     Header_end()
                     Spacer(minLength: 50)
 
@@ -80,7 +76,8 @@ struct bookSessionView: View {
                                 }
                             }
                         }label: {
-                            picker_label(selection: self.bookViewModel.tutorSelection.name)
+//                            picker_label(selection: self.bookViewModel.tutorSelection.name)
+                            tutor_picker_label
                         }
                         
                     }.padding(.horizontal)
@@ -110,9 +107,27 @@ struct bookSessionView: View {
                     }.disabled(!(self.bookViewModel.sessionSelections != nil))
                 }
                 .navigationBarHidden(true)
-//                .pickerStyle(MenuPickerStyle())
             }
         }
+    }
+    
+    var tutor_picker_label: some View{
+        HStack{
+            Text(self.bookViewModel.tutorSelection.name)
+                .font(.subheadline)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+            Spacer()
+                .frame(maxWidth: 10)
+            Image(systemName: "chevron.down")
+                .foregroundColor(.gray)
+        }
+        .padding(.vertical,5)
+        .padding(.horizontal,10)
+        .background(
+            Capsule()
+                .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
+        )
     }
 }
 
