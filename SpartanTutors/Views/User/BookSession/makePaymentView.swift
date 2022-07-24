@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct makePaymentView: View {
-    @Binding var payment_active: Bool
+    @EnvironmentObject var bookViewModel: bookStudentSession
     @EnvironmentObject var tab_vm: tab_selection
     var body: some View {
         VStack{
@@ -18,8 +18,7 @@ struct makePaymentView: View {
             Button(action: {
                 print("See sessions")
                 tab_vm.selection = 2
-                payment_active.toggle()
-                
+                bookViewModel.reset_tabs()
             }) {
                 Text("See my sessions")
                     .foregroundColor(.white)
@@ -31,6 +30,9 @@ struct makePaymentView: View {
             }
         }.padding()
         .navigationBarBackButtonHidden(true)
+        .onDisappear{
+            bookViewModel.reset_tabs()
+        }
     }
 }
 

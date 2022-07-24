@@ -12,7 +12,7 @@ struct SessionRowView: View {
     var tutor_detail: TutorSummary
     var body: some View {
         ZStack(alignment: .trailing){
-            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
+            RoundedRectangle(cornerRadius: 20.0)
                 .foregroundColor(get_Status_Color(detail: details))
                 .shadow(radius: 3)
             InnerRow(details: details,tutor_detail: tutor_detail)
@@ -27,8 +27,8 @@ struct InnerRow: View{
     @EnvironmentObject var sessionModel: AllSessionsModel
     var body: some View{
         ZStack{
-            RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/20.0/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.gray)
+            RoundedRectangle(cornerRadius: 20.0)
+                .foregroundColor(Color(red: 0.7, green: 0.7, blue: 0.7))
             HStack{
                 VStack(alignment: .leading){
                     Text(details.date.to_WeekDay_date())

@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ConfirmSessionView: View {
     @EnvironmentObject var bookViewModel: bookStudentSession
-    @Binding var show_confirm: Bool
-    @State var show_payment = false
     //STORE THE CURRENT SESSION SELECTION IN A SESSION OBJECT
     var body: some View {
         VStack{
@@ -31,22 +29,22 @@ struct ConfirmSessionView: View {
             
             Spacer()
             NavigationLink(
-                destination: makePaymentView(payment_active:$show_confirm),isActive: $show_payment){
+                destination: makePaymentView(),isActive: self.$bookViewModel.load_payment){
             }
             .isDetailLink(false)
             
             Button(action: {
                 bookViewModel.createSessionObject()
-                show_payment.toggle()
             }){
-                Text("Confirm")
+                Text(bookViewModel.loading_booking ? "Loading..." : "Confirm")
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color(.systemIndigo))
+                    .background(bookViewModel.loading_booking ? .gray : Color(.systemIndigo))
                     .cornerRadius(12)
                     .padding()
-            }
+                    
+            }.disabled(bookViewModel.loading_booking)
             
         }
         .padding()

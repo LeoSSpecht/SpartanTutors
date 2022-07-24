@@ -19,6 +19,10 @@ class bookStudentSession: ObservableObject {
     @Published var sessionSelections:sessionTime?
     @Published var selectedClass:String = ""
     @Published var finishedLoading = false
+    @Published var error_on_book = false
+    @Published var load_confirmation = false
+    @Published var load_payment = false
+    @Published var loading_booking = false
     
     //ID -> Schedule
     
@@ -169,6 +173,7 @@ class bookStudentSession: ObservableObject {
 
 // MARK: Helper functions
     func createSessionObject(){
+        self.loading_booking = true
         var content:[String:Any] = [
             "id" : "",
             "tutor_uid" : sessionSelections?.tutor as Any,
@@ -187,9 +192,7 @@ class bookStudentSession: ObservableObject {
         return nil
     }
     
-    func bookSession(_ session: Session) -> Bool{
-//        Check if tutor is really available
-        
+    func bookSession(_ session: Session){
         let myGroup = DispatchGroup()
         myGroup.enter()
         var updated_scheduled:TutorSchedule = TutorSchedule(id: "", available_classes: [], name: "")
@@ -218,19 +221,36 @@ class bookStudentSession: ObservableObject {
             }
     
             if isAvailable {
+                // Tutor is available, proceed to book session
                 //Create session
                 self.upload_session_to_database(session: session){ uploaded in
                     if uploaded{
                         updated_scheduled.schedule[date_convert] = final_tutor_schedule
                         print("Starting tutor schedule update")
                         self.updateTutorSchedule(tutor_schedule: updated_scheduled)
+                        self.load_payment = true
+                    }
+                    else{
+                        //Go back to main page
+                        self.reset_tabs()
+                        self.error_on_book.toggle()
+
                     }
                 }
             }
+            else{
+                //Tutor is not available
+                self.reset_tabs()
+                self.error_on_book.toggle()
+            }
         }
-        return false
     }
     
+    func reset_tabs(){
+        self.load_confirmation = false
+        self.load_payment = false
+        self.loading_booking = false
+    }
     func upload_session_to_database(session: Session, completion: @escaping (_: Bool) -> Void){
         var final_session = session
         let ref = self.db.collection("Sessions")
